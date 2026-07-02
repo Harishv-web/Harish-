@@ -3,159 +3,678 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Harish V | Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<title>Harish V | Cyber Portfolio</title>
+<meta name="description"
+content="Harish V Portfolio | B.Com Computer Applications Student | Web Development & Technology">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
-body{background:#020617;color:#e5e7eb;}
-body::before{
-content:"";
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Space Grotesk',sans-serif;
+scroll-behavior:smooth;
+}
+body{
+background:#020202;
+color:#ffffff;
+overflow-x:hidden;
+}
+
+  /* MATRIX BACKGROUND */
+
+#matrix{
 position:fixed;
-width:100%;height:100%;
-background:linear-gradient(to right, rgba(255,255,255,0.03) 1px, transparent 1px),linear-gradient(to bottom, rgba(255,255,255,0.03) 1px, transparent 1px);
-background-size:40px 40px;
-z-index:-1;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-10;
+opacity:.12;
 }
+
+/* NAVBAR */
+
 nav{
-position:fixed;width:100%;
-display:flex;justify-content:space-between;
-padding:15px 50px;
-background:rgba(2,6,23,0.8);
-backdrop-filter:blur(10px);
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 50px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.85);
+backdrop-filter:blur(18px);
+border-bottom:1px solid #141414;
+z-index:1000;
 }
-nav h2{color:#38bdf8;}
-nav ul{display:flex;gap:25px;list-style:none;}
-nav a{color:#cbd5f5;text-decoration:none;transition:0.3s;}
-nav a:hover{color:#38bdf8;}
+
+.logo{
+font-size:24px;
+font-weight:700;
+background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:28px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:#cfcfcf;
+font-size:15px;
+transition:.3s;
+}
+
+nav ul li a:hover{
+color:#8b5cf6;
+}
+
+/* HERO */
+
 .hero{
 height:100vh;
-display:flex;flex-direction:column;
-justify-content:center;align-items:center;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
+padding:20px;
 }
-.hero h1{font-size:3rem;}
-.hero span{color:#38bdf8;}
-.typing{margin-top:10px;color:#94a3b8;}
-section{padding:100px 50px;}
-h2{text-align:center;margin-bottom:40px;color:#38bdf8;}
+
+.hero h1{
+font-size:5rem;
+font-weight:700;
+margin-bottom:10px;
+}
+
+.hero h1 span{
+background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.typing{
+font-size:1.3rem;
+color:#8b5cf6;
+margin-bottom:25px;
+}
+
+.hero p{
+max-width:800px;
+line-height:1.9;
+color:#9ca3af;
+}
+
+.hero-btn{
+margin-top:35px;
+padding:15px 35px;
+border-radius:12px;
+text-decoration:none;
+color:white;
+font-weight:600;
+background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+transition:.3s;
+}
+
+.hero-btn:hover{
+transform:translateY(-4px);
+box-shadow:0 0 25px rgba(139,92,246,.35);
+}
+
+/* SECTION */
+
+section{
+padding:110px 60px;
+}
+
+section h2{
+text-align:center;
+margin-bottom:50px;
+font-size:2.2rem;
+background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* GRID */
+
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+/* CARD */
+
+.card{
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+padding:25px;
+border-radius:18px;
+transition:.4s;
+backdrop-filter:blur(10px);
+}
+
+.card:hover{
+transform:translateY(-10px);
+border-color:#8b5cf6;
+box-shadow:0 0 30px rgba(139,92,246,.15);
+}
+
+.card h3{
+margin-bottom:10px;
+color:#8b5cf6;
+}
+
+/* STATS */
+
+.stats{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
 }
-.card{
-background:rgba(255,255,255,0.03);
-border:1px solid rgba(255,255,255,0.05);
-padding:20px;border-radius:12px;
-transition:0.3s;
+
+.stat-box{
+background:#0a0a0a;
+padding:25px;
+border-radius:15px;
+text-align:center;
+border:1px solid #151515;
 }
-.card:hover{
-transform:translateY(-5px);
-border-color:#38bdf8;
+
+.stat-box h3{
+font-size:2rem;
+color:#8b5cf6;
 }
-.contact input,.contact textarea{
-width:100%;padding:12px;margin:10px 0;
-background:#020617;border:1px solid #1e293b;
-color:white;border-radius:6px;
+
+.stat-box p{
+color:#9ca3af;
+margin-top:10px;
 }
+
+/* CONTACT */
+
+.contact-box{
+max-width:700px;
+margin:auto;
+}
+
+.contact input,
+.contact textarea{
+width:100%;
+padding:15px;
+margin:10px 0;
+background:#090909;
+border:1px solid #1a1a1a;
+color:white;
+border-radius:12px;
+}
+
 .btn{
-width:100%;padding:12px;
-background:#38bdf8;border:none;
-cursor:pointer;font-weight:500;
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+font-weight:600;
+cursor:pointer;
+background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+color:white;
 }
-.btn:hover{background:#0ea5e9;}
+
+.btn:hover{
+opacity:.9;
+}
+
 footer{
-text-align:center;padding:20px;
-background:#020617;
-border-top:1px solid #1e293b;
+padding:40px;
+text-align:center;
+border-top:1px solid #111;
+color:#888;
 }
+
 .hidden{
-opacity:0;transform:translateY(40px);
-transition:0.6s;
+opacity:0;
+transform:translateY(50px);
+transition:.7s;
 }
+
 .show{
-opacity:1;transform:translateY(0);
+opacity:1;
+transform:translateY(0);
 }
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:3rem;
+}
+
+nav{
+padding:15px 20px;
+}
+
+nav ul{
+gap:12px;
+font-size:13px;
+}
+
+section{
+padding:80px 20px;
+}
+
+}
+
 </style>
+
 </head>
+
 <body>
+
+<canvas id="matrix"></canvas>
+
 <nav>
-<h2>Harish</h2>
+
+<div class="logo">HARISH V</div>
+
 <ul>
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#skills">Skills</a></li>
+<li><a href="#projects">Projects</a></li>
 <li><a href="#education">Education</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
-<div class="hero" id="home">
+<section class="hero" id="home">
 <h1>Hi, I'm <span>Harish</span></h1>
 <div class="typing" id="typing"></div>
-</div>
-<section id="about" class="hidden">
-<h2>About</h2>
-<p style="max-width:700px;margin:auto;text-align:center;">
-B.Com Computer Applications student at SASTRA University, Thanjavur.
-Focused on web development, problem solving, and building scalable applications.
+<p>
+B.Com Computer Applications Student at SASTRA University.
+Passionate about modern web technologies, software development,
+automation and building professional digital experiences.
 </p>
+<a href="#contact" class="hero-btn">
+Let's Connect
+</a>
 </section>
-<section id="skills" class="hidden">
-<h2>Skills</h2>
-<div class="grid">
-<div class="card">HTML & CSS (Strong)</div>
-<div class="card">C++ Programming</div>
-<div class="card">JavaScript (Basic)</div>
-<div class="card">Computer Applications</div>
-</div>
-</section>
-<section id="education" class="hidden">
-<h2>Education</h2>
+<section id="about" class="hidden">
+
+<h2>About Me</h2>
+
 <div class="card">
+
+<p style="line-height:1.9;color:#bdbdbd;">
+
+I am currently pursuing B.Com Computer Applications at
+SASTRA University, Thanjavur.
+
+My interests include web development, technology,
+automation, digital systems and software solutions.
+
+I enjoy building modern websites and continuously
+improving my technical skills through hands-on projects.
+
+</p>
+
+</div>
+
+</section>
+
+<section id="skills" class="hidden">
+
+<h2>Skills</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>HTML & CSS</h3>
+<p>Responsive Website Development</p>
+</div>
+
+<div class="card">
+<h3>C++ Programming</h3>
+<p>Problem Solving & Logic Building</p>
+</div>
+
+<div class="card">
+<h3>JavaScript</h3>
+<p>Interactive Web Applications</p>
+</div>
+
+<div class="card">
+<h3>Computer Applications</h3>
+<p>Business & Technology Integration</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="hidden">
+
+<h2>Overview</h2>
+
+<div class="stats">
+
+<div class="stat-box">
+<h3>2025</h3>
+<p>Portfolio Started</p>
+</div>
+
+<div class="stat-box">
+<h3>10+</h3>
+<p>Projects Planned</p>
+</div>
+
+<div class="stat-box">
+<h3>24/7</h3>
+<p>Learning Mode</p>
+</div>
+
+<div class="stat-box">
+<h3>∞</h3>
+<p>Growth Mindset</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="projects" class="hidden">
+
+<h2>Projects</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Personal Portfolio</h3>
+
+<p>
+Professional portfolio website hosted using
+GitHub Pages with custom domain integration.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Web Development Journey</h3>
+
+<p>
+Collection of HTML, CSS and JavaScript
+practice projects.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Future SaaS Projects</h3>
+
+<p>
+Exploring scalable software and
+digital business solutions.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="education" class="hidden">
+
+<h2>Education</h2>
+
+<div class="card">
+
 <h3>B.Com Computer Applications</h3>
-<p>SASTRA Deemed University, Thanjavur</p>
+
+<p style="margin-top:10px;color:#bdbdbd;">
+
+SASTRA Deemed University<br>
+Thanjavur, Tamil Nadu
+
+</p>
+
 </div>
+
 </section>
+
 <section id="contact" class="hidden contact">
+
 <h2>Contact</h2>
-<div style="max-width:500px;margin:auto;">
-<p>Email: v90300560 [at] gmail.com</p>
-<p>Instagram: @mr_harish.v</p>
+
+<div class="contact-box">
+
+<p style="margin-bottom:15px;">
+📧 v90300560@gmail.com
+</p>
+
+<p style="margin-bottom:25px;">
+📷 @mr_harish.v
+</p>
+
 <form action="https://formspree.io/f/mbdwjopd" method="POST">
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" rows="4" placeholder="Message" required></textarea>
-<button class="btn">Send Message</button>
+
+<input
+type="text"
+name="name"
+placeholder="Your Name"
+required>
+
+<input
+type="email"
+name="email"
+placeholder="Your Email"
+required>
+
+<textarea
+name="message"
+rows="5"
+placeholder="Your Message"
+required></textarea>
+
+<button class="btn">
+Send Message
+</button>
+
 </form>
+
 </div>
+
 </section>
+
 <footer>
-© 2026 Harish V | Portfolio
+
+<h3 style="color:#8b5cf6;">
+HARISH V
+</h3>
+
+<br>
+
+<p>
+B.Com Computer Applications
+</p>
+
+<p>
+SASTRA University
+</p>
+
+<br>
+
+<p>
+© 2026 All Rights Reserved
+</p>
+
 </footer>
+
 <script>
-const text=["Web Developer","C++ Learner","Tech Enthusiast"];
-let i=0,j=0;
+
+/* TYPING EFFECT */
+
+const words=[
+"Web Developer",
+"Tech Enthusiast",
+"C++ Learner",
+"Future Software Builder"
+];
+
+let i=0;
+let j=0;
+
 function type(){
-if(j<text[i].length){
-document.getElementById("typing").innerHTML+=text[i].charAt(j);
+
+const typing=document.getElementById("typing");
+
+if(j<words[i].length){
+
+typing.innerHTML+=words[i].charAt(j);
+
 j++;
+
 setTimeout(type,80);
+
 }else{
+
 setTimeout(()=>{
-document.getElementById("typing").innerHTML="";
+
+typing.innerHTML="";
+
 j=0;
-i=(i+1)%text.length;
+
+i=(i+1)%words.length;
+
 type();
+
 },1500);
-}}
+
+}
+
+}
+
 type();
-const observer=new IntersectionObserver(entries=>{
+
+/* SCROLL ANIMATION */
+
+const observer=
+new IntersectionObserver(entries=>{
+
 entries.forEach(entry=>{
+
 if(entry.isIntersecting){
+
 entry.target.classList.add("show");
-}});
+
+}
+
 });
-document.querySelectorAll('.hidden').forEach(el=>observer.observe(el));
+
+});
+
+document
+.querySelectorAll(".hidden")
+.forEach(el=>observer.observe(el));
+
+/* MATRIX EFFECT */
+
+const canvas=
+document.getElementById("matrix");
+
+const ctx=
+canvas.getContext("2d");
+
+canvas.width=
+window.innerWidth;
+
+canvas.height=
+window.innerHeight;
+
+const letters=
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890{}[]<>#$%&*";
+
+const fontSize=14;
+
+const columns=
+canvas.width/fontSize;
+
+const drops=[];
+
+for(let x=0;x<columns;x++){
+
+drops[x]=1;
+
+}
+
+function draw(){
+
+ctx.fillStyle=
+"rgba(0,0,0,0.08)";
+
+ctx.fillRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+ctx.fillStyle="#8b5cf6";
+
+ctx.font=
+fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+const text=
+letters.charAt(
+Math.floor(
+Math.random()*letters.length
+)
+);
+
+ctx.fillText(
+text,
+i*fontSize,
+drops[i]*fontSize
+);
+
+if(
+drops[i]*fontSize>
+canvas.height
+&&
+Math.random()>0.975
+){
+
+drops[i]=0;
+
+}
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,35);
+
+window.addEventListener(
+"resize",
+()=>{
+
+canvas.width=
+window.innerWidth;
+
+canvas.height=
+window.innerHeight;
+}
+);
 </script>
 </body>
 </html>
