@@ -302,11 +302,16 @@ automation and building professional digital experiences.
 <a href="#contact" class="hero-btn">
 Let's Connect
 </a>
+<br><br>
+<a href="https://www.linkedin.com/in/harish-v-253011362?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+target="_blank"
+class="hero-btn"
+style="background:linear-gradient(90deg,#0077B5,#00A0DC);">
+View LinkedIn Profile
+</a>
 </section>
 <section id="about" class="hidden">
-
 <h2>About Me</h2>
-
 <div class="card">
 
 <p style="line-height:1.9;color:#bdbdbd;">
@@ -321,39 +326,28 @@ I enjoy building modern websites and continuously
 improving my technical skills through hands-on projects.
 
 </p>
-
 </div>
-
 </section>
-
 <section id="skills" class="hidden">
-
 <h2>Skills</h2>
-
 <div class="grid">
-
 <div class="card">
 <h3>HTML & CSS</h3>
 <p>Responsive Website Development</p>
 </div>
-
 <div class="card">
 <h3>C++ Programming</h3>
 <p>Problem Solving & Logic Building</p>
 </div>
-
 <div class="card">
 <h3>JavaScript</h3>
 <p>Interactive Web Applications</p>
 </div>
-
 <div class="card">
 <h3>Computer Applications</h3>
 <p>Business & Technology Integration</p>
 </div>
-
 </div>
-
 </section>
 
 <section class="hidden">
@@ -457,31 +451,34 @@ Thanjavur, Tamil Nadu
 <p style="margin-bottom:15px;">
 📧 v90300560@gmail.com
 </p>
-
-<p style="margin-bottom:25px;">
+<p style="margin-bottom:15px;">
 📷 @mr_harish.v
 </p>
 
+<p style="margin-bottom:25px;">
+💼 LinkedIn:
+<a href="https://www.linkedin.com/in/harish-v-253011362?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+target="_blank"
+style="color:#06b6d4;text-decoration:none;font-weight:600;">
+Harish . V
+</a>
+</p>
 <form action="https://formspree.io/f/mbdwjopd" method="POST">
-
 <input
 type="text"
 name="name"
 placeholder="Your Name"
 required>
-
 <input
 type="email"
 name="email"
 placeholder="Your Email"
 required>
-
 <textarea
 name="message"
 rows="5"
 placeholder="Your Message"
 required></textarea>
-
 <button class="btn">
 Send Message
 </button>
