@@ -410,13 +410,9 @@ GitHub Pages with custom domain integration.
 Collection of HTML, CSS and JavaScript
 practice projects.
 </p>
-
 </div>
-
 <div class="card">
-
 <h3>Future SaaS Projects</h3>
-
 <p>
 Exploring scalable software and
 digital business solutions.
@@ -442,13 +438,10 @@ SASTRA Deemed University<br>
 Thanjavur, Tamil Nadu
 
 </p>
-
 </div>
 
 </section>
-
 <section id="contact" class="hidden contact">
-
 <h2>Contact</h2>
 
 <div class="contact-box">
