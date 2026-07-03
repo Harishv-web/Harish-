@@ -302,9 +302,6 @@ automation and building professional digital experiences.
 <a href="#contact" class="hero-btn">
 Let's Connect
 </a>
-<a href="#contact" class="hero-btn">
-Let's Connect
-</a>
 <br><br>
 <a href="https://www.linkedin.com/in/harish-v-253011362?utm_source=share_via&utm_content=profile&utm_medium=member_android"
 target="_blank"
