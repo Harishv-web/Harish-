@@ -313,7 +313,6 @@ View LinkedIn Profile
 <section id="about" class="hidden">
 <h2>About Me</h2>
 <div class="card">
-
 <p style="line-height:1.9;color:#bdbdbd;">
 
 I am currently pursuing B.Com Computer Applications at
