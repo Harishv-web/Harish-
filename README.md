@@ -302,12 +302,22 @@ automation and building professional digital experiences.
 <a href="#contact" class="hero-btn">
 Let's Connect
 </a>
+<a href="#contact" class="hero-btn">
+Let's Connect
+</a>
 <br><br>
 <a href="https://www.linkedin.com/in/harish-v-253011362?utm_source=share_via&utm_content=profile&utm_medium=member_android"
 target="_blank"
 class="hero-btn"
 style="background:linear-gradient(90deg,#0077B5,#00A0DC);">
 View LinkedIn Profile
+</a>
+<br><br>
+<a href="https://www.instagram.com/mr_harish.v?igsh=MXM0c2syaTJrZDRybA=="
+target="_blank"
+class="hero-btn"
+style="background:linear-gradient(90deg,#E1306C,#F77737);">
+View Instagram Profile
 </a>
 </section>
 <section id="about" class="hidden">
@@ -323,7 +333,6 @@ automation, digital systems and software solutions.
 
 I enjoy building modern websites and continuously
 improving my technical skills through hands-on projects.
-
 </p>
 </div>
 </section>
