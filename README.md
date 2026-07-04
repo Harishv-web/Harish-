@@ -272,11 +272,14 @@ padding:40px;
 text-align:center;
 border-top:1px solid #111;
 color:#888;
-width:100%;
+
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
+
+width:100%;
+margin:0 auto;
 }
 .hidden{
 opacity:0;
@@ -659,20 +662,16 @@ Send Message
 </div>
 </section>
 <footer>
+<div>
 <h3 style="color:#8b5cf6;">
 HARISH V
 </h3>
 <br>
-<p>
-B.Com Computer Applications
-</p>
-<p>
-SASTRA University
-</p>
+<p>B.Com Computer Applications</p>
+<p>SASTRA University</p>
 <br>
-<p>
-© 2026 All Rights Reserved
-</p>
+<p>© 2026 All Rights Reserved</p>
+</div>
 </footer>
 <script>
 /* TYPING EFFECT */
