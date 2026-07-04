@@ -262,7 +262,11 @@ color:white;
 .btn:hover{
 opacity:.9;
 }
-
+<a href="https://wa.me/917904329936"
+target="_blank"
+class="whatsapp-float">
+💬
+</a>
 footer{
 padding:40px;
 text-align:center;
