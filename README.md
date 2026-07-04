@@ -661,7 +661,7 @@ Send Message
 </form>
 </div>
 </section>
-<footer>
+<footer style="text-align:center;width:100%;">
 <div>
 <h3 style="color:#8b5cf6;">
 HARISH V
@@ -735,18 +735,12 @@ const columns=
 canvas.width/fontSize;
 
 const drops=[];
-
 for(let x=0;x<columns;x++){
-
 drops[x]=1;
-
 }
-
 function draw(){
-
 ctx.fillStyle=
 "rgba(0,0,0,0.08)";
-
 ctx.fillRect(
 0,
 0,
