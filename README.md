@@ -246,6 +246,26 @@ transition:.7s;
 .show{
 opacity:1;
 transform:translateY(0);
+}timeline{
+
+position:relative;
+
+max-width:900px;
+
+margin:auto;
+
+}
+.timeline::after{
+content:
+position:absolute;
+width:4px;
+background:linear-gradient(#8b5cf6,#0
+6b6d4);
+top:0;
+bottom:0;
+left:50%;
+margin-left:-2px;
+border-radius:10px;
 }
 /* PROFESSIONAL TIMELINE */
 .timeline{
@@ -339,6 +359,9 @@ font-size:13px;
 section{
 padding:80px 20px;
 }
+}
+@media(max-width:768px){
+/* mobile styles */
 }
 </style>
 </head>
@@ -478,83 +501,7 @@ Thanjavur, Tamil Nadu
 </section>
 </section>
 <!-- PASTE TIMELINE HERE -->
-/* PROFESSIONAL TIMELINE */
-.timeline{
-position:relative;
-max-width:900px;
-margin:auto;
-}
-.timeline::after{
-content:'';
-position:absolute;
-width:4px;
-background:linear-gradient(#8b5cf6,#06b6d4);
-top:0;
-bottom:0;
-left:50%;
-margin-left:-2px;
-border-radius:10px;
-}
-.timeline-item{
-padding:10px 40px;
-position:relative;
-width:50%;
-}
-.timeline-item::after{
-content:'';
-position:absolute;
-width:22px;
-height:22px;
-right:-11px;
-background:#8b5cf6;
-border:4px solid #06b6d4;
-top:25px;
-border-radius:50%;
-z-index:1;
-box-shadow:0 0 20px rgba(139,92,246,.8);
-}
-.left{
-left:0;
-}
-.right{
-left:50%;
-}
-.right::after{
-left:-11px;
-}
-.timeline-content{
-padding:25px;
-background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.08);
-border-radius:18px;
-backdrop-filter:blur(12px);
-transition:.4s;
-}
-.timeline-content:hover{
-transform:translateY(-8px);
-box-shadow:0 0 25px rgba(139,92,246,.25);
-}
-.timeline-content h3{
-color:#8b5cf6;
-margin-bottom:10px;
-}
-@media(max-width:768px){
-.timeline::after{
-left:20px;
-}
-.timeline-item{
-width:100%;
-padding-left:60px;
-padding-right:15px;
-}
-.left,
-.right{
-left:0;
-}
-.timeline-item::after{
-left:9px;
-}
-}
+
 <!-- CONTACT SECTION STARTS HERE -->
 <section id="contact" class="hidden contact">
 <h2>Contact</h2>
