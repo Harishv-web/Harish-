@@ -500,83 +500,52 @@ Thanjavur, Tamil Nadu
 </div>
 </section>
 <!-- PASTE TIMELINE HERE -->
-/* PROFESSIONAL TIMELINE */
-.timeline{
-position:relative;
-max-width:900px;
-margin:auto;
-}
-.timeline::after{
-content:'';
-position:absolute;
-width:4px;
-background:linear-gradient(#8b5cf6,#06b6d4);
-top:0;
-bottom:0;
-left:50%;
-margin-left:-2px;
-border-radius:10px;
-}
-.timeline-item{
-padding:10px 40px;
-position:relative;
-width:50%;
-}
-.timeline-item::after{
-content:'';
-position:absolute;
-width:22px;
-height:22px;
-right:-11px;
-background:#8b5cf6;
-border:4px solid #06b6d4;
-top:25px;
-border-radius:50%;
-z-index:1;
-box-shadow:0 0 20px rgba(139,92,246,.8);
-}
-.left{
-left:0;
-}
-.right{
-left:50%;
-}
-.right::after{
-left:-11px;
-}
-.timeline-content{
-padding:25px;
-background:rgba(255,255,255,.03);
-border:1px solid rgba(255,255,255,.08);
-border-radius:18px;
-backdrop-filter:blur(12px);
-transition:.4s;
-}
-.timeline-content:hover{
-transform:translateY(-8px);
-box-shadow:0 0 25px rgba(139,92,246,.25);
-}
-.timeline-content h3{
-color:#8b5cf6;
-margin-bottom:10px;
-}
-@media(max-width:768px){
-.timeline::after{
-left:20px;
-}
-.timeline-item{
-width:100%;
-padding-left:60px;
-padding-right:15px;
-}
-.left,
-.right{
-left:0;
-}
-.timeline-item::after{
-left:9px;
-}
-}
+<section id="timeline" class="hidden">
+<h2>My Journey</h2>
+<div class="timeline">
+<div class="timeline-item left">
+<div class="timeline-content">
+<h3>🎂 2008</h3>
+<p>
+Born on 15 May 2008. The beginning of a journey driven by learning, growth and ambition.
+</p>
+</div>
+</div>
+<div class="timeline-item right">
+<div class="timeline-content">
+<h3>📚 2023</h3>
+<p>
+Completed SSLC with 65% at Maxwell Matriculation Higher Secondary School, Thanjavur.
+</p>
+</div>
+</div>
+<div class="timeline-item left">
+<div class="timeline-content">
+<h3>🏆 2025</h3>
+<p>
+Completed Higher Secondary Education (HSC) with 85% at Maxwell Matriculation Higher Secondary School, Thanjavur.
+</p>
+</div>
+</div>
+<div class="timeline-item right">
+<div class="timeline-content">
+<h3>🎓 2026 - Present</h3>
+<p>
+Currently pursuing B.Com (Computer Applications) at SASTRA Deemed University, Thanjavur.
+Focused on technology, business applications and web development.
+</p>
+</div>
+</div>
+<div class="timeline-item left">
+<div class="timeline-content">
+<h3>🚀 Future Vision</h3>
+<p>
+Aspiring to become a skilled technology professional, web developer and entrepreneur while creating innovative digital solutions.
+</p>
+</div>
+</div>
+</div>
+</section>
 <!-- CONTACT SECTION STARTS HERE -->
 <section id="contact" class="hidden contact">
 <h2>Contact</h2>
