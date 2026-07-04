@@ -243,27 +243,99 @@ opacity:0;
 transform:translateY(50px);
 transition:.7s;
 }
-
 .show{
 opacity:1;
 transform:translateY(0);
 }
+/* PROFESSIONAL TIMELINE */
+.timeline{
+position:relative;
+max-width:900px;
+margin:auto;
+}
+.timeline::after{
+content:'';
+position:absolute;
+width:4px;
+background:linear-gradient(#8b5cf6,#06b6d4);
+top:0;
+bottom:0;
+left:50%;
+margin-left:-2px;
+border-radius:10px;
+}
+.timeline-item{
+padding:10px 40px;
+position:relative;
+width:50%;
+}
+.timeline-item::after{
+content:'';
+position:absolute;
+width:22px;
+height:22px;
+right:-11px;
+background:#8b5cf6;
+border:4px solid #06b6d4;
+top:25px;
+border-radius:50%;
+z-index:1;
+box-shadow:0 0 20px rgba(139,92,246,.8);
+}
+.left{
+left:0;
+}
+.right{
+left:50%;
+}
+.right::after{
+left:-11px;
+}
+.timeline-content{
+padding:25px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+backdrop-filter:blur(12px);
+transition:.4s;
+}
+.timeline-content:hover{
+transform:translateY(-8px);
+box-shadow:0 0 25px rgba(139,92,246,.25);
+}
 
+.timeline-content h3{
+color:#8b5cf6;
+margin-bottom:10px;
+}
 @media(max-width:768px){
-
+.timeline::after{
+left:20px;
+}
+.timeline-item{
+width:100%;
+padding-left:60px;
+padding-right:15px;
+}
+.left,
+.right{
+left:0;
+}
+.timeline-item::after{
+left:9px;
+}
+}
+@media(max-width:768px){
 .hero h1{
 font-size:3rem;
 }
-
 nav{
 padding:15px 20px;
 }
-
 nav ul{
 gap:12px;
 font-size:13px;
 }
-
 section{
 padding:80px 20px;
 }
@@ -280,6 +352,7 @@ padding:80px 20px;
 <li><a href="#skills">Skills</a></li>
 <li><a href="#projects">Projects</a></li>
 <li><a href="#education">Education</a></li>
+<li><a href="#timeline">Timeline</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
@@ -296,15 +369,13 @@ Let's Connect
 </a>
 <br> 
 <br>
-<br>
 <a href="https://www.instagram.com/mr_harish.v?igsh=MXM0c2syaTJrZDRybA=="
 target="_blank"
 class="hero-btn"
 style="background:linear-gradient(90deg,#E1306C,#F77737);">
 View Instagram Profile
 </a> <br>
-  <br>
-  <a href="https://www.linkedin.com/in/harish-v-253011362?utm_source=share_via&utm_content=profile&utm_medium=member_android"
+<a href="https://www.linkedin.com/in/harish-v-253011362?utm_source=share_via&utm_content=profile&utm_medium=member_android"
 target="_blank"
 class="hero-btn"
 style="background:linear-gradient(90deg,#0077B5,#00A0DC);">
@@ -348,58 +419,39 @@ improving my technical skills through hands-on projects.
 </div>
 </div>
 </section>
-
 <section class="hidden">
-
 <h2>Overview</h2>
-
 <div class="stats">
-
 <div class="stat-box">
 <h3>2025</h3>
 <p>Portfolio Started</p>
 </div>
-
 <div class="stat-box">
 <h3>10+</h3>
 <p>Projects Planned</p>
 </div>
-
 <div class="stat-box">
 <h3>24/7</h3>
 <p>Learning Mode</p>
 </div>
-
 <div class="stat-box">
 <h3>∞</h3>
 <p>Growth Mindset</p>
 </div>
-
 </div>
-
 </section>
-
 <section id="projects" class="hidden">
-
 <h2>Projects</h2>
-
 <div class="grid">
-
 <div class="card">
-
 <h3>Personal Portfolio</h3>
-
 <p>
 Professional portfolio website hosted using
 GitHub Pages with custom domain integration.
 </p>
-
 </div>
-
 <div class="card">
-
 <h3>Web Development Journey</h3>
-
 <p>
 Collection of HTML, CSS and JavaScript
 practice projects.
@@ -411,42 +463,111 @@ practice projects.
 Exploring scalable software and
 digital business solutions.
 </p>
-
 </div>
-
 </div>
-
 </section>
-
 <section id="education" class="hidden">
-
 <h2>Education</h2>
-
 <div class="card">
-
 <h3>B.Com Computer Applications</h3>
-
 <p style="margin-top:10px;color:#bdbdbd;">
-
 SASTRA Deemed University<br>
 Thanjavur, Tamil Nadu
-
 </p>
 </div>
-
 </section>
+</section>
+<!-- PASTE TIMELINE HERE -->
+/* PROFESSIONAL TIMELINE */
+.timeline{
+position:relative;
+max-width:900px;
+margin:auto;
+}
+.timeline::after{
+content:'';
+position:absolute;
+width:4px;
+background:linear-gradient(#8b5cf6,#06b6d4);
+top:0;
+bottom:0;
+left:50%;
+margin-left:-2px;
+border-radius:10px;
+}
+.timeline-item{
+padding:10px 40px;
+position:relative;
+width:50%;
+}
+.timeline-item::after{
+content:'';
+position:absolute;
+width:22px;
+height:22px;
+right:-11px;
+background:#8b5cf6;
+border:4px solid #06b6d4;
+top:25px;
+border-radius:50%;
+z-index:1;
+box-shadow:0 0 20px rgba(139,92,246,.8);
+}
+.left{
+left:0;
+}
+.right{
+left:50%;
+}
+.right::after{
+left:-11px;
+}
+.timeline-content{
+padding:25px;
+background:rgba(255,255,255,.03);
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+backdrop-filter:blur(12px);
+transition:.4s;
+}
+.timeline-content:hover{
+transform:translateY(-8px);
+box-shadow:0 0 25px rgba(139,92,246,.25);
+}
+.timeline-content h3{
+color:#8b5cf6;
+margin-bottom:10px;
+}
+@media(max-width:768px){
+.timeline::after{
+left:20px;
+}
+.timeline-item{
+width:100%;
+padding-left:60px;
+padding-right:15px;
+}
+.left,
+.right{
+left:0;
+}
+.timeline-item::after{
+left:9px;
+}
+}
+<!-- CONTACT SECTION STARTS HERE -->
 <section id="contact" class="hidden contact">
 <h2>Contact</h2>
-
 <div class="contact-box">
-
+<section id="contact" class="hidden contact">
+<h2>Contact</h2>
+<div class="contact-box">
 <p style="margin-bottom:15px;">
 📧 v90300560@gmail.com
 </p>
 <p style="margin-bottom:15px;">
 📷 @mr_harish.v
 </p>
-
 <p style="margin-bottom:25px;">
 💼 LinkedIn:
 <a href="https://www.linkedin.com/in/harish-v-253011362?utm_source=share_via&utm_content=profile&utm_medium=member_android"
@@ -474,100 +595,60 @@ required></textarea>
 <button class="btn">
 Send Message
 </button>
-
 </form>
-
 </div>
-
 </section>
-
 <footer>
-
 <h3 style="color:#8b5cf6;">
 HARISH V
 </h3>
-
 <br>
-
 <p>
 B.Com Computer Applications
 </p>
-
 <p>
 SASTRA University
 </p>
-
 <br>
-
 <p>
 © 2026 All Rights Reserved
 </p>
-
 </footer>
-
 <script>
-
 /* TYPING EFFECT */
-
 const words=[
 "Web Developer",
 "Tech Enthusiast",
 "C++ Learner",
 "Future Software Builder"
 ];
-
 let i=0;
 let j=0;
-
 function type(){
-
 const typing=document.getElementById("typing");
-
 if(j<words[i].length){
-
 typing.innerHTML+=words[i].charAt(j);
-
 j++;
-
 setTimeout(type,80);
-
 }else{
-
 setTimeout(()=>{
-
 typing.innerHTML="";
-
 j=0;
-
 i=(i+1)%words.length;
-
 type();
-
 },1500);
-
 }
-
 }
-
 type();
-
 /* SCROLL ANIMATION */
-
 const observer=
 new IntersectionObserver(entries=>{
-
 entries.forEach(entry=>{
-
 if(entry.isIntersecting){
-
 entry.target.classList.add("show");
-
 }
-
 });
-
 });
-
 document
 .querySelectorAll(".hidden")
 .forEach(el=>observer.observe(el));
