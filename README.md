@@ -282,16 +282,45 @@ transition:.7s;
 .show{
 opacity:1;
 transform:translateY(0);
-}timeline{
-
+}
+/* CONTACT CARDS */
+.contact-cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:30px;
+}
+.contact-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+padding:25px;
+border-radius:18px;
+text-decoration:none;
+color:white;
+transition:.4s;
+}
+.contact-card:hover{
+transform:translateY(-8px);
+border-color:#8b5cf6;
+box-shadow:0 0 25px rgba(139,92,246,.25);
+}
+.contact-card h3{
+color:#8b5cf6;
+margin-bottom:10px;
+}
+.contact-card p{
+color:#cfcfcf;
+font-size:14px;
+word-break:break-word;
+}
+timeline{
 position:relative;
-
 max-width:900px;
-
 margin:auto;
-
 }
 .timeline::after{
+
 content:
 position:absolute;
 width:4px;
