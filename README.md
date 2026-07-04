@@ -258,15 +258,26 @@ cursor:pointer;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 color:white;
 }
-
 .btn:hover{
 opacity:.9;
 }
-<a href="https://wa.me/917904329936"
-target="_blank"
-class="whatsapp-float">
-💬
-</a>
+.whatsapp-float{
+position:fixed;
+bottom:25px;
+right:25px;
+width:60px;
+height:60px;
+background:#25D366;
+color:white;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+text-decoration:none;
+box-shadow:0 0 20px rgba(37,211,102,.5);
+z-index:9999;
+}
 footer{
 padding:40px;
 text-align:center;
@@ -330,8 +341,7 @@ margin:auto;
 content:' ';
 position:absolute;
 width:4px;
-background:linear-gradient(#8b5cf6,#0
-6b6d4);
+background:linear-gradient(#8b5cf6,#06b6d4);
 top:0;
 bottom:0;
 left:50%;
@@ -673,6 +683,11 @@ HARISH V
 <p>© 2026 All Rights Reserved</p>
 </div>
 </footer>
+<a href="https://wa.me/917904329936"
+target="_blank"
+class="whatsapp-float">
+💬
+</a>
 <script>
 /* TYPING EFFECT */
 const words=[
