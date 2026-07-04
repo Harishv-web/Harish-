@@ -169,7 +169,38 @@ box-shadow:0 0 30px rgba(139,92,246,.15);
 .card h3{
 margin-bottom:10px;
 color:#8b5cf6;
-}
+}<div class="grid">
+
+<div class="card">
+<h3>HTML & CSS</h3>
+<div class="skill-bar">
+<div class="skill-fill" style="width:90%"></div>
+</div>
+<p>90%</p>
+</div>
+
+<div class="card">
+<h3>JavaScript</h3>
+<div class="skill-bar">
+<div class="skill-fill" style="width:75%"></div>
+</div>
+<p>75%</p>
+</div>
+<div class="card">
+<h3>C++ Programming</h3>
+<div class="skill-bar">
+<div class="skill-fill" style="width:80%"></div>
+</div>
+<p>80%</p>
+</div>
+<div class="card">
+<h3>Computer Applications</h3>
+<div class="skill-bar">
+<div class="skill-fill" style="width:85%"></div>
+</div>
+<p>85%</p>
+</div>
+</div>
 
 /* STATS */
 
@@ -504,24 +535,36 @@ improving my technical skills through hands-on projects.
 </section>
 <section id="skills" class="hidden">
 <h2>Skills</h2>
-<div class="grid">
 <div class="card">
 <h3>HTML & CSS</h3>
-<p>Responsive Website Development</p>
+<div class="skill-bar">
+<div class="skill-fill" style="width:90%"></div>
 </div>
-<div class="card">
-<h3>C++ Programming</h3>
-<p>Problem Solving & Logic Building</p>
+<p>90%</p>
 </div>
 <div class="card">
 <h3>JavaScript</h3>
-<p>Interactive Web Applications</p>
+<div class="skill-bar">
+<div class="skill-fill" style="width:75%"></div>
+</div>
+<p>75%</p>
+</div>
+<div class="card">
+<h3>C++ Programming</h3>
+<div class="skill-bar">
+<div class="skill-fill" style="width:80%"></div>
+</div>
+<p>80%</p>
 </div>
 <div class="card">
 <h3>Computer Applications</h3>
-<p>Business & Technology Integration</p>
+<div class="skill-bar">
+<div class="skill-fill" style="width:85%"></div>
+</div>
+<p>85%</p>
 </div>
 </div>
+
 </section>
 <section class="hidden">
 <h2>Overview</h2>
