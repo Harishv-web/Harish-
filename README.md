@@ -1,4 +1,3 @@
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -204,7 +203,41 @@ margin-top:10px;
 max-width:700px;
 margin:auto;
 }
+.contact-cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:30px;
+}
 
+.contact-card{
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
+backdrop-filter:blur(15px);
+padding:20px;
+border-radius:18px;
+text-align:center;
+transition:.4s;
+text-decoration:none;
+color:white;
+}
+
+.contact-card:hover{
+transform:translateY(-8px);
+border-color:#8b5cf6;
+box-shadow:0 0 25px rgba(139,92,246,.3);
+}
+
+.contact-card h3{
+color:#8b5cf6;
+margin-bottom:10px;
+}
+
+.contact-card p{
+color:#cfcfcf;
+font-size:14px;
+word-break:break-word;
+}
 .contact input,
 .contact textarea{
 width:100%;
@@ -215,7 +248,6 @@ border:1px solid #1a1a1a;
 color:white;
 border-radius:12px;
 }
-
 .btn{
 width:100%;
 padding:15px;
@@ -550,25 +582,29 @@ Aspiring to become a skilled technology professional, web developer and entrepre
 <section id="contact" class="hidden contact">
 <h2>Contact</h2>
 <div class="contact-box">
-<p style="margin-bottom:15px;">
-📧 v90300560@gmail.com
-</p>
-<p style="margin-bottom:15px;">
-📷 @mr_harish.v
-</p>
-<p style="margin-bottom:25px;">
-💼 LinkedIn:
-<a href="https://www.linkedin.com/in/harish-v-253011362?utm_source=share_via&utm_content=profile&utm_medium=member_android"
-target="_blank"
-style="color:#06b6d4;text-decoration:none;font-weight:600;">
-Harish . V
+<div class="contact-cards">
+<a href="mailto:v90300560@gmail.com" class="contact-card">
+<h3>📧 Email</h3>
+<p>v90300560@gmail.com</p>
 </a>
-</p>
+<a href="https://www.instagram.com/mr_harish.v"
+target="_blank"
+class="contact-card">
+<h3>📷 Instagram</h3>
+<p>@mr_harish.v</p>
+</a>
+<a href="https://www.linkedin.com/in/harish-v-253011362"
+target="_blank"
+class="contact-card">
+<h3>💼 LinkedIn</h3>
+<p>View My Profile </p>
+</a>
+</div>
 <form action="https://formspree.io/f/mbdwjopd" method="POST">
 <input
 type="text"
 name="name"
-placeholder="Your Name"
+placeholder="Your name "
 required>
 <input
 type="email"
@@ -702,33 +738,23 @@ text,
 i*fontSize,
 drops[i]*fontSize
 );
-
 if(
 drops[i]*fontSize>
 canvas.height
 &&
 Math.random()>0.975
 ){
-
 drops[i]=0;
-
 }
-
 drops[i]++;
-
 }
-
 }
-
 setInterval(draw,35);
-
 window.addEventListener(
 "resize",
 ()=>{
-
 canvas.width=
 window.innerWidth;
-
 canvas.height=
 window.innerHeight;
 }
