@@ -499,7 +499,6 @@ Thanjavur, Tamil Nadu
 </p>
 </div>
 </section>
-</section>
 <!-- PASTE TIMELINE HERE -->
 /* PROFESSIONAL TIMELINE */
 .timeline{
