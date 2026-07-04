@@ -272,8 +272,12 @@ padding:40px;
 text-align:center;
 border-top:1px solid #111;
 color:#888;
+width:100%;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 }
-
 .hidden{
 opacity:0;
 transform:translateY(50px);
@@ -314,14 +318,13 @@ color:#cfcfcf;
 font-size:14px;
 word-break:break-word;
 }
-timeline{
+.timeline{
 position:relative;
 max-width:900px;
 margin:auto;
 }
 .timeline::after{
-
-content:
+content:' ';
 position:absolute;
 width:4px;
 background:linear-gradient(#8b5cf6,#0
