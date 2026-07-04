@@ -435,10 +435,28 @@ transition:.4s;
 transform:translateY(-8px);
 box-shadow:0 0 25px rgba(139,92,246,.25);
 }
-
 .timeline-content h3{
 color:#8b5cf6;
 margin-bottom:10px;
+}
+.skill-bar{
+width:100%;
+height:12px;
+background:#111;
+border-radius:20px;
+overflow:hidden;
+margin:15px 0;
+}
+.skill-fill{
+height:100%;
+background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+border-radius:20px;
+display:block;
+}
+@keyframes fillBar{
+from{
+width:0;
+}
 }
 @media(max-width:768px){
 .timeline::after{
