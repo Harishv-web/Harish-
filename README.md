@@ -170,7 +170,6 @@ box-shadow:0 0 30px rgba(139,92,246,.15);
 margin-bottom:10px;
 color:#8b5cf6;
 }<div class="grid">
-
 <div class="card">
 <h3>HTML & CSS</h3>
 <div class="skill-bar">
@@ -581,8 +580,6 @@ improving my technical skills through hands-on projects.
 </div>
 <p>85%</p>
 </div>
-</div>
-
 </section>
 <section class="hidden">
 <h2>Overview</h2>
