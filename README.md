@@ -739,10 +739,6 @@ HARISH V
 <p>B.Com Computer Applications</p>
 <p>SASTRA University</p>
 <br>
-<p>
-👀 Visitors:
-<span id="visitor-count">Loading...</span>
-</p>
 <p>© 2026 All Rights Reserved</p>
 </div>
 </footer>
@@ -866,13 +862,6 @@ canvas.height=
 window.innerHeight;
 }
 );
-</script>
-<script>
-fetch('https://api.countapi.xyz/hit/harishportfolio/visits')
-.then(response => response.json())
-.then(data => {
-document.getElementById('visitor-count').innerText = data.value;
-});
 </script>
 </body>
 </html>
