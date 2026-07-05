@@ -18,8 +18,9 @@ body{
 background:#020202;
 color:#ffffff;
 overflow-x:hidden;
-} /* MATRIX BACKGROUND */
-
+}  
+  
+  /* MATRIX BACKGROUND */
 #matrix{
 position:fixed;
 top:0;
@@ -72,7 +73,6 @@ position:relative;
 nav ul li a:hover{
 color:#8b5cf6;
 }
-
 nav ul li a::after{
 content:'';
 position:absolute;
@@ -83,11 +83,9 @@ height:2px;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 transition:.3s;
 }
-
 nav ul li a:hover::after{
 width:100%;
 }
-
 .menu-btn{
 display:none;
 font-size:30px;
@@ -96,7 +94,6 @@ color:white;
 z-index:1001;
 transition:.3s;
 }
-
 .menu-btn:hover{
 color:#8b5cf6;
 transform:scale(1.1);
@@ -116,14 +113,11 @@ visibility:hidden;
 transition:.4s;
 z-index:998;
 }
-
 .nav-backdrop.active{
 opacity:1;
 visibility:visible;
 }
-
 /* HERO */
-
 .hero{
 height:100vh;
 display:flex;
@@ -133,31 +127,26 @@ align-items:center;
 text-align:center;
 padding:20px;
 }
-
 .hero h1{
 font-size:5rem;
 font-weight:700;
 margin-bottom:10px;
 }
-
 .hero h1 span{
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-
 .typing{
 font-size:1.3rem;
 color:#8b5cf6;
 margin-bottom:25px;
 }
-
 .hero p{
 max-width:800px;
 line-height:1.9;
 color:#9ca3af;
 }
-
 .hero-btn{
 margin-top:35px;
 padding:15px 35px;
@@ -168,18 +157,14 @@ font-weight:600;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 transition:.3s;
 }
-
 .hero-btn:hover{
 transform:translateY(-4px);
 box-shadow:0 0 25px rgba(139,92,246,.35);
 }
-
 /* SECTION */
-
 section{
 padding:110px 60px;
 }
-
 section h2{
 text-align:center;
 margin-bottom:50px;
@@ -188,17 +173,13 @@ background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
-
 /* GRID */
-
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
 }
-
 /* CARD */
-
 .card{
 background:rgba(255,255,255,.03);
 border:1px solid rgba(255,255,255,.08);
@@ -207,13 +188,11 @@ border-radius:18px;
 transition:.4s;
 backdrop-filter:blur(10px);
 }
-
 .card:hover{
 transform:translateY(-10px);
 border-color:#8b5cf6;
 box-shadow:0 0 30px rgba(139,92,246,.15);
 }
-
 .card h3{
 margin-bottom:10px;
 color:#8b5cf6;
@@ -224,7 +203,6 @@ display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
 gap:20px;
 }
-
 .stat-box{
 background:#0a0a0a;
 padding:25px;
@@ -287,7 +265,6 @@ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:20px;
 margin-bottom:30px;
 }
-
 .contact-card{
 background:rgba(255,255,255,.05);
 border:1px solid rgba(255,255,255,.1);
@@ -299,18 +276,15 @@ transition:.4s;
 text-decoration:none;
 color:white;
 }
-
 .contact-card:hover{
 transform:translateY(-8px);
 border-color:#8b5cf6;
 box-shadow:0 0 25px rgba(139,92,246,.3);
 }
-
 .contact-card h3{
 color:#8b5cf6;
 margin-bottom:10px;
 }
-
 .contact-card p{
 color:#cfcfcf;
 font-size:14px;
@@ -361,12 +335,10 @@ padding:40px;
 text-align:center;
 border-top:1px solid #111;
 color:#888;
-
 display:flex;
 flex-direction:column;
 align-items:center;
 justify-content:center;
-
 width:100%;
 margin:0 auto;
 }
@@ -524,12 +496,10 @@ display:flex;
 nav ul.active{
 right:0;
 }
-
 nav ul li{
 margin:0;
 width:100%;
 }
-
 nav ul li a{
 display:block;
 padding:16px 20px;
@@ -537,22 +507,18 @@ font-size:16px;
 border-radius:12px;
 border:1px solid transparent;
 }
-
 nav ul li a:hover{
 background:rgba(139,92,246,.1);
 border-color:rgba(139,92,246,.3);
 color:#8b5cf6;
 }
-
 nav ul li a::after{
 display:none;
 }
-
 body.menu-open{
 overflow:hidden;
 }
 }
-
 @media(max-width:768px){
 .timeline::after{
 left:20px;
@@ -580,19 +546,16 @@ width:280px;
 right:-280px;
 }
 }
-
 @media(max-width:480px){
 nav ul{
 width:100%;
 right:-100%;
 }
 }
-
 .services-grid{
 margin-top:20px;
 }
 </style>
-
 </head>
 <body>
 <canvas id="matrix"></canvas>
@@ -1013,24 +976,20 @@ const nav = document.getElementById("navLinks");
 const btn = document.querySelector(".menu-btn");
 const backdrop = document.querySelector(".nav-backdrop");
 const body = document.body;
-
 nav.classList.toggle("active");
 backdrop.classList.toggle("active");
 body.classList.toggle("menu-open");
-
 if(nav.classList.contains("active")){
 btn.innerHTML="✕";
 }else{
 btn.innerHTML="☰";
 }
 }
-
 function closeMenu(){
 const nav = document.getElementById("navLinks");
 const btn = document.querySelector(".menu-btn");
 const backdrop = document.querySelector(".nav-backdrop");
 const body = document.body;
-
 nav.classList.remove("active");
 backdrop.classList.remove("active");
 body.classList.remove("menu-open");
