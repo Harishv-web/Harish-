@@ -18,9 +18,7 @@ body{
 background:#020202;
 color:#ffffff;
 overflow-x:hidden;
-}
-
-  /* MATRIX BACKGROUND */
+} /* MATRIX BACKGROUND */
 
 #matrix{
 position:fixed;
@@ -68,16 +66,60 @@ text-decoration:none;
 color:#cfcfcf;
 font-size:15px;
 transition:.3s;
+position:relative;
 }
 
 nav ul li a:hover{
 color:#8b5cf6;
 }
+
+nav ul li a::after{
+content:'';
+position:absolute;
+bottom:-6px;
+left:0;
+width:0;
+height:2px;
+background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+transition:.3s;
+}
+
+nav ul li a:hover::after{
+width:100%;
+}
+
 .menu-btn{
 display:none;
 font-size:30px;
 cursor:pointer;
 color:white;
+z-index:1001;
+transition:.3s;
+}
+
+.menu-btn:hover{
+color:#8b5cf6;
+transform:scale(1.1);
+}
+
+/* BACKDROP FOR MOBILE MENU */
+.nav-backdrop{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(4px);
+opacity:0;
+visibility:hidden;
+transition:.4s;
+z-index:998;
+}
+
+.nav-backdrop.active{
+opacity:1;
+visibility:visible;
 }
 
 /* HERO */
@@ -198,11 +240,11 @@ color:#8b5cf6;
 color:#9ca3af;
 margin-top:10px;
 }
-#services .card{
+#services.card{
 position:relative;
 overflow:hidden;
 }
-#services .card::before{
+#services.card::before{
 content:'';
 position:absolute;
 top:0;
@@ -217,10 +259,10 @@ transparent
 );
 transition:.8s;
 }
-#services .card:hover::before{
+#services.card:hover::before{
 left:100%;
 }
-#services .card:hover{
+#services.card:hover{
 transform:translateY(-12px) scale(1.03);
 }
 .service-tag{
@@ -368,22 +410,7 @@ color:#cfcfcf;
 font-size:14px;
 word-break:break-word;
 }
-.timeline{
-position:relative;
-max-width:900px;
-margin:auto;
-}
-.timeline::after{
-content:' ';
-position:absolute;
-width:4px;
-background:linear-gradient(#8b5cf6,#06b6d4);
-top:0;
-bottom:0;
-left:50%;
-margin-left:-2px;
-border-radius:10px;
-}
+
 /* PROFESSIONAL TIMELINE */
 .timeline{
 position:relative;
@@ -464,6 +491,68 @@ from{
 width:0;
 }
 }
+
+/* RESPONSIVE STYLES */
+@media(max-width:1024px){
+.menu-btn{
+display:block;
+}
+
+nav{
+padding:15px 20px;
+}
+
+/* RIGHT SIDE DRAWER MENU */
+nav ul{
+position:fixed;
+top:0;
+right:-320px;
+width:320px;
+height:100vh;
+background:rgba(5,5,5,.98);
+backdrop-filter:blur(20px);
+flex-direction:column;
+text-align:left;
+padding:100px 30px 40px;
+border-left:1px solid #1a1a1a;
+transition:right.4s cubic-bezier(0.4, 0, 0.2, 1);
+z-index:999;
+gap:5px;
+display:flex;
+}
+
+nav ul.active{
+right:0;
+}
+
+nav ul li{
+margin:0;
+width:100%;
+}
+
+nav ul li a{
+display:block;
+padding:16px 20px;
+font-size:16px;
+border-radius:12px;
+border:1px solid transparent;
+}
+
+nav ul li a:hover{
+background:rgba(139,92,246,.1);
+border-color:rgba(139,92,246,.3);
+color:#8b5cf6;
+}
+
+nav ul li a::after{
+display:none;
+}
+
+body.menu-open{
+overflow:hidden;
+}
+}
+
 @media(max-width:768px){
 .timeline::after{
 left:20px;
@@ -480,70 +569,48 @@ left:0;
 .timeline-item::after{
 left:9px;
 }
-}
-.menu-btn{
-display:block;
-}
-nav{
-padding:15px 20px;
-}
-nav ul{
-display:none;
-position:absolute;
-top:70px;
-left:0;
-width:100%;
-background:#050505;
-flex-direction:column;
-text-align:center;
-padding:20px 0;
-border-top:1px solid #111;
-}
-nav ul.active{
-display:flex;
-}
-nav ul li{
-margin:10px 0;
-}
-@media(max-width:768px){
 .hero h1{
 font-size:3rem;
-}
-nav{
-padding:15px 20px;
-}
-nav ul{
-gap:12px;
-font-size:13px;
 }
 section{
 padding:80px 20px;
 }
+nav ul{
+width:280px;
+right:-280px;
 }
-@media(max-width:768px){
-/* mobile styles */
 }
+
+@media(max-width:480px){
+nav ul{
+width:100%;
+right:-100%;
+}
+}
+
 .services-grid{
 margin-top:20px;
 }
 </style>
+
 </head>
 <body>
 <canvas id="matrix"></canvas>
+<div class="nav-backdrop" onclick="toggleMenu()"></div>
 <nav>
 <div class="logo">HARISH V</div>
 <div class="menu-btn" onclick="toggleMenu()">
 ☰
 </div>
 <ul id="navLinks">
-<li><a href="#home">Home</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#skills">Skills</a></li>
-<li><a href="#projects">Projects</a></li>
-<li><a href="#education">Education</a></li>
-<li><a href="#timeline">Timeline</a></li>
-<li><a href="#services">Services</a></li>
-<li><a href="#contact">Contact</a></li>
+<li><a href="#home" onclick="closeMenu()">🏠 Home</a></li>
+<li><a href="#about" onclick="closeMenu()">👨‍💻 About</a></li>
+<li><a href="#skills" onclick="closeMenu()">⚡ Skills</a></li>
+<li><a href="#projects" onclick="closeMenu()">💼 Projects</a></li>
+<li><a href="#education" onclick="closeMenu()">🎓 Education</a></li>
+<li><a href="#timeline" onclick="closeMenu()">📈 Timeline</a></li>
+<li><a href="#services" onclick="closeMenu()">🛠️ Services</a></li>
+<li><a href="#contact" onclick="closeMenu()">📧 Contact</a></li>
 </ul>
 </nav>
 <section class="hero" id="home">
@@ -557,7 +624,7 @@ automation and building professional digital experiences.
 <a href="#contact" class="hero-btn">
 Let's Connect
 </a>
-<br> 
+<br>
 <br>
 <a href="https://www.instagram.com/mr_harish.v?igsh=MXM0c2syaTJrZDRybA=="
 target="_blank"
@@ -575,9 +642,7 @@ View LinkedIn Profile
 <section id="about" class="hidden">
 <h2>About Me</h2>
 <div class="card">
-<p style="line-height:1.9;color:#bdbdbd;">
-
-I am currently pursuing B.Com Computer Applications at
+<p style="line-height:1.9;color:#bdbdbd;"> I am currently pursuing B.Com Computer Applications at
 SASTRA University, Thanjavur.
 
 My interests include web development, technology,
@@ -585,6 +650,7 @@ automation, digital systems and software solutions.
 
 I enjoy building modern websites and continuously
 improving my technical skills through hands-on projects.
+
 </p>
 </div>
 </section>
@@ -724,9 +790,7 @@ Aspiring to become a skilled technology professional, web developer and entrepre
 </div>
 </section>
 <section id="services" class="hidden">
-<h2>Services</h2>
-
-<div class="card">
+<h2>Services</h2> <div class="card">
 <span class="service-tag">Available</span>
 <h3>🌐 Website Creation</h3>
 <p>
@@ -772,9 +836,7 @@ events, promotions and marketing campaigns.
 Professional photo enhancement,
 social media creatives and video editing services.
 </p>
-</div>
-
-<div style="text-align:center;margin-top:40px;">
+</div> <div style="text-align:center;margin-top:40px;">
 <a href="https://wa.me/917904329936"
 target="_blank"
 class="hero-btn">
@@ -880,30 +942,20 @@ entry.target.classList.add("show");
 });
 document
 .querySelectorAll(".hidden")
-.forEach(el=>observer.observe(el));
-
-/* MATRIX EFFECT */
-
+.forEach(el=>observer.observe(el)); /* MATRIX EFFECT */
 const canvas=
 document.getElementById("matrix");
-
 const ctx=
 canvas.getContext("2d");
-
 canvas.width=
 window.innerWidth;
-
 canvas.height=
 window.innerHeight;
-
 const letters=
-"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890{}[]<>#$%&*";
-
+"ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890{}[]<>#$%&";
 const fontSize=14;
-
 const columns=
 canvas.width/fontSize;
-
 const drops=[];
 for(let x=0;x<columns;x++){
 drops[x]=1;
@@ -917,21 +969,16 @@ ctx.fillRect(
 canvas.width,
 canvas.height
 );
-
 ctx.fillStyle="#8b5cf6";
-
 ctx.font=
 fontSize+"px monospace";
-
 for(let i=0;i<drops.length;i++){
-
 const text=
 letters.charAt(
 Math.floor(
 Math.random()*letters.length
 )
 );
-
 ctx.fillText(
 text,
 i*fontSize,
@@ -959,19 +1006,35 @@ window.innerHeight;
 }
 );
 </script>
+
 <script>
 function toggleMenu(){
-const nav=
-document.getElementById("navLinks");
-const btn=
-document.querySelector(".menu-btn");
+const nav = document.getElementById("navLinks");
+const btn = document.querySelector(".menu-btn");
+const backdrop = document.querySelector(".nav-backdrop");
+const body = document.body;
+
 nav.classList.toggle("active");
+backdrop.classList.toggle("active");
+body.classList.toggle("menu-open");
+
 if(nav.classList.contains("active")){
 btn.innerHTML="✕";
 }else{
 btn.innerHTML="☰";
 }
 }
-</script>
-</body>
+
+function closeMenu(){
+const nav = document.getElementById("navLinks");
+const btn = document.querySelector(".menu-btn");
+const backdrop = document.querySelector(".nav-backdrop");
+const body = document.body;
+
+nav.classList.remove("active");
+backdrop.classList.remove("active");
+body.classList.remove("menu-open");
+btn.innerHTML="☰";
+}
+</script> </body>
 </html>
