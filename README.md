@@ -169,37 +169,8 @@ box-shadow:0 0 30px rgba(139,92,246,.15);
 .card h3{
 margin-bottom:10px;
 color:#8b5cf6;
-}<div class="grid">
-<div class="card">
-<h3>HTML & CSS</h3>
-<div class="skill-bar">
-<div class="skill-fill" style="width:90%"></div>
-</div>
-<p>90%</p>
-</div>
+}
 
-<div class="card">
-<h3>JavaScript</h3>
-<div class="skill-bar">
-<div class="skill-fill" style="width:75%"></div>
-</div>
-<p>75%</p>
-</div>
-<div class="card">
-<h3>C++ Programming</h3>
-<div class="skill-bar">
-<div class="skill-fill" style="width:80%"></div>
-</div>
-<p>80%</p>
-</div>
-<div class="card">
-<h3>Computer Applications</h3>
-<div class="skill-bar">
-<div class="skill-fill" style="width:85%"></div>
-</div>
-<p>85%</p>
-</div>
-</div>
 
 /* STATS */
 
@@ -739,6 +710,10 @@ HARISH V
 <p>B.Com Computer Applications</p>
 <p>SASTRA University</p>
 <br>
+<p>
+👀 Visitors:
+<span id="visitor-count">Loading...</span>
+</p>
 <p>© 2026 All Rights Reserved</p>
 </div>
 </footer>
@@ -862,9 +837,12 @@ canvas.height=
 window.innerHeight;
 }
 );
-</script>
-<script async
-src="https://api.countapi.xyz/hit/harishportfolio/visits">
+<script>
+fetch('https://api.countapi.xyz/hit/harishportfolio/visits')
+.then(response => response.json())
+.then(data => {
+document.getElementById('visitor-count').innerText = data.value;
+});
 </script>
 </body>
 </html>
