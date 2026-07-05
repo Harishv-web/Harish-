@@ -692,7 +692,7 @@ Aspiring to become a skilled technology professional, web developer and entrepre
 </section>
 <section id="services" class="hidden">
 <h2>Services</h2>
-<div class="grid" services-grid">
+
 <div class="card">
 <span class="service-tag">Available</span>
 <h3>🌐 Website Creation</h3>
@@ -740,7 +740,7 @@ Professional photo enhancement,
 social media creatives and video editing services.
 </p>
 </div>
-</div>
+
 <div style="text-align:center;margin-top:40px;">
 <a href="https://wa.me/917904329936"
 target="_blank"
