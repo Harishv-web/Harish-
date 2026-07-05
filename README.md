@@ -451,6 +451,7 @@ height:100%;
 background:linear-gradient(90deg,#8b5cf6,#06b6d4);
 border-radius:20px;
 display:block;
+animation:fillBar 2s ease;
 }
 @keyframes fillBar{
 from{
@@ -861,6 +862,9 @@ canvas.height=
 window.innerHeight;
 }
 );
+</script>
+<script async
+src="https://api.countapi.xyz/hit/harishportfolio/visits">
 </script>
 </body>
 </html>
