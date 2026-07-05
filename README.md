@@ -73,6 +73,12 @@ transition:.3s;
 nav ul li a:hover{
 color:#8b5cf6;
 }
+.menu-btn{
+display:none;
+font-size:30px;
+cursor:pointer;
+color:white;
+}
 
 /* HERO */
 
@@ -475,6 +481,30 @@ left:0;
 left:9px;
 }
 }
+.menu-btn{
+display:block;
+}
+nav{
+padding:15px 20px;
+}
+nav ul{
+display:none;
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#050505;
+flex-direction:column;
+text-align:center;
+padding:20px 0;
+border-top:1px solid #111;
+}
+nav ul.active{
+display:flex;
+}
+nav ul li{
+margin:10px 0;
+}
 @media(max-width:768px){
 .hero h1{
 font-size:3rem;
@@ -502,7 +532,10 @@ margin-top:20px;
 <canvas id="matrix"></canvas>
 <nav>
 <div class="logo">HARISH V</div>
-<ul>
+<div class="menu-btn" onclick="toggleMenu()">
+☰
+</div>
+<ul id="navLinks">
 <li><a href="#home">Home</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#skills">Skills</a></li>
@@ -925,6 +958,20 @@ canvas.height=
 window.innerHeight;
 }
 );
+</script>
+<script>
+function toggleMenu(){
+const nav=
+document.getElementById("navLinks");
+const btn=
+document.querySelector(".menu-btn");
+nav.classList.toggle("active");
+if(nav.classList.contains("active")){
+btn.innerHTML="✕";
+}else{
+btn.innerHTML="☰";
+}
+}
 </script>
 </body>
 </html>
