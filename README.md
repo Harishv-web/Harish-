@@ -555,6 +555,26 @@ right:-100%;
 .services-grid{
 margin-top:20px;
 }
+nav ul li a.active-link{
+color:#8b5cf6;
+}
+nav ul li a.active-link::after{
+width:100%;
+}
+.cursor-glow{
+position:fixed;
+width:250px;
+height:250px;
+background:radial-gradient(
+circle,
+rgba(139,92,246,.18),
+transparent 70%
+);
+pointer-events:none;
+border-radius:50%;
+transform:translate(-50%,-50%);
+z-index:-1;
+}
 </style>
 </head>
 <body>
@@ -995,5 +1015,12 @@ backdrop.classList.remove("active");
 body.classList.remove("menu-open");
 btn.innerHTML="☰";
 }
-</script> </body>
+const glow =
+document.querySelector(".cursor-glow");
+document.addEventListener("mousemove",(e)=>{
+glow.style.left = e.clientX + "px";
+glow.style.top = e.clientY + "px";
+});
+</script> <div class="cursor-glow"></div> 
+</body>
 </html>
