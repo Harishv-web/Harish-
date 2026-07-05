@@ -169,40 +169,8 @@ box-shadow:0 0 30px rgba(139,92,246,.15);
 .card h3{
 margin-bottom:10px;
 color:#8b5cf6;
-}<div class="grid">
-<div class="card">
-<h3>HTML & CSS</h3>
-<div class="skill-bar">
-<div class="skill-fill" style="width:90%"></div>
-</div>
-<p>90%</p>
-</div>
-
-<div class="card">
-<h3>JavaScript</h3>
-<div class="skill-bar">
-<div class="skill-fill" style="width:75%"></div>
-</div>
-<p>75%</p>
-</div>
-<div class="card">
-<h3>C++ Programming</h3>
-<div class="skill-bar">
-<div class="skill-fill" style="width:80%"></div>
-</div>
-<p>80%</p>
-</div>
-<div class="card">
-<h3>Computer Applications</h3>
-<div class="skill-bar">
-<div class="skill-fill" style="width:85%"></div>
-</div>
-<p>85%</p>
-</div>
-</div>
-
+}
 /* STATS */
-
 .stats{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -525,6 +493,9 @@ padding:80px 20px;
 @media(max-width:768px){
 /* mobile styles */
 }
+.services-grid{
+margin-top:20px;
+}
 </style>
 </head>
 <body>
@@ -721,7 +692,7 @@ Aspiring to become a skilled technology professional, web developer and entrepre
 </section>
 <section id="services" class="hidden">
 <h2>Services</h2>
-<div class="grid">
+<div class="grid" services-grid">
 <div class="card">
 <span class="service-tag">Available</span>
 <h3>🌐 Website Creation</h3>
