@@ -216,17 +216,49 @@ border-radius:15px;
 text-align:center;
 border:1px solid #151515;
 }
-
 .stat-box h3{
 font-size:2rem;
 color:#8b5cf6;
 }
-
 .stat-box p{
 color:#9ca3af;
 margin-top:10px;
 }
-
+#services .card{
+position:relative;
+overflow:hidden;
+}
+#services .card::before{
+content:'';
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(
+90deg,
+transparent,
+rgba(139,92,246,.15),
+transparent
+);
+transition:.8s;
+}
+#services .card:hover::before{
+left:100%;
+}
+#services .card:hover{
+transform:translateY(-12px) scale(1.03);
+}
+.service-tag{
+display:inline-block;
+padding:5px 12px;
+border-radius:20px;
+background:rgba(139,92,246,.15);
+border:1px solid #8b5cf6;
+color:#8b5cf6;
+font-size:12px;
+margin-bottom:15px;
+}
 /* CONTACT */
 
 .contact-box{
@@ -506,6 +538,7 @@ padding:80px 20px;
 <li><a href="#projects">Projects</a></li>
 <li><a href="#education">Education</a></li>
 <li><a href="#timeline">Timeline</a></li>
+<li><a href="#services">Services</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
@@ -684,6 +717,65 @@ Aspiring to become a skilled technology professional, web developer and entrepre
 </p>
 </div>
 </div>
+</div>
+</section>
+<section id="services" class="hidden">
+<h2>Services</h2>
+<div class="grid">
+<div class="card">
+<span class="service-tag">Available</span>
+<h3>🌐 Website Creation</h3>
+<p>
+Professional websites for students and businesses.
+</p>
+</div>
+<div class="card">
+<span class="service-tag">Available</span>
+<h3>🎓 Student Portfolio Websites</h3>
+<p>
+Personal portfolio websites for students to showcase
+skills, education, achievements and projects.
+</p>
+</div>
+<div class="card">
+<span class="service-tag">Available</span>
+<h3>📚 College Project Websites</h3>
+<p>
+Custom websites and front-end project development
+for academic presentations and submissions.
+</p>
+</div>
+<div class="card">
+<span class="service-tag">Available</span>
+<h3>🏢 Small Business Websites</h3>
+<p>
+Business websites with service details,
+contact forms, WhatsApp integration and branding.
+</p>
+</div>
+<div class="card">
+<span class="service-tag">Available</span>
+<h3>🚀 Landing Pages</h3>
+<p>
+High-converting landing pages for products,
+events, promotions and marketing campaigns.
+</p>
+</div>
+<div class="card">
+<span class="service-tag">Available</span>
+<h3>🎬 Photo & Video Editing</h3>
+<p>
+Professional photo enhancement,
+social media creatives and video editing services.
+</p>
+</div>
+</div>
+<div style="text-align:center;margin-top:40px;">
+<a href="https://wa.me/917904329936"
+target="_blank"
+class="hero-btn">
+Request a Service
+</a>
 </div>
 </section>
 <!-- CONTACT SECTION STARTS HERE -->
