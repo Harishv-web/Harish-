@@ -169,8 +169,37 @@ box-shadow:0 0 30px rgba(139,92,246,.15);
 .card h3{
 margin-bottom:10px;
 color:#8b5cf6;
-}
+}<div class="grid">
+<div class="card">
+<h3>HTML & CSS</h3>
+<div class="skill-bar">
+<div class="skill-fill" style="width:90%"></div>
+</div>
+<p>90%</p>
+</div>
 
+<div class="card">
+<h3>JavaScript</h3>
+<div class="skill-bar">
+<div class="skill-fill" style="width:75%"></div>
+</div>
+<p>75%</p>
+</div>
+<div class="card">
+<h3>C++ Programming</h3>
+<div class="skill-bar">
+<div class="skill-fill" style="width:80%"></div>
+</div>
+<p>80%</p>
+</div>
+<div class="card">
+<h3>Computer Applications</h3>
+<div class="skill-bar">
+<div class="skill-fill" style="width:85%"></div>
+</div>
+<p>85%</p>
+</div>
+</div>
 
 /* STATS */
 
@@ -837,6 +866,7 @@ canvas.height=
 window.innerHeight;
 }
 );
+</script>
 <script>
 fetch('https://api.countapi.xyz/hit/harishportfolio/visits')
 .then(response => response.json())
