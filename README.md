@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1234,12 +1233,10 @@ You can answer questions about Harish AND general topics like coding, tech, busi
 Keep responses concise but informative. Use emojis occasionally. If asked about hiring/collaboration, direct them to contact section or WhatsApp.`
 }
 ];
-
 function sendSuggestion(text){
 aiInput.value = text;
 sendMessage();
 }
-
 async function sendMessage(){
 const message = aiInput.value.trim();
 if(!message) return;
