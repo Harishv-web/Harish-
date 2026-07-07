@@ -1208,7 +1208,7 @@ const aiChatBox = document.getElementById('aiChatBox');
 const aiInput = document.getElementById('aiInput');
 const aiSendBtn = document.getElementById('aiSendBtn');
 
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = 'b9712385-eb93-4456-a559-6803ffa5a646';
 
 let chatHistory = [
 {
