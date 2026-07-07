@@ -728,11 +728,10 @@ z-index:-1;
 <li><a href="#education" onclick="closeMenu()">🎓 Education</a></li>
 <li><a href="#timeline" onclick="closeMenu()">📈 Timeline</a></li>
 <li><a href="#services" onclick="closeMenu()">🛠️ Services</a></li>
-<li><a href="#ai-assistant" onclick="closeMenu()">🤖 AI Assistant</a></li>
+<li><a href="#ai-assistant" onclick="closeMenu()">🤖 ask Ultron </a></li>
 <li><a href="#contact" onclick="closeMenu()">📧 Contact</a></li>
 </ul>
 </nav>
-
 <section class="hero" id="home">
 <h1>Hi, I'm <span>Harish</span></h1>
 <div class="typing" id="typing"></div>
@@ -971,7 +970,7 @@ Request a Service
 
 <!-- AI ASSISTANT SECTION -->
 <section id="ai-assistant" class="hidden">
-<h2>AI Assistant</h2>
+<h2>meet Utron  </h2>
 <div class="ai-container">
 <div class="ai-header">
 <div class="ai-header-icon">🤖</div>
@@ -1209,7 +1208,7 @@ const aiChatBox = document.getElementById('aiChatBox');
 const aiInput = document.getElementById('aiInput');
 const aiSendBtn = document.getElementById('aiSendBtn');
 
-const OPENAI_API_KEY = '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';
+const OPENAI_API_KEY = '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';
 
 let chatHistory = [
 {
