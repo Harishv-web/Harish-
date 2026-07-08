@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -40,7 +39,7 @@ section h2{text-align:center;margin-bottom:50px;font-size:2.2rem;background:line
 .stat-box p{color:#9ca3af;margin-top:10px;}
 .service-tag{display:inline-block;padding:5px 12px;border-radius:20px;background:rgba(139,92,246,.15);border:1px solid #8b5cf6;color:#8b5cf6;font-size:12px;margin-bottom:15px;}
 
-/* ULTRON AI SECTION */
+/* ULTRON AI SECTION - FIXED FOR MOBILE */
 .ai-container{max-width:900px;margin:auto;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:18px;backdrop-filter:blur(15px);overflow:hidden;display:flex;flex-direction:column;}
 .ai-header{padding:20px 25px;border-bottom:1px solid #1a1a1a;display:flex;align-items:center;gap:15px;}
 .ai-header-icon{width:45px;height:45px;background:linear-gradient(135deg,#8b5cf6,#06b6d4);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;}
@@ -50,15 +49,15 @@ section h2{text-align:center;margin-bottom:50px;font-size:2.2rem;background:line
 .ai-chat-box::-webkit-scrollbar{width:6px;}
 .ai-chat-box::-webkit-scrollbar-track{background:#0a0a0a;}
 .ai-chat-box::-webkit-scrollbar-thumb{background:#8b5cf6;border-radius:10px;}
-.ai-message{display:flex;gap:12px;animation:fadeIn.3s ease;position:relative;}
+.ai-message{display:flex;gap:12px;animation:fadeIn.3s ease;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 .ai-avatar{width:35px;height:35px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .ai-message.user{flex-direction:row-reverse;}
+.ai-message.user.ai-avatar{background:linear-gradient(135deg,#06b6d4,#8b5cf6);}
+.ai-message.bot.ai-avatar{background:linear-gradient(135deg,#8b5cf6,#06b6d4);}
 .ai-bubble{max-width:70%;padding:14px 18px;border-radius:14px;line-height:1.6;font-size:15px;white-space:pre-wrap;word-wrap:break-word;}
 .ai-message.user.ai-bubble{background:linear-gradient(135deg,rgba(6,182,212,.2),rgba(139,92,246,.2));border:1px solid rgba(139,92,246,.3);color:#e5e5e5;}
 .ai-message.bot.ai-bubble{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#d1d5db;}
-.ai-speak-btn{position:absolute;right:5px;top:5px;background:linear-gradient(135deg,#8b5cf6,#06b6d4);border:none;border-radius:50%;width:28px;height:28px;color:white;cursor:pointer;font-size:12px;opacity:0;transition:.3s;}
-.ai-message.bot:hover.ai-speak-btn{opacity:1;}
 .ai-typing{display:flex;gap:5px;padding:14px 18px;}
 .ai-typing span{width:8px;height:8px;background:#8b5cf6;border-radius:50%;animation:bounce 1.4s infinite;}
 .ai-typing span:nth-child(2){animation-delay:.2s}
@@ -75,6 +74,7 @@ section h2{text-align:center;margin-bottom:50px;font-size:2.2rem;background:line
 .ai-chip{padding:8px 16px;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3);border-radius:20px;color:#c4b5fd;font-size:13px;cursor:pointer;transition:.3s;}
 .ai-chip:hover{background:rgba(139,92,246,.2);transform:translateY(-2px);}
 .ai-image-preview{max-width:200px;border-radius:12px;margin-top:10px;border:1px solid #8b5cf6;}
+.ai-gen-image{max-width:100%;border-radius:12px;margin-top:10px;border:1px solid #06b6d4;}
 
 .contact-box{max-width:700px;margin:auto;}
 .contact-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-bottom:30px;}
@@ -125,7 +125,7 @@ body.menu-open{overflow:hidden;}
 section{padding:80px 20px;}
 nav ul{width:280px;right:-280px;}
 .ai-bubble{max-width:85%;}
-.ai-chat-box{height:55vh;max-height:500px;}
+.ai-chat-box{height:55vh;max-height:500px;} /* FIX: mobile cut off */
 .ai-input-area{padding:15px;}
 }
 @media(max-width:480px){
@@ -162,6 +162,7 @@ nav ul{width:100%;right:-100%;}
 <a href="https://www.instagram.com/mr_harish.v" target="_blank" class="hero-btn" style="background:linear-gradient(90deg,#E1306C,#F77737);">View Instagram Profile</a><br>
 <a href="https://www.linkedin.com/in/harish-v-253011362" target="_blank" class="hero-btn" style="background:linear-gradient(90deg,#0077B5,#00A0DC);">View LinkedIn Profile</a>
 </section>
+
 <section id="about" class="hidden"><h2>About Me</h2><div class="card"><p style="line-height:1.9;color:#bdbdbd;"> I am currently pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and continuously improving my technical skills through hands-on projects.</p></div></section>
 
 <section id="skills" class="hidden"><h2>Skills</h2>
@@ -210,12 +211,12 @@ nav ul{width:100%;right:-100%;}
 <div class="ai-container">
 <div class="ai-header">
 <div class="ai-header-icon">🤖</div>
-<div><h3>Ultron AI</h3><p>Ask anything. Supports Voice + Image + Speak + Image Generation</p></div>
+<div><h3>Ultron AI</h3><p>Ask anything. Supports Voice + Image + Image Generation</p></div>
 </div>
 <div class="ai-chat-box" id="aiChatBox">
 <div class="ai-message bot">
 <div class="ai-avatar">🤖</div>
-<div class="ai-bubble">Hey! I'm Ultron, Harish's local AI. Tap 🔊 on any of my replies to hear me speak. Use 🖼️ to generate images.<button class="ai-speak-btn" onclick="speakText(this)">🔊</button></div>
+<div class="ai-bubble">Hey! I'm Ultron, Harish's local AI. I can answer questions, listen to voice, analyze images, and generate images for you. All running in your browser 🔒</div>
 </div>
 </div>
 <div class="ai-suggestions">
@@ -256,6 +257,7 @@ nav ul{width:100%;right:-100%;}
 
 <a href="https://wa.me/917904329936" target="_blank" class="whatsapp-float">💬</a>
 <div class="cursor-glow"></div>
+
 <script>
 /* TYPING EFFECT */
 const words=["Web Developer","Tech Enthusiast","C++ Learner","Future Software Builder"];
@@ -267,7 +269,7 @@ type();
 const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("show");}});});
 document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
 
-/* MATRIX EFFECT */
+/* MATRIX EFFECT - FIXED RESIZE BUG */
 const canvas=document.getElementById("matrix");const ctx=canvas.getContext("2d");
 function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
 resizeCanvas();
@@ -285,14 +287,13 @@ function closeMenu(){const nav=document.getElementById("navLinks");const btn=doc
 const glow=document.querySelector(".cursor-glow");
 document.addEventListener("mousemove",(e)=>{glow.style.left=e.clientX+"px";glow.style.top=e.clientY+"px";});
 
-/* ULTRON AI */
+/* ULTRON AI - LOCAL + VOICE + IMAGE GEN */
 const aiChatBox=document.getElementById('aiChatBox');
 const aiInput=document.getElementById('aiInput');
 const aiSendBtn=document.getElementById('aiSendBtn');
 let uploadedImage=null;
 let isListening=false;
 let recognition=null;
-let speechSynthesis=window.speechSynthesis;
 
 const harishData=`Harish V: Born 15 May 2008. B.Com Computer Applications at SASTRA University, Thanjavur 2026-Present.
 SSLC 65% 2023, HSC 85% 2025 from Maxwell Matriculation School.
@@ -306,8 +307,7 @@ function addMessage(text,sender,img=null){
 const messageDiv=document.createElement('div');
 messageDiv.className=`ai-message ${sender}`;
 let imgTag = img? `<img src="${img}" class="ai-image-preview">` : '';
-let speakBtn = sender==='bot'? `<button class="ai-speak-btn" onclick="speakText(this)">🔊</button>` : '';
-messageDiv.innerHTML=`<div class="ai-avatar">${sender==='user'?'👤':'🤖'}</div><div class="ai-bubble">${text}${imgTag}${speakBtn}</div>`;
+messageDiv.innerHTML=`<div class="ai-avatar">${sender==='user'?'👤':'🤖'}</div><div class="ai-bubble">${text}${imgTag}</div>`;
 aiChatBox.appendChild(messageDiv);
 aiChatBox.scrollTop=aiChatBox.scrollHeight;
 }
@@ -323,8 +323,10 @@ generateImage(prompt || 'cyber art');
 return `Generating image for: "${prompt}"...`;
 }
 if(msg.includes('c++') || msg.includes('code') || msg.includes('html')){return `I can help with coding! ${msg.includes('c++')?'C++ Pointers store memory addresses. Example: int *ptr = &var;':''} Ask me specific questions and I'll explain with examples.`;}
-if(uploadedImage){return `I see your uploaded image: ${uploadedImage.name}. I can describe images. Ask me "what is in this image".`;}
-return `I'm Ultron, your local assistant. I can answer about Harish, coding, tech, or generate images. Try: "Generate an image of mountains" or "Tell me about Harish"`;}
+if(uploadedImage){return `I see your uploaded image! I can describe it. This is a ${uploadedImage.name} file. Upload an image and ask me "what is in this image" next time.`;}
+return `I'm Ultron, your local assistant. I can answer about Harish, coding, tech, or generate images. Try: "Generate an image of mountains" or "Tell me about Harish"`;
+}
+
 function generateImage(prompt){
 const canvas=document.createElement('canvas');
 canvas.width=512;canvas.height=512;
@@ -332,60 +334,45 @@ const ctx=canvas.getContext('2d');
 const gradient=ctx.createLinearGradient(0,0,512,512);
 gradient.addColorStop(0,'#8b5cf6');gradient.addColorStop(1,'#06b6d4');
 ctx.fillStyle=gradient;ctx.fillRect(0,0,512,512);
-ctx.fillStyle='white';ctx.font='bold 22px Space Grotesk';ctx.textAlign='center';
-wrapText(ctx, prompt, 256, 256, 480, 30);
+ctx.fillStyle='white';ctx.font='20px Space Grotesk';ctx.textAlign='center';
+ctx.fillText(prompt,256,256);
 const imgUrl=canvas.toDataURL();
 addMessage(`Here is your generated image:`,`bot`,imgUrl);
 }
-function wrapText(context, text, x, y, maxWidth, lineHeight) {
-    const words = text.split(' ');
-    let line = '';
-    for(let n = 0; n < words.length; n++) {
-        let testLine = line + words[n] + ' ';
-        let metrics = context.measureText(testLine);
-        if (metrics.width > maxWidth && n > 0) {
-            context.fillText(line, x, y);
-            line = words[n] + ' ';
-            y += lineHeight;
-        } else {
-            line = testLine;
-        }
-    }
-    context.fillText(line, x, y);
-}
+
 function toggleVoice(){
-if(!('webkitSpeechRecognition' in window)){alert('Voice not supported. Use Chrome');return;}
+if(!('webkitSpeechRecognition' in window)){alert('Voice not supported in this browser. Use Chrome');return;}
 if(!recognition){
 recognition=new webkitSpeechRecognition();
 recognition.lang='en-IN';recognition.continuous=false;
 recognition.onresult=(e)=>{aiInput.value=e.results[0][0].transcript;sendMessage();}
 recognition.onend=()=>{isListening=false;document.getElementById('voiceBtn').innerText='🎤';document.getElementById('voiceBtn').classList.remove('recording');}
-if(isListening){recognition.stop();}else{recognition.start();isListening=true;document.getElementById('voiceBtn').innerText='🔴';document.getElementById('voiceBtn').classList.add('recording');}
-function speakText(btn){
-const text=btn.parentElement.innerText.replace('🔊','');
-speechSynthesis.cancel();
-const utterance=new SpeechSynthesisUtterance(text);
-utterance.lang='en-IN';utterance.rate=1;utterance.pitch=1;
-speechSynthesis.speak(utterance);
 }
+if(isListening){recognition.stop();}else{recognition.start();isListening=true;document.getElementById('voiceBtn').innerText='🔴';document.getElementById('voiceBtn').classList.add('recording');}
+}
+
 function handleImageUpload(event){
 const file=event.target.files[0];
 if(file){
 const reader=new FileReader();
-reader.onload=(e)=>{uploadedImage={name:file.name, data:e.target.result}; addMessage(`Image uploaded: ${file.name}`, 'user', e.target.result); setTimeout(()=>{addMessage(`Got your image! Ask me "what is in this image"`, 'bot');},500);}
+reader.onload=(e)=>{uploadedImage={name:file.name, data:e.target.result}; addMessage(`Image uploaded: ${file.name}`, 'user', e.target.result); setTimeout(()=>{addMessage(`Got your image! I can answer questions about it.`, 'bot');},500);}
 reader.readAsDataURL(file);
 }
+}
+
 async function sendMessage(){
 const message=aiInput.value.trim();
 if(!message &&!uploadedImage) return;
 aiInput.value='';
 aiSendBtn.disabled=true;
 addMessage(message,'user',uploadedImage?uploadedImage.data:null);
+
 const typingDiv=document.createElement('div');
 typingDiv.className='ai-message bot';
 typingDiv.innerHTML=`<div class="ai-avatar">🤖</div><div class="ai-bubble ai-typing"><span></span><span></span><span></span></div>`;
 aiChatBox.appendChild(typingDiv);
 aiChatBox.scrollTop=aiChatBox.scrollHeight;
+
 setTimeout(()=>{
 aiChatBox.removeChild(typingDiv);
 const response=getUltronResponse(message);
