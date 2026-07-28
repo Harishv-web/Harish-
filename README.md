@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harish V | Cyber Portfolio</title>
 <meta name="description" content="Harish V Portfolio | B.Com Computer Applications Student | Web Development & Technology">
+<link rel="icon" type="image/webp" href="profile.webp">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Space Grotesk',sans-serif;scroll-behavior:smooth;}
@@ -104,6 +105,16 @@ footer{padding:40px;text-align:center;border-top:1px solid #111;color:#888;displ
 @keyframes fillBar{from{width:0;}}
 .cursor-glow{position:fixed;width:250px;height:250px;background:radial-gradient(circle,rgba(139,92,246,.18),transparent 70%);pointer-events:none;border-radius:50%;transform:translate(-50%,-50%);z-index:-1;}
 
+/* ============ PROFILE PICTURE STYLES (ADDED) ============ */
+.nav-brand{display:flex;align-items:center;gap:10px;}
+.nav-logo-pic{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #8b5cf6;box-shadow:0 0 12px rgba(139,92,246,.5);}
+.profile-pic-wrap{display:flex;justify-content:center;margin-bottom:28px;}
+.profile-pic{width:190px;height:190px;border-radius:50%;object-fit:cover;padding:5px;border:3px solid transparent;background:linear-gradient(#020202,#020202) padding-box,linear-gradient(135deg,#8b5cf6,#06b6d4) border-box;box-shadow:0 0 45px rgba(139,92,246,.4);animation:profileFloat 4s ease-in-out infinite;}
+@keyframes profileFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.about-flex{display:flex;align-items:center;gap:30px;flex-wrap:wrap;}
+.about-pic{width:150px;height:150px;border-radius:20px;object-fit:cover;border:3px solid #8b5cf6;box-shadow:0 0 25px rgba(139,92,246,.25);flex-shrink:0;}
+.about-flex p{flex:1;min-width:250px;}
+
 /* MOBILE FIXES */
 @media(max-width:1024px){
 .menu-btn{display:block;}
@@ -132,99 +143,13 @@ nav ul{width:280px;right:-280px;}
 nav ul{width:100%;right:-100%;}
 .ai-input{min-width:100%;}
 }
-/* ===== PROFESSIONAL PROFILE IMAGE ===== */
 
-.hero{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:80px;
-    flex-wrap:wrap;
-}
-
-.hero-content{
-    flex:1;
-    min-width:320px;
-}
-
-.hero-image{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.profile-frame{
-    position:relative;
-    width:360px;
-    height:360px;
-    border-radius:50%;
-    padding:8px;
-    background:linear-gradient(
-        135deg,
-        #8b5cf6,
-        #06b6d4,
-        #8b5cf6
-    );
-    animation:rotateBorder 8s linear infinite;
-    box-shadow:
-        0 0 35px rgba(139,92,246,.4),
-        0 0 80px rgba(6,182,212,.25);
-}
-
-.profile-frame::before{
-    content:"";
-    position:absolute;
-    inset:-12px;
-    border-radius:50%;
-    border:2px solid rgba(139,92,246,.25);
-    animation:pulseBorder 3s infinite;
-}
-
-.profile-frame img{
-    width:100%;
-    height:100%;
-    border-radius:50%;
-    object-fit:cover;
-    display:block;
-    border:6px solid #050505;
-}
-
-@keyframes rotateBorder{
-    from{
-        filter:hue-rotate(0deg);
-    }
-    to{
-        filter:hue-rotate(360deg);
-    }
-}
-
-@keyframes pulseBorder{
-    0%{
-        transform:scale(1);
-        opacity:.7;
-    }
-    50%{
-        transform:scale(1.06);
-        opacity:.2;
-    }
-    100%{
-        transform:scale(1);
-        opacity:.7;
-    }
-}
-
-@media(max-width:900px){
-
-.hero{
-    flex-direction:column-reverse;
-    text-align:center;
-    gap:40px;
-}
-.profile-frame{
-    width:260px;
-    height:260px;
-}
+/* PROFILE PICTURE RESPONSIVE (ADDED) */
+@media(max-width:480px){
+.profile-pic{width:140px;height:140px;}
+.about-pic{width:110px;height:110px;}
+.about-flex{flex-direction:column;text-align:center;}
+.about-flex p{min-width:0;}
 }
 </style>
 </head>
@@ -232,7 +157,7 @@ nav ul{width:100%;right:-100%;}
 <canvas id="matrix"></canvas>
 <div class="nav-backdrop" onclick="toggleMenu()"></div>
 <nav>
-<div class="logo">HARISH V</div>
+<div class="logo nav-brand"><img src="profile.webp" alt="Harish V" class="nav-logo-pic">HARISH V</div>
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 <ul id="navLinks">
 <li><a href="#home" onclick="closeMenu()">🏠 Home</a></li>
@@ -246,66 +171,19 @@ nav ul{width:100%;right:-100%;}
 <li><a href="#contact" onclick="closeMenu()">📧 Contact</a></li>
 </ul>
 </nav>
+
 <section class="hero" id="home">
-
-<div class="hero-content">
-
-<h1>
-Hi, I'm <span>Harish</span>
-</h1>
-
+<div class="profile-pic-wrap"><img src="profile.webp" alt="Harish V" class="profile-pic"></div>
+<h1>Hi, I'm <span>Harish</span></h1>
 <div class="typing" id="typing"></div>
-
-<p>
-B.Com Computer Applications Student at SASTRA University.
-Passionate about modern web technologies,
-software development,
-automation and building professional digital experiences.
-</p>
-
-<a href="#contact" class="hero-btn">
-Let's Connect
-</a>
-
+<p>B.Com Computer Applications Student at SASTRA University. Passionate about modern web technologies, software development, automation and building professional digital experiences.</p>
+<a href="#contact" class="hero-btn">Let's Connect</a>
 <br><br>
-
-<a href="https://www.instagram.com/mr_harish.v"
-target="_blank"
-class="hero-btn"
-style="background:linear-gradient(90deg,#E1306C,#F77737);">
-
-View Instagram Profile
-
-</a>
-
-<br>
-
-<a href="https://www.linkedin.com/in/harish-v-253011362"
-target="_blank"
-class="hero-btn"
-style="background:linear-gradient(90deg,#0077B5,#00A0DC);">
-
-View LinkedIn Profile
-
-</a>
-
-</div>
-
-<div class="hero-image">
-
-<div class="profile-frame">
-
-<img src="images/profile.jpg"
-alt="Harish V">
-
-</div>
-
-</div>
-
+<a href="https://www.instagram.com/mr_harish.v" target="_blank" class="hero-btn" style="background:linear-gradient(90deg,#E1306C,#F77737);">View Instagram Profile</a><br>
+<a href="https://www.linkedin.com/in/harish-v-253011362" target="_blank" class="hero-btn" style="background:linear-gradient(90deg,#0077B5,#00A0DC);">View LinkedIn Profile</a>
 </section>
 
-
-<section id="about" class="hidden"><h2>About Me</h2><div class="card"><p style="line-height:1.9;color:#bdbdbd;"> I am currently pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and continuously improving my technical skills through hands-on projects.</p></div></section>
+<section id="about" class="hidden"><h2>About Me</h2><div class="card about-flex"><img src="profile.webp" alt="Harish V" class="about-pic"><p style="line-height:1.9;color:#bdbdbd;"> I am currently pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and continuously improving my technical skills through hands-on projects.</p></div></section>
 
 <section id="skills" class="hidden"><h2>Skills</h2>
 <div class="card"><h3>HTML & CSS</h3><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div><p>90%</p></div>
