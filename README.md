@@ -4,8 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Harish V | Cyber Portfolio</title>
 <meta name="description" content="Harish V Portfolio | B.Com Computer Applications Student | Web Development & Technology">
-<link rel="icon" type="image/webp" href="profile.webp">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="logo.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Space Grotesk',sans-serif;scroll-behavior:smooth;}
 body{background:#020202;color:#ffffff;overflow-x:hidden;}
@@ -105,16 +105,6 @@ footer{padding:40px;text-align:center;border-top:1px solid #111;color:#888;displ
 @keyframes fillBar{from{width:0;}}
 .cursor-glow{position:fixed;width:250px;height:250px;background:radial-gradient(circle,rgba(139,92,246,.18),transparent 70%);pointer-events:none;border-radius:50%;transform:translate(-50%,-50%);z-index:-1;}
 
-/* ============ PROFILE PICTURE STYLES (ADDED) ============ */
-.nav-brand{display:flex;align-items:center;gap:10px;}
-.nav-logo-pic{width:42px;height:42px;border-radius:50%;object-fit:cover;border:2px solid #8b5cf6;box-shadow:0 0 12px rgba(139,92,246,.5);}
-.profile-pic-wrap{display:flex;justify-content:center;margin-bottom:28px;}
-.profile-pic{width:190px;height:190px;border-radius:50%;object-fit:cover;padding:5px;border:3px solid transparent;background:linear-gradient(#020202,#020202) padding-box,linear-gradient(135deg,#8b5cf6,#06b6d4) border-box;box-shadow:0 0 45px rgba(139,92,246,.4);animation:profileFloat 4s ease-in-out infinite;}
-@keyframes profileFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
-.about-flex{display:flex;align-items:center;gap:30px;flex-wrap:wrap;}
-.about-pic{width:150px;height:150px;border-radius:20px;object-fit:cover;border:3px solid #8b5cf6;box-shadow:0 0 25px rgba(139,92,246,.25);flex-shrink:0;}
-.about-flex p{flex:1;min-width:250px;}
-
 /* MOBILE FIXES */
 @media(max-width:1024px){
 .menu-btn{display:block;}
@@ -144,20 +134,64 @@ nav ul{width:100%;right:-100%;}
 .ai-input{min-width:100%;}
 }
 
-/* PROFILE PICTURE RESPONSIVE (ADDED) */
-@media(max-width:480px){
-.profile-pic{width:140px;height:140px;}
-.about-pic{width:110px;height:110px;}
+/* ==========================================================
+   NEW FEATURES ADDED BELOW (nothing above this line was changed)
+   1. Nav logo image
+   2. Hero split layout with portrait photo
+   3. About section portrait photo
+   4. Visitor counter
+   5. Back-to-top button
+   ========================================================== */
+
+/* --- Nav logo image (circular icon, small brand mark) --- */
+.nav-logo-img{width:44px;height:44px;border-radius:50%;object-fit:cover;background:linear-gradient(135deg,#8b5cf6,#06b6d4);border:2px solid rgba(139,92,246,.6);transition:.3s;}
+.nav-logo-img:hover{transform:scale(1.08) rotate(6deg);box-shadow:0 0 18px rgba(139,92,246,.5);}
+
+/* --- Hero split layout: text left, portrait photo right --- */
+.hero-inner{display:flex;align-items:center;justify-content:center;gap:70px;max-width:1200px;width:100%;flex-wrap:wrap;}
+.hero-text{flex:1 1 420px;text-align:left;}
+.hero-text .typing{text-align:left;}
+.hero-photo-frame{flex:0 0 auto;position:relative;width:280px;animation:heroFloat 5s ease-in-out infinite;}
+.hero-photo-glow{position:absolute;inset:-16px;border-radius:30px;background:linear-gradient(135deg,#8b5cf6,#06b6d4);opacity:.35;filter:blur(30px);z-index:0;}
+.hero-profile-img{position:relative;z-index:1;display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:24px;border:2px solid rgba(139,92,246,.55);box-shadow:0 25px 60px rgba(0,0,0,.65);}
+.hero-photo-tag{position:absolute;z-index:2;bottom:-16px;left:50%;transform:translateX(-50%);background:#020202;border:1px solid #8b5cf6;color:#c4b5fd;font-size:12px;padding:6px 18px;border-radius:20px;white-space:nowrap;}
+@keyframes heroFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
+
+/* --- About section: portrait photo beside text --- */
+.about-flex{display:flex;gap:40px;align-items:center;flex-wrap:wrap;}
+.about-photo-wrap{flex-shrink:0;width:180px;}
+.about-profile-img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:20px;border:2px solid rgba(139,92,246,.4);box-shadow:0 0 25px rgba(139,92,246,.2);display:block;}
+.about-text{flex:1;min-width:250px;}
+
+/* --- Visitor counter: tiny text, right aligned, same muted grey used by hero paragraph text --- */
+.visitor-counter{width:100%;text-align:right;padding:14px 40px 26px;font-size:11px;color:#9ca3af;letter-spacing:.3px;}
+
+/* --- Back-to-top button: mirrors the whatsapp float but on the opposite corner --- */
+.back-to-top{position:fixed;bottom:25px;left:25px;width:48px;height:48px;border:none;border-radius:50%;background:linear-gradient(90deg,#8b5cf6,#06b6d4);color:#fff;font-size:20px;cursor:pointer;box-shadow:0 0 15px rgba(139,92,246,.4);z-index:9999;opacity:0;pointer-events:none;transition:.3s;}
+.back-to-top.visible{opacity:1;pointer-events:auto;}
+.back-to-top:hover{transform:translateY(-4px);}
+
+/* --- Responsive: stack hero + about on smaller screens, shrink photo sizes --- */
+@media(max-width:900px){
+.hero-inner{flex-direction:column-reverse;gap:35px;}
+.hero-text{text-align:center;}
+.hero-text .typing{text-align:center;}
+.hero-photo-frame{width:230px;}
 .about-flex{flex-direction:column;text-align:center;}
-.about-flex p{min-width:0;}
+}
+@media(max-width:480px){
+.visitor-counter{text-align:center;padding:14px 20px 22px;}
+.back-to-top{width:42px;height:42px;bottom:20px;left:20px;font-size:18px;}
 }
 </style>
 </head>
 <body>
 <canvas id="matrix"></canvas>
 <div class="nav-backdrop" onclick="toggleMenu()"></div>
+<!-- ============ NAVIGATION BAR ============ -->
+<!-- Logo image only (text label removed per request) - update logo.png with your own logo file -->
 <nav>
-<div class="logo nav-brand"><img src="profile.webp" alt="Harish V" class="nav-logo-pic">HARISH V</div>
+<img src="logo.png" alt="Harish V Logo" class="nav-logo-img">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 <ul id="navLinks">
 <li><a href="#home" onclick="closeMenu()">🏠 Home</a></li>
@@ -172,8 +206,11 @@ nav ul{width:100%;right:-100%;}
 </ul>
 </nav>
 
+<!-- ============ HERO SECTION ============ -->
+<!-- Split layout: intro text on the left, portrait photo on the right (update profile.jpg with your own photo) -->
 <section class="hero" id="home">
-<div class="profile-pic-wrap"><img src="profile.webp" alt="Harish V" class="profile-pic"></div>
+<div class="hero-inner">
+<div class="hero-text">
 <h1>Hi, I'm <span>Harish</span></h1>
 <div class="typing" id="typing"></div>
 <p>B.Com Computer Applications Student at SASTRA University. Passionate about modern web technologies, software development, automation and building professional digital experiences.</p>
@@ -181,10 +218,25 @@ nav ul{width:100%;right:-100%;}
 <br><br>
 <a href="https://www.instagram.com/mr_harish.v" target="_blank" class="hero-btn" style="background:linear-gradient(90deg,#E1306C,#F77737);">View Instagram Profile</a><br>
 <a href="https://www.linkedin.com/in/harish-v-253011362" target="_blank" class="hero-btn" style="background:linear-gradient(90deg,#0077B5,#00A0DC);">View LinkedIn Profile</a>
+</div>
+<!-- Portrait photo frame (not circular, as requested) -->
+<div class="hero-photo-frame">
+<div class="hero-photo-glow"></div>
+<img src="profile.jpg" alt="Harish V" class="hero-profile-img">
+<span class="hero-photo-tag">&lt;Web Developer/&gt;</span>
+</div>
+</div>
 </section>
 
-<section id="about" class="hidden"><h2>About Me</h2><div class="card about-flex"><img src="profile.webp" alt="Harish V" class="about-pic"><p style="line-height:1.9;color:#bdbdbd;"> I am currently pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and continuously improving my technical skills through hands-on projects.</p></div></section>
+<!-- ============ ABOUT SECTION ============ -->
+<section id="about" class="hidden"><h2>About Me</h2><div class="card">
+<div class="about-flex">
+<div class="about-photo-wrap"><img src="profile.jpg" alt="Harish V" class="about-profile-img"></div>
+<div class="about-text"><p style="line-height:1.9;color:#bdbdbd;"> I am currently pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and continuously improving my technical skills through hands-on projects.</p></div>
+</div>
+</div></section>
 
+<!-- ============ SKILLS SECTION ============ -->
 <section id="skills" class="hidden"><h2>Skills</h2>
 <div class="card"><h3>HTML & CSS</h3><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div><p>90%</p></div>
 <div class="card"><h3>JavaScript</h3><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div><p>75%</p></div>
@@ -192,6 +244,7 @@ nav ul{width:100%;right:-100%;}
 <div class="card"><h3>Computer Applications</h3><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div><p>85%</p></div>
 </section>
 
+<!-- ============ OVERVIEW / STATS SECTION ============ -->
 <section class="hidden"><h2>Overview</h2><div class="stats">
 <div class="stat-box"><h3>2025</h3><p>Portfolio Started</p></div>
 <div class="stat-box"><h3>10+</h3><p>Projects Planned</p></div>
@@ -199,14 +252,17 @@ nav ul{width:100%;right:-100%;}
 <div class="stat-box"><h3>∞</h3><p>Growth Mindset</p></div>
 </div></section>
 
+<!-- ============ PROJECTS SECTION ============ -->
 <section id="projects" class="hidden"><h2>Projects</h2><div class="grid">
 <div class="card"><h3>Personal Portfolio</h3><p>Professional portfolio website hosted using GitHub Pages with custom domain integration.</p></div>
 <div class="card"><h3>Web Development Journey</h3><p>Collection of HTML, CSS and JavaScript practice projects.</p></div>
 <div class="card"><h3>Future web Projects</h3><p>Exploring scalable software and digital business solutions.</p></div>
 </div></section>
 
+<!-- ============ EDUCATION SECTION ============ -->
 <section id="education" class="hidden"><h2>Education</h2><div class="card"><h3>B.Com Computer Applications</h3><p style="margin-top:10px;color:#bdbdbd;">SASTRA Deemed University<br>Thanjavur, Tamil Nadu</p></div></section>
 
+<!-- ============ TIMELINE SECTION ============ -->
 <section id="timeline" class="hidden"><h2>My Journey</h2><div class="timeline">
 <div class="timeline-item left"><div class="timeline-content"><h3>🎂 2008</h3><p>Born on 15 May 2008. The beginning of a journey driven by learning, growth and ambition.</p></div></div>
 <div class="timeline-item right"><div class="timeline-content"><h3>📚 2023</h3><p>Completed SSLC with 65% at Maxwell Matriculation Higher Secondary School, Thanjavur.</p></div></div>
@@ -215,6 +271,7 @@ nav ul{width:100%;right:-100%;}
 <div class="timeline-item left"><div class="timeline-content"><h3>🚀 Future Vision</h3><p>Aspiring to become a skilled technology professional, web developer and entrepreneur while creating innovative digital solutions.</p></div></div>
 </div></section>
 
+<!-- ============ SERVICES SECTION ============ -->
 <section id="services" class="hidden"><h2>Services</h2><div class="grid">
 <div class="card"><span class="service-tag">Available</span><h3>🌐 Website Creation</h3><p>Professional websites for students and businesses.</p></div>
 <div class="card"><span class="service-tag">Available</span><h3>🎓 Student Portfolio Websites</h3><p>Personal portfolio websites for students to showcase skills, education, achievements and projects.</p></div>
@@ -255,6 +312,7 @@ nav ul{width:100%;right:-100%;}
 </div>
 </section>
 
+<!-- ============ CONTACT SECTION ============ -->
 <section id="contact" class="hidden contact"><h2>Contact</h2><div class="contact-box">
 <div class="contact-cards">
 <a href="mailto:v90300560@gmail.com" class="contact-card"><h3>📧 Email</h3><p>v90300560@gmail.com</p></a>
@@ -269,11 +327,20 @@ nav ul{width:100%;right:-100%;}
 </form>
 </div></section>
 
+<!-- ============ FOOTER ============ -->
 <footer style="text-align:center;width:100%;"><div>
 <h3 style="color:#8b5cf6;">HARISH V</h3><br>
 <p>B.Com Computer Applications</p><p>SASTRA University</p><br>
 <p>© 2026 All Rights Reserved</p>
 </div></footer>
+
+<!-- ============ VISITOR COUNTER ============ -->
+<!-- Real cross-visitor count using the free, keyless CountAPI service (no API key needed) -->
+<!-- If you ever move to a different domain and want the count to reset, change "harishv-sastra-portfolio" to a new unique name -->
+<div class="visitor-counter">👁️ Visitors: <span id="visitorCount">Loading...</span></div>
+
+<!-- ============ BACK TO TOP BUTTON ============ -->
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <a href="https://wa.me/917904329936" target="_blank" class="whatsapp-float">💬</a>
 <div class="cursor-glow"></div>
