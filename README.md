@@ -223,7 +223,7 @@ nav ul{width:100%;right:-100%;}
 <div class="hero-photo-frame">
 <div class="hero-photo-glow"></div>
 <img src="profile.jpg" alt="Harish V" class="hero-profile-img">
-<span class="hero-photo-tag">&lt;Web Developer/&gt;</span>
+<span class="hero-photo-tag">&alt;Web Developer/&gt;</span>
 </div>
 </div>
 </section>
