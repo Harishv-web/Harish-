@@ -191,7 +191,7 @@ nav ul{width:100%;right:-100%;}
 <!-- ============ NAVIGATION BAR ============ -->
 <!-- Logo image only (text label removed per request) - update logo.png with your own logo file -->
 <nav>
-<img src="logo.png" alt="Harish V Logo" class="nav-logo-img">
+<img src="profile.jpg" alt="Harish V " class="nav-logo-img">
 <div class="menu-btn" onclick="toggleMenu()">☰</div>
 <ul id="navLinks">
 <li><a href="#home" onclick="closeMenu()">🏠 Home</a></li>
