@@ -1,0 +1,189 @@
+<html lang="en">
+<head>
+  <!-- Basic page and PWA settings -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#020202">
+  <meta name="description" content="Harish V | B.Com Computer Applications student, web developer and technology enthusiast.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Harish V | Cyber Portfolio</title>
+</head>
+<body>
+  <!-- Decorative background -->
+  <canvas id="matrix" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ========================= NAVIGATION ========================= -->
+  <div class="nav-backdrop" id="navBackdrop"></div>
+  <nav class="site-nav" aria-label="Main navigation">
+    <!-- The name was restored after the logo image here. -->
+    <a class="brand" href="#home" aria-label="Harish V home">
+      <img class="nav-logo-img" src="profile.jpg" alt="Harish V profile picture" onerror="this.onerror=null;this.src='icon.svg';">
+      <span class="brand-name">Harish V</span>
+    </a>
+    <button class="menu-button" id="menuButton" type="button" aria-controls="navLinks" aria-expanded="false" aria-label="Open menu">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" data-i18n="navHome">Home</a></li>
+      <li><a href="#about" data-i18n="navAbout">About</a></li>
+      <li><a href="#skills" data-i18n="navSkills">Skills</a></li>
+      <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+      <li><a href="#education" data-i18n="navEducation">Education</a></li>
+      <li><a href="#services" data-i18n="navServices">Services</a></li>
+      <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+      <li>
+        <!-- Auto uses the visitor's browser language; manual choice is remembered. -->
+        <select class="language-picker" id="languagePicker" aria-label="Choose language">
+          <option value="auto">Auto</option>
+          <option value="en">English</option>
+          <option value="ta">தமிழ்</option>
+          <option value="hi">हिन्दी</option>
+        </select>
+      </li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- =========================== HERO =========================== -->
+    <section class="hero" id="home">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <h1 class="hero-title"><span data-i18n="heroGreeting">Hi, I'm</span> <span class="gradient-text">Harish</span></h1>
+          <p class="typing" id="typing" aria-live="polite"></p>
+          <p class="hero-copy" data-i18n="heroCopy">B.Com Computer Applications student at SASTRA University. I enjoy modern web technology, automation, and building professional digital experiences.</p>
+          <div class="button-row" style="justify-content:flex-start">
+            <a class="button" href="#contact" data-i18n="connect">Let's Connect</a>
+            <a class="button button-secondary" href="free-services.html" data-i18n="freeTools">Free Services Offered by Me</a>
+          </div>
+          <div class="button-row" style="justify-content:flex-start">
+            <a class="button" style="background:linear-gradient(100deg,#e1306c,#f77737)" href="https://www.instagram.com/mr_harish.v" target="_blank" rel="noopener" data-i18n="instagram">Instagram Profile</a>
+            <a class="button" style="background:linear-gradient(100deg,#0077b5,#00a0dc)" href="https://www.linkedin.com/in/harish-v-253011362" target="_blank" rel="noopener" data-i18n="linkedin">LinkedIn Profile</a>
+          </div>
+        </div>
+        <!-- profile.jpg uses contain instead of crop, especially on mobile. -->
+        <div class="hero-photo-frame">
+          <div class="hero-photo-glow"></div>
+          <img class="hero-profile-img" src="profile.jpg" alt="Harish V portrait" onerror="this.onerror=null;this.src='icon.svg';">
+          <span class="hero-photo-tag">&lt; Harish V /&gt;</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== ABOUT ========================== -->
+    <section class="section hidden-on-load" id="about">
+      <h2 class="section-heading gradient-text" data-i18n="aboutTitle">About Me</h2>
+      <div class="card">
+        <div class="about-flex">
+          <div class="about-photo-wrap"><img class="about-profile-img" src="profile.jpg" alt="Harish V" onerror="this.onerror=null;this.src='icon.svg';"></div>
+          <p class="about-text" data-i18n="aboutCopy">I am pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and improving my skills through hands-on projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================== SKILLS ========================= -->
+    <section class="section hidden-on-load" id="skills">
+      <h2 class="section-heading gradient-text" data-i18n="skillsTitle">Skills</h2>
+      <div class="card">
+        <div class="skill-card"><div class="skill-title"><span>HTML &amp; CSS</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-card"><div class="skill-title"><span>JavaScript</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-card"><div class="skill-title"><span>C++ Programming</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-card" style="margin-bottom:0"><div class="skill-title"><span data-i18n="computerApps">Computer Applications</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+      </div>
+    </section>
+
+    <!-- ========================== OVERVIEW ======================== -->
+    <section class="section hidden-on-load" id="projects">
+      <h2 class="section-heading gradient-text" data-i18n="projectsTitle">Projects</h2>
+      <div class="grid">
+        <article class="card"><h3 data-i18n="projectPortfolio">Personal Portfolio</h3><p data-i18n="projectPortfolioCopy">A professional portfolio website built with responsive HTML, CSS and JavaScript.</p></article>
+        <article class="card"><h3 data-i18n="projectJourney">Web Development Journey</h3><p data-i18n="projectJourneyCopy">A growing collection of practice projects and experiments in web development.</p></article>
+        <article class="card"><h3 data-i18n="projectFuture">Future Web Projects</h3><p data-i18n="projectFutureCopy">Exploring practical software and digital solutions for students and businesses.</p></article>
+      </div>
+    </section>
+
+    <!-- ========================= EDUCATION ======================== -->
+    <section class="section hidden-on-load" id="education">
+      <h2 class="section-heading gradient-text" data-i18n="educationTitle">Education</h2>
+      <div class="grid">
+        <article class="card"><h3 data-i18n="degree">B.Com Computer Applications</h3><p>SASTRA Deemed University<br>Thanjavur, Tamil Nadu</p></article>
+        <article class="card"><h3 data-i18n="higherSecondary">Higher Secondary Education</h3><p data-i18n="higherSecondaryCopy">85% · Maxwell Matriculation Higher Secondary School · 2025</p></article>
+        <article class="card"><h3 data-i18n="sslc">SSLC</h3><p data-i18n="sslcCopy">65% · Maxwell Matriculation Higher Secondary School · 2023</p></article>
+      </div>
+    </section>
+
+    <!-- ========================== TIMELINE ======================== -->
+    <section class="section hidden-on-load" id="timeline">
+      <h2 class="section-heading gradient-text" data-i18n="journeyTitle">My Journey</h2>
+      <div class="timeline">
+        <article class="timeline-item"><div class="card"><h3>2008</h3><p data-i18n="timelineBorn">Born on 15 May 2008 — the beginning of a journey of learning and ambition.</p></div></article>
+        <article class="timeline-item"><div class="card"><h3>2023</h3><p data-i18n="timelineSslc">Completed SSLC at Maxwell Matriculation Higher Secondary School.</p></div></article>
+        <article class="timeline-item"><div class="card"><h3>2025</h3><p data-i18n="timelineHsc">Completed Higher Secondary Education with 85%.</p></div></article>
+        <article class="timeline-item"><div class="card"><h3>2026 – <span data-i18n="present">Present</span></h3><p data-i18n="timelineDegree">Studying B.Com Computer Applications at SASTRA Deemed University.</p></div></article>
+        <article class="timeline-item"><div class="card"><h3 data-i18n="futureVision">Future Vision</h3><p data-i18n="timelineFuture">To become a skilled technology professional, web developer and entrepreneur.</p></div></article>
+      </div>
+    </section>
+
+    <!-- ========================== SERVICES ======================== -->
+    <section class="section hidden-on-load" id="services">
+      <h2 class="section-heading gradient-text" data-i18n="servicesTitle">Services</h2>
+      <p class="section-lead" data-i18n="servicesLead">Professional digital help for students, creators and small businesses.</p>
+      <div class="grid">
+        <article class="card"><span class="service-tag" data-i18n="available">Available</span><h3 data-i18n="serviceWeb">Website Creation</h3><p data-i18n="serviceWebCopy">Professional, responsive websites for students and businesses.</p></article>
+        <article class="card"><span class="service-tag" data-i18n="available">Available</span><h3 data-i18n="serviceStudent">Student Portfolio Websites</h3><p data-i18n="serviceStudentCopy">Personal websites to present skills, education, achievements and projects.</p></article>
+        <article class="card"><span class="service-tag" data-i18n="available">Available</span><h3 data-i18n="serviceCollege">College Project Websites</h3><p data-i18n="serviceCollegeCopy">Clean front-end projects for academic presentations and submissions.</p></article>
+        <article class="card"><span class="service-tag" data-i18n="available">Available</span><h3 data-i18n="serviceBusiness">Small Business Websites</h3><p data-i18n="serviceBusinessCopy">Service details, contact forms, WhatsApp integration and branding.</p></article>
+        <article class="card"><span class="service-tag" data-i18n="available">Available</span><h3 data-i18n="serviceLanding">Landing Pages</h3><p data-i18n="serviceLandingCopy">Focused pages for products, events, promotions and marketing campaigns.</p></article>
+        <article class="card"><span class="service-tag" data-i18n="available">Available</span><h3 data-i18n="serviceEditing">Photo &amp; Video Editing</h3><p data-i18n="serviceEditingCopy">Photo enhancement, social-media creatives and video editing.</p></article>
+      </div>
+      <!-- New requested button: below Request a Service, same visual theme. -->
+      <div class="button-row">
+        <a class="button" href="https://wa.me/917904329936" target="_blank" rel="noopener" data-i18n="requestService">Request a Service</a>
+        <a class="button button-secondary" href="free-services.html" data-i18n="freeTools">Free Services Offered by Me</a>
+      </div>
+    </section>
+
+    <!-- ======================== LOCAL ASSISTANT =================== -->
+    <section class="section hidden-on-load" id="assistant">
+      <h2 class="section-heading gradient-text" data-i18n="assistantTitle">Meet Ultron</h2>
+      <div class="card assistant">
+        <div class="assistant-header"><div class="assistant-icon" aria-hidden="true">◈</div><div><h3>Ultron AI</h3><p data-i18n="assistantSub">A simple browser assistant for questions about Harish and his services.</p></div></div>
+        <div class="assistant-chat" id="assistantChat" aria-live="polite">
+          <div class="chat-message"><div class="chat-avatar">◈</div><p class="chat-bubble" data-i18n="assistantWelcome">Hello! Ask me about Harish, his skills, contact details or services.</p></div>
+        </div>
+        <form class="assistant-form" id="assistantForm">
+          <input class="form-field" id="assistantInput" type="text" autocomplete="off" data-i18n-placeholder="assistantPlaceholder" placeholder="Ask Ultron something…" aria-label="Ask Ultron">
+          <button class="tool-button" type="submit" data-i18n="send">Send</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- =========================== CONTACT ======================== -->
+    <section class="section hidden-on-load" id="contact">
+      <h2 class="section-heading gradient-text" data-i18n="contactTitle">Contact</h2>
+      <div class="grid contact-cards">
+        <a class="card contact-card" href="mailto:v90300560@gmail.com"><h3>Email</h3><p>v90300560@gmail.com</p></a>
+        <a class="card contact-card" href="https://www.instagram.com/mr_harish.v" target="_blank" rel="noopener"><h3>Instagram</h3><p>@mr_harish.v</p></a>
+        <a class="card contact-card" href="https://www.linkedin.com/in/harish-v-253011362" target="_blank" rel="noopener"><h3>LinkedIn</h3><p data-i18n="viewProfile">View my profile</p></a>
+      </div>
+      <form class="contact-form" action="https://formspree.io/f/mbdwjopd" method="POST">
+        <input class="form-field" name="name" required data-i18n-placeholder="yourName" placeholder="Your name">
+        <input class="form-field" name="email" type="email" required data-i18n-placeholder="yourEmail" placeholder="Your email">
+        <textarea class="form-field" name="message" rows="5" required data-i18n-placeholder="yourMessage" placeholder="Your message"></textarea>
+        <button class="button" type="submit" style="width:100%;margin-top:8px" data-i18n="sendMessage">Send Message</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- ============================ FOOTER ========================= -->
+  <footer class="footer"><strong>HARISH V</strong><br><span data-i18n="footerRole">B.Com Computer Applications · SASTRA University</span><br>© 2026 <span data-i18n="rights">All Rights Reserved</span></footer>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">↑</button>
+  <a class="whatsapp-float" href="https://wa.me/917904329936" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">◉</a>
+
+  <script src="site.js" defer></script>
+</body>
+</html>
