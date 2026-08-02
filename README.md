@@ -267,23 +267,19 @@ input:focus{border-color:#8b5cf6;}
         <button class="btn" onclick="closeTools()">✕ Close</button>
     </div>
 
-    <!-- Speed Test -->
-    <div class="tool-card">
+
+ <div class="tool-card">
         <h2>🚀 Network Speed</h2>
         <div class="speed-display" id="speedValue">0.00</div>
         <p style="text-align:center; color:#888; margin-bottom:20px;">Estimated Mbps</p>
         <button class="btn" style="width:100%" onclick="runSpeedTest()">Run Test</button>
     </div>
-
-    <!-- QR Gen -->
     <div class="tool-card">
         <h2>🖼️ QR Generator</h2>
         <input type="text" id="qrText" placeholder="Enter link or text...">
         <button class="btn" style="width:100%" onclick="generateQR()">Generate & Download</button>
         <div style="text-align:center;"><div id="qrcode"></div></div>
     </div>
-
-    <!-- Calendar -->
     <div class="tool-card">
         <h2>📅 Event Calendar</h2>
         <h3 id="calMonth" style="margin:15px 0;"></h3>
