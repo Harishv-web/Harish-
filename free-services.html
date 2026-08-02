@@ -1,0 +1,164 @@
+<html lang="en">
+<head>
+  <!-- Free tools page: keep all files in the same GitHub repository folder. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#020202">
+  <meta name="description" content="Free online tools offered by Harish V: speed test, QR generator, typing test, stopwatch, timer and calendar.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Free Services | Harish V</title>
+</head>
+<body class="tools-page">
+  <canvas id="matrix" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- This button is always visible at the top-right and returns to Services. -->
+  <button class="top-back" id="backToServices" type="button" data-i18n="backToServices">← Back to Services</button>
+  <nav class="site-nav" aria-label="Free tools header">
+    <a class="brand" href="index.html#services" aria-label="Harish V services">
+      <img class="nav-logo-img" src="profile.jpg" alt="Harish V profile picture" onerror="this.onerror=null;this.src='icon.svg';">
+      <span class="brand-name">Harish V</span>
+    </a>
+  </nav>
+
+  <main>
+    <!-- ========================= INTRODUCTION ====================== -->
+    <section class="tools-hero">
+      <h1 class="gradient-text" data-i18n="toolsTitle">Free Digital Services</h1>
+      <p data-i18n="toolsLead">Useful tools made for everyone. Select a service below and use it as many times as you need.</p>
+      <!-- This selector also remembers the visitor's language choice. -->
+      <label class="tool-label" for="languagePicker" style="max-width:230px;margin:22px auto 7px" data-i18n="language">Language</label>
+      <select class="language-picker" id="languagePicker" aria-label="Choose language">
+        <option value="auto">Auto (device language)</option>
+        <option value="en">English</option>
+        <option value="ta">தமிழ்</option>
+        <option value="hi">हिन्दी</option>
+      </select>
+      <p class="offline-chip" id="connectionChip">● <span data-i18n="onlineReady">Online — ready to test and generate</span></p>
+    </section>
+
+    <!-- ========================= TOOL SHORTCUTS ==================== -->
+    <section class="tool-shortcuts" aria-label="Free services">
+      <button class="tool-shortcut active" type="button" data-tool="speedPanel"><span class="tool-shortcut-icon">◌</span><span data-i18n="networkTool">Network Speed Tester</span></button>
+      <button class="tool-shortcut" type="button" data-tool="qrPanel"><span class="tool-shortcut-icon">▣</span><span data-i18n="qrTool">QR Code Generator</span></button>
+      <button class="tool-shortcut" type="button" data-tool="typingPanel"><span class="tool-shortcut-icon">⌨</span><span data-i18n="typingTool">Typing Speed Test</span></button>
+      <button class="tool-shortcut" type="button" data-tool="stopwatchPanel"><span class="tool-shortcut-icon">◷</span><span data-i18n="stopwatchTool">Stopwatch</span></button>
+      <button class="tool-shortcut" type="button" data-tool="timerPanel"><span class="tool-shortcut-icon">◴</span><span data-i18n="timerTool">Timer</span></button>
+      <button class="tool-shortcut" type="button" data-tool="calendarPanel"><span class="tool-shortcut-icon">▦</span><span data-i18n="calendarTool">Calendar</span></button>
+    </section>
+
+    <!-- ========================= TOOL PANELS ======================= -->
+    <section class="tool-area">
+      <!-- NETWORK SPEED TESTER -->
+      <article class="tool-panel active" id="speedPanel" tabindex="-1">
+        <div class="card">
+          <h2 data-i18n="networkTitle">Network Speed Tester</h2>
+          <p class="tool-help" data-i18n="speedInfo">Measures latency and the connection speed from this browser to Cloudflare's test server. Results are useful estimates and may differ from your ISP plan.</p>
+          <div class="speedometer-wrap"><canvas id="speedometer" width="640" height="390" aria-label="Download speedometer"></canvas></div>
+          <div class="metric-grid">
+            <div class="metric"><small data-i18n="ping">Ping</small><strong id="pingValue">—</strong></div>
+            <div class="metric"><small data-i18n="download">Download</small><strong id="downloadValue">—</strong></div>
+            <div class="metric"><small data-i18n="upload">Upload</small><strong id="uploadValue">—</strong></div>
+          </div>
+          <p class="status-note" id="speedStatus" role="status" data-i18n="waiting">Ready when you are.</p>
+          <div class="button-row"><button class="tool-button" id="startSpeedTest" type="button" data-i18n="startTest">Start Test</button><button class="tool-button button-secondary" id="retestSpeed" type="button" data-i18n="retest">Retest</button></div>
+        </div>
+      </article>
+
+      <!-- QR CODE GENERATOR -->
+      <article class="tool-panel" id="qrPanel" tabindex="-1">
+        <div class="card">
+          <h2 data-i18n="qrTitle">QR Code Generator</h2>
+          <p class="tool-help" data-i18n="qrHelp">Enter a link, message, contact details or any text. The generated PNG can be downloaded and scanned with a standard QR scanner.</p>
+          <label class="tool-label" for="qrText" data-i18n="textToEncode">Text or link to encode</label>
+          <textarea class="tool-input" id="qrText" rows="5" maxlength="1200" data-i18n-placeholder="qrPlaceholder" placeholder="Example: https://yourwebsite.com"></textarea>
+          <div class="button-row"><button class="tool-button" id="generateQr" type="button" data-i18n="generateQR">Generate QR Code</button></div>
+          <div class="qr-canvas-wrap"><canvas id="qrCanvas" width="320" height="320" aria-label="Generated QR code"></canvas></div>
+          <p class="status-note" id="qrStatus" role="status"></p>
+          <div class="button-row"><button class="tool-button button-secondary" id="downloadQr" type="button" disabled data-i18n="downloadQR">Download QR Code</button></div>
+        </div>
+      </article>
+
+      <!-- TYPING SPEED TESTER -->
+      <article class="tool-panel" id="typingPanel" tabindex="-1">
+        <div class="card">
+          <h2 data-i18n="typingTitle">Typing Speed Test</h2>
+          <p class="tool-help" data-i18n="typingHelp">Press start, then type the displayed passage exactly. Your speed, accuracy and errors update as you type.</p>
+          <div class="inline-controls">
+            <div><label class="tool-label" for="typingDuration" data-i18n="testDuration">Test duration</label><select class="tool-select" id="typingDuration"><option value="30">30 seconds</option><option value="60" selected>60 seconds</option><option value="120">120 seconds</option></select></div>
+            <button class="tool-button" id="startTyping" type="button" data-i18n="startTyping">Start Typing Test</button>
+          </div>
+          <p class="tool-label" data-i18n="typeThis">Type this:</p>
+          <p class="typing-sample" id="typingSample">Press “Start Typing Test” to begin.</p>
+          <label class="tool-label" for="typingInput" data-i18n="yourTyping">Your typing</label>
+          <textarea class="tool-input typing-input" id="typingInput" disabled spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+          <div class="metric-grid">
+            <div class="metric"><small data-i18n="time">Time</small><strong id="typingTime">60s</strong></div>
+            <div class="metric"><small data-i18n="wpm">WPM</small><strong id="typingWpm">0</strong></div>
+            <div class="metric"><small data-i18n="accuracy">Accuracy</small><strong id="typingAccuracy">100%</strong></div>
+          </div>
+          <p class="status-note"><span data-i18n="errors">Errors</span>: <span id="typingErrors">0</span> <span id="typingStatus" role="status"></span></p>
+          <div class="button-row"><button class="tool-button button-secondary" id="resetTyping" type="button" data-i18n="reset">Reset</button></div>
+        </div>
+      </article>
+
+      <!-- STOPWATCH -->
+      <article class="tool-panel" id="stopwatchPanel" tabindex="-1">
+        <div class="card">
+          <h2 data-i18n="stopwatchTitle">Stopwatch</h2>
+          <p class="tool-help" data-i18n="stopwatchHelp">Start, pause, reset and record lap times whenever you need.</p>
+          <div class="time-display" id="stopwatchDisplay" aria-live="off">00:00.00</div>
+          <div class="button-row"><button class="tool-button" id="startStopwatch" type="button" data-i18n="start">Start</button><button class="tool-button button-secondary" id="lapStopwatch" type="button" data-i18n="lap">Lap</button><button class="tool-button button-danger" id="resetStopwatch" type="button" data-i18n="reset">Reset</button></div>
+          <ol class="lap-list" id="lapList" aria-label="Lap times"></ol>
+        </div>
+      </article>
+
+      <!-- TIMER -->
+      <article class="tool-panel" id="timerPanel" tabindex="-1">
+        <div class="card">
+          <h2 data-i18n="timerTitle">Timer</h2>
+          <p class="tool-help" data-i18n="timerHelp">Set a duration. When it ends, this page plays an alarm, asks for a notification if permitted, and vibrates on supported devices.</p>
+          <div class="inline-controls">
+            <div><label class="tool-label" for="timerMinutes" data-i18n="minutes">Minutes</label><input class="tool-input" id="timerMinutes" type="number" min="0" max="999" value="5" inputmode="numeric"></div>
+            <div><label class="tool-label" for="timerSeconds" data-i18n="seconds">Seconds</label><input class="tool-input" id="timerSeconds" type="number" min="0" max="59" value="0" inputmode="numeric"></div>
+          </div>
+          <div class="time-display" id="timerDisplay" aria-live="polite">05:00</div>
+          <div class="button-row"><button class="tool-button" id="startTimer" type="button" data-i18n="start">Start</button><button class="tool-button button-secondary" id="pauseTimer" type="button" data-i18n="pause">Pause</button><button class="tool-button button-danger" id="resetTimer" type="button" data-i18n="reset">Reset</button></div>
+          <div class="button-row"><button class="tool-button button-secondary" id="notificationPermission" type="button" data-i18n="enableNotifications">Enable Timer Notifications</button><button class="tool-button button-danger" id="stopAlarm" type="button" data-i18n="stopAlarm">Stop Alarm</button></div>
+          <p class="status-note" id="timerStatus" role="status"></p>
+        </div>
+      </article>
+
+      <!-- CLASSIC CALENDAR -->
+      <article class="tool-panel" id="calendarPanel" tabindex="-1">
+        <div class="card">
+          <h2 data-i18n="calendarTitle">Classic Calendar</h2>
+          <p class="tool-help" data-i18n="calendarHelp">Browse months and years. Harish's birthday, 15 May, is highlighted every year.</p>
+          <div class="calendar-controls">
+            <button class="icon-button" id="previousMonth" type="button" aria-label="Previous month">←</button>
+            <select class="tool-select" id="calendarMonth" style="width:auto" aria-label="Month"></select>
+            <select class="tool-select" id="calendarYear" style="width:auto" aria-label="Year"></select>
+            <button class="icon-button" id="nextMonth" type="button" aria-label="Next month">→</button>
+          </div>
+          <h3 class="calendar-title" id="calendarTitleText"></h3>
+          <div class="calendar-weekdays" id="calendarWeekdays"></div>
+          <div class="calendar-grid" id="calendarGrid"></div>
+          <p class="birthday-key" data-i18n="birthdayLegend">Highlighted: Harish V's birthday — 15 May</p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer"><strong>HARISH V</strong><br><span data-i18n="footerRole">B.Com Computer Applications · SASTRA University</span><br>© 2026 <span data-i18n="rights">All Rights Reserved</span></footer>
+
+  <!-- qrcode.js is cached by the PWA after first online use. -->
+  <script src="site.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js" defer></script>
+  <script src="tools.js" defer></script>
+</body>
+</html>
