@@ -142,21 +142,82 @@ function initialiseQrGenerator() {
   const download = document.getElementById('downloadQr');
   const canvas = document.getElementById('qrCanvas');
   const status = document.getElementById('qrStatus');
+
   if (!input || !generate || !download || !canvas || !status) return;
+
   generate.addEventListener('click', () => {
     const text = input.value.trim();
-    if (!text) { status.textContent = 'Please enter text or a link first.'; status.className = 'status-note error'; return; }
-    if (!window.QRCode?.toCanvas) { status.textContent = 'The QR library is not available yet. Connect once to the internet and reload this page.'; status.className = 'status-note error'; return; }
-    status.textContent = 'Generating your QR code…'; status.className = 'status-note';
-    window.QRCode.toCanvas(canvas, text, { width: 320, margin: 2, errorCorrectionLevel: 'M', color: { dark: '#020202', light: '#ffffff' } }, (error) => {
-      if (error) { status.textContent = `QR code error: ${error.message}`; status.className = 'status-note error'; return; }
-      canvas.style.display = 'block'; download.disabled = false; status.textContent = 'QR code is ready. You can download it now.'; status.className = 'status-note success';
+
+    if (!text) {
+      status.textContent = 'Please enter text or a link first.';
+      status.className = 'status-note error';
+      return;
+    }
+
+    if (typeof window.QRCode !== 'function') {
+      status.textContent = 'QR generator is loading. Please refresh and try again.';
+      status.className = 'status-note error';
+      return;
+    }
+
+    status.textContent = 'Generating your QR code…';
+    status.className = 'status-note';
+
+    const temporaryBox = document.createElement('div');
+    temporaryBox.style.cssText = 'position:fixed;left:-9999px;top:-9999px;';
+    document.body.appendChild(temporaryBox);
+
+    new window.QRCode(temporaryBox, {
+      text: text,
+      width: 320,
+      height: 320,
+      colorDark: '#020202',
+      colorLight: '#ffffff',
+      correctLevel: window.QRCode.CorrectLevel.M
     });
+
+    const copyQrToCanvas = () => {
+      const generatedQr = temporaryBox.querySelector('canvas, img');
+
+      if (!generatedQr) {
+        status.textContent = 'Could not create the QR code. Please try again.';
+        status.className = 'status-note error';
+        temporaryBox.remove();
+        return;
+      }
+
+      if (generatedQr.tagName === 'IMG' && !generatedQr.complete) {
+        generatedQr.addEventListener('load', copyQrToCanvas, { once: true });
+        return;
+      }
+
+      const context = canvas.getContext('2d');
+      canvas.width = 320;
+      canvas.height = 320;
+      context.fillStyle = '#ffffff';
+      context.fillRect(0, 0, 320, 320);
+      context.imageSmoothingEnabled = false;
+      context.drawImage(generatedQr, 0, 0, 320, 320);
+
+      canvas.style.display = 'block';
+      download.disabled = false;
+      status.textContent = 'QR code is ready. You can download it now.';
+      status.className = 'status-note success';
+      temporaryBox.remove();
+    };
+
+    setTimeout(copyQrToCanvas, 150);
   });
+
   download.addEventListener('click', () => {
     if (download.disabled) return;
-    const link = document.createElement('a'); link.href = canvas.toDataURL('image/png'); link.download = 'harish-v-qr-code.png';
-    document.body.appendChild(link); link.click(); link.remove();
+
+    const link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = 'harish-v-qr-code.png';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
   });
 }
 
