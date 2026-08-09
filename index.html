@@ -141,11 +141,43 @@
     <!-- =========================== ABOUT ========================== -->
     <section class="section hidden-on-load" id="about">
       <h2 class="section-heading gradient-text" data-i18n="aboutTitle">About Me🧍🏻‍♂️</h2>
-      <div class="card">
-        <div class="about-flex">
-          <div class="about-photo-wrap"><img class="about-profile-img" src="profile.jpg" alt="Harish V" onerror="this.onerror=null;this.src='icon.svg';"></div>
-          <p class="about-text" data-i18n="aboutCopy">I am pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and improving my skills through hands-on projects.</p>
+      <div class="about-layout">
+        <div class="card">
+          <div class="about-flex">
+            <div class="about-photo-wrap"><img class="about-profile-img" src="profile.jpg" alt="Harish V" onerror="this.onerror=null;this.src='icon.svg';"></div>
+            <p class="about-text" data-i18n="aboutCopy">I am pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and improving my skills through hands-on projects.</p>
+          </div>
         </div>
+
+        <aside class="live-status-card" aria-label="Harish current activity">
+          <div class="live-status-header">
+            <span class="live-status-dot" aria-hidden="true"></span>
+            <span data-i18n="liveStatusTitle">HARISH IS CURRENTLY</span>
+          </div>
+
+          <div class="live-status-row">
+            <span class="live-status-label" data-i18n="liveBuilding">Building</span>
+            <strong>Ultron AI</strong>
+          </div>
+
+          <div class="live-status-row">
+            <span class="live-status-label" data-i18n="liveLearning">Learning</span>
+            <strong>React</strong>
+          </div>
+
+          <div class="live-status-row">
+            <span class="live-status-label" data-i18n="liveCommit">Latest commit</span>
+            <strong id="liveLatestCommit">Checking GitHubâ€¦</strong>
+          </div>
+
+          <div class="live-status-row live-status-footer">
+            <span class="live-status-label" data-i18n="liveStatus">Status</span>
+            <strong class="live-online">
+              <span aria-hidden="true">ðŸŸ¢</span>
+              <span data-i18n="liveOnline">Online</span>
+            </strong>
+          </div>
+        </aside>
       </div>
     </section>
 
