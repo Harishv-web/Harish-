@@ -1,10 +1,11 @@
-<html lang="en">
+﻿<html lang="en">
 <head>
   <!-- Basic page and PWA settings -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#020202">
-  <meta name="description" content="Harish V | B.Com Computer Applications student, web developer and technology enthusiast.">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Official portfolio of Harish V — B.Com Computer Applications student, web developer and technology enthusiast building modern digital experiences, tools and projects.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.svg">
@@ -12,7 +13,70 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <title>Harish V | Cyber Portfolio</title>
+  <title>Harish V | Web Developer &amp; B.Com Computer Applications Student</title>
+  <!-- ========================= SEO & SOCIAL SHARING ========================= -->
+  <meta name="author" content="Harish V">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <link rel="canonical" href="https://harishv.co.in/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Harish V">
+  <meta property="og:title" content="Harish V | Web Developer &amp; B.Com Computer Applications Student">
+  <meta property="og:description" content="Official portfolio of Harish V — web developer, B.Com Computer Applications student and technology enthusiast.">
+  <meta property="og:url" content="https://harishv.co.in/">
+  <meta property="og:image" content="https://harishv.co.in/og-image.jpg">
+  <meta property="og:image:alt" content="Harish V — Web Developer Portfolio">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Harish V | Web Developer &amp; B.Com Computer Applications Student">
+  <meta name="twitter:description" content="Official portfolio of Harish V — web developer and technology enthusiast.">
+  <meta name="twitter:image" content="https://harishv.co.in/og-image.jpg">
+  <meta name="twitter:image:alt" content="Harish V — Web Developer Portfolio">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://harishv.co.in/#person",
+    "name": "Harish V",
+    "url": "https://harishv.co.in/",
+    "image": "https://harishv.co.in/profile.jpg",
+    "jobTitle": "Web Developer",
+    "description": "B.Com Computer Applications student, web developer and technology enthusiast.",
+    "sameAs": [
+      "https://www.instagram.com/mr_harish.v",
+      "https://www.linkedin.com/in/harish-v-253011362",
+      "https://github.com/Harishv-web"
+    ],
+    "knowsAbout": [
+      "Web Development",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "C++",
+      "Automation"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://harishv.co.in/#website",
+    "name": "Harish V",
+    "url": "https://harishv.co.in/",
+    "description": "Official portfolio website of Harish V."
+  }
+  </script>
 </head>
 <body>
   <!-- Decorative background -->
@@ -29,13 +93,13 @@
     </a>
     <button class="menu-button" id="menuButton" type="button" aria-controls="navLinks" aria-expanded="false" aria-label="Open menu">☰</button>
     <ul class="nav-links" id="navLinks">
-      <li><a href="#home🏠" data-i18n="navHome">home🏠</a></li>
-      <li><a href="#about🙋🏻‍♂️" data-i18n="navAbout">About🙋🏻‍♂️</a></li>
-      <li><a href="#skills🤸🏻‍♂️" data-i18n="navSkills">Skills🤸🏻‍♂️</a></li>
-      <li><a href="#projects💪🏻" data-i18n="navProjects">Projects💪🏻</a></li>
-      <li><a href="#education📖" data-i18n="navEducation">Education 📖</a></li>
-      <li><a href="#services🛠️" data-i18n="navServices">Services 🛠️</a></li>
-      <li><a href="#contact🤙🏻" data-i18n="navContact">Contact🤙🏻</a></li>
+      <li><a href="#home" data-i18n="navHome">home🏠</a></li>
+      <li><a href="#about" data-i18n="navAbout">About🙋🏻‍♂️</a></li>
+      <li><a href="#skills" data-i18n="navSkills">Skills🤸🏻‍♂️</a></li>
+      <li><a href="#projects" data-i18n="navProjects">Projects💪🏻</a></li>
+      <li><a href="#education" data-i18n="navEducation">Education 📖</a></li>
+      <li><a href="#services" data-i18n="navServices">Services 🛠️</a></li>
+      <li><a href="#contact" data-i18n="navContact">Contact🤙🏻</a></li>
       <li>
         <!-- Auto uses the visitor's browser language; manual choice is remembered. -->
         <select class="language-picker" id="languagePicker" aria-label="Choose language">
@@ -50,7 +114,7 @@
 
   <main>
     <!-- =========================== HERO =========================== -->
-    <section class="hero" id="home🏠">
+    <section class="hero" id="home">
       <div class="hero-inner">
         <div class="hero-text">
           <h1 class="hero-title"><span data-i18n="heroGreeting">Hi👋🏻, I'm</span> <span class="gradient-text">Harish</span></h1>
@@ -75,7 +139,7 @@
     </section>
 
     <!-- =========================== ABOUT ========================== -->
-    <section class="section hidden-on-load" id="about🙋🏻‍♂️">
+    <section class="section hidden-on-load" id="about">
       <h2 class="section-heading gradient-text" data-i18n="aboutTitle">About Me🧍🏻‍♂️</h2>
       <div class="card">
         <div class="about-flex">
@@ -86,7 +150,7 @@
     </section>
 
     <!-- =========================== SKILLS ========================= -->
-    <section class="section hidden-on-load" id="skills🤸🏻‍♂️">
+    <section class="section hidden-on-load" id="skills">
       <h2 class="section-heading gradient-text" data-i18n="skillsTitle">Skills🤸🏻‍♂️</h2>
       <div class="card">
         <div class="skill-card"><div class="skill-title"><span>HTML &amp; CSS</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
@@ -97,7 +161,7 @@
     </section>
 
     <!-- ========================== OVERVIEW ======================== -->
-    <section class="section hidden-on-load" id="projects💪🏻">
+    <section class="section hidden-on-load" id="projects">
       <h2 class="section-heading gradient-text" data-i18n="projectsTitle">Projects💪🏻</h2>
       <div class="grid">
         <article class="card"><h3 data-i18n="projectPortfolio">Personal Portfolio</h3><p data-i18n="projectPortfolioCopy">A professional portfolio website built with responsive HTML, CSS and JavaScript.</p></article>
@@ -107,7 +171,7 @@
     </section>
 
     <!-- ========================= EDUCATION ======================== -->
-    <section class="section hidden-on-load" id="education📖">
+    <section class="section hidden-on-load" id="education">
       <h2 class="section-heading gradient-text" data-i18n="educationTitle">Education📖</h2>
       <div class="grid">
         <article class="card"><h3 data-i18n="degree">B.Com Computer Applications</h3><p>SASTRA Deemed University<br>Thanjavur, Tamil Nadu</p></article>
@@ -129,7 +193,7 @@
     </section>
 
     <!-- ========================== SERVICES ======================== -->
-    <section class="section hidden-on-load" id="services🛠️">
+    <section class="section hidden-on-load" id="services">
       <h2 class="section-heading gradient-text" data-i18n="servicesTitle">Services🛠️</h2>
       <p class="section-lead" data-i18n="servicesLead">Professional digital help for students, creators and small businesses.</p>
       <div class="grid">
@@ -163,7 +227,7 @@
     </section>
 
     <!-- =========================== CONTACT ======================== -->
-    <section class="section hidden-on-load" id="contact🤙🏻">
+    <section class="section hidden-on-load" id="contact">
       <h2 class="section-heading gradient-text" data-i18n="contactTitle">Contact🤙🏻</h2>
       <div class="grid contact-cards">
         <a class="card contact-card" href="mailto:v90300560@gmail.com"><h3>Email✉️</h3><p>v90300560@gmail.com</p></a>
@@ -187,3 +251,4 @@
   <script src="site.js" defer></script>
 </body>
 </html>
+
