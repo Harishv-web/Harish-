@@ -10,7 +10,7 @@ const translations = {
     navHome: 'Home', navAbout: 'About', navSkills: 'Skills', navProjects: 'Projects', navEducation: 'Education', navServices: 'Services', navContact: 'Contact',
     heroGreeting: "Hi, I'm", heroCopy: 'B.Com Computer Applications student at SASTRA University. I enjoy modern web technology, automation, and building professional digital experiences.',
     connect: "Let's Connect", freeTools: 'Free Services Offered by Me', instagram: 'Instagram Profile', linkedin: 'LinkedIn Profile',
-    aboutTitle: 'About Me', aboutCopy: 'I am pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and improving my skills through hands-on projects.',
+    aboutTitle: 'About Me', liveStatusTitle: 'HARISH IS CURRENTLY', liveBuilding: 'Building', liveLearning: 'Learning', liveCommit: 'Latest commit', liveStatus: 'Status', liveOnline: 'Online',  aboutCopy: 'I am pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and improving my skills through hands-on projects.',
     skillsTitle: 'Skills', computerApps: 'Computer Applications', projectsTitle: 'Projects', projectPortfolio: 'Personal Portfolio', projectPortfolioCopy: 'A professional portfolio website built with responsive HTML, CSS and JavaScript.', projectJourney: 'Web Development Journey', projectJourneyCopy: 'A growing collection of practice projects and experiments in web development.', projectFuture: 'Future Web Projects', projectFutureCopy: 'Exploring practical software and digital solutions for students and businesses.',
     educationTitle: 'Education', degree: 'B.Com Computer Applications', higherSecondary: 'Higher Secondary Education', higherSecondaryCopy: '85% · Maxwell Matriculation Higher Secondary School · 2025', sslc: 'SSLC', sslcCopy: '65% · Maxwell Matriculation Higher Secondary School · 2023',
     journeyTitle: 'My Journey', timelineBorn: 'Born on 15 May 2008 — the beginning of a journey of learning and ambition.', timelineSslc: 'Completed SSLC at Maxwell Matriculation Higher Secondary School.', timelineHsc: 'Completed Higher Secondary Education with 85%.', present: 'Present', timelineDegree: 'Studying B.Com Computer Applications at SASTRA Deemed University.', futureVision: 'Future Vision', timelineFuture: 'To become a skilled technology professional, web developer and entrepreneur.',
@@ -234,3 +234,68 @@ document.addEventListener('DOMContentLoaded', () => {
 /* Used by tools.js without exposing the full translation object. */
 window.getSiteText = getText;
 window.getSiteLanguage = () => activeLanguage;
+/* ======================== LIVE STATUS ======================== */
+
+(function initLiveStatus() {
+  const commitElement = document.getElementById("liveLatestCommit");
+
+  if (!commitElement) return;
+
+  const owner = "Harishv-web";
+  const repo = "Harish-";
+
+  const formatCommitAge = (dateString) => {
+    const commitDate = new Date(dateString);
+    const now = Date.now();
+    const difference = Math.max(0, now - commitDate.getTime());
+
+    const minutes = Math.floor(difference / 60000);
+
+    if (minutes < 1) return "Just now";
+    if (minutes < 60) return `${minutes} min ago`;
+
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `${hours} hr ago`;
+
+    const days = Math.floor(hours / 24);
+    if (days < 7) return `${days} day${days === 1 ? "" : "s"} ago`;
+
+    return commitDate.toLocaleDateString(undefined, {
+      day: "numeric",
+      month: "short",
+      year: "numeric"
+    });
+  };
+
+  fetch(`https://api.github.com/repos/${owner}/${repo}/commits?per_page=1`, {
+    headers: {
+      Accept: "application/vnd.github+json"
+    }
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`GitHub API returned ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .then((commits) => {
+      const latest = commits?.[0];
+
+      if (!latest?.commit?.author?.date) {
+        throw new Error("Latest commit date unavailable.");
+      }
+
+      commitElement.textContent = formatCommitAge(
+        latest.commit.author.date
+      );
+
+      commitElement.title = latest.commit.message
+        .split("\n")[0]
+        .trim();
+    })
+    .catch(() => {
+      commitElement.textContent = "Recently active";
+      commitElement.removeAttribute("title");
+    });
+})();
