@@ -208,13 +208,71 @@ function initialiseAssistant() {
     const bubble = document.createElement('p'); bubble.className = 'chat-bubble'; bubble.textContent = message;
     row.append(avatar, bubble); chat.append(row); chat.scrollTop = chat.scrollHeight;
   };
-  form.addEventListener('submit', (event) => {
-    event.preventDefault(); const question = input.value.trim(); if (!question) return;
-    addMessage(question, 'user'); input.value = '';
-    const words = question.toLowerCase();
-    const answer = words.includes('contact') || words.includes('email') || words.includes('phone') ? getText('chatContact') : words.includes('service') || words.includes('website') ? getText('chatServices') : words.includes('harish') || words.includes('about') ? getText('chatAbout') : getText('chatDefault');
-    window.setTimeout(() => addMessage(answer, 'bot'), 350);
-  });
+  form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const question = input.value.trim();
+  if (!question) return;
+
+  addMessage(question, 'user');
+  input.value = '';
+
+  const loadingMessage = document.createElement('div');
+  loadingMessage.className = 'chat-message bot';
+
+  const loadingAvatar = document.createElement('div');
+  loadingAvatar.className = 'chat-avatar';
+  loadingAvatar.textContent = '◈';
+
+  const loadingBubble = document.createElement('p');
+  loadingBubble.className = 'chat-bubble';
+  loadingBubble.textContent = 'Ultron is thinking…';
+
+  loadingMessage.append(loadingAvatar, loadingBubble);
+  chat.append(loadingMessage);
+  chat.scrollTop = chat.scrollHeight;
+
+  try {
+    const response = await fetch(
+      'https://ultron.v90300560.workers.dev/chat',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: question
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    loadingMessage.remove();
+
+    if (!response.ok) {
+      throw new Error(
+        data?.details ||
+        data?.error ||
+        'Ultron could not process the request.'
+      );
+    }
+
+    addMessage(
+      data.answer || 'Ultron returned an empty response.',
+      'bot'
+    );
+  } catch (error) {
+    loadingMessage.remove();
+
+    addMessage(
+      `Sorry, Ultron is temporarily unavailable. ${error.message}`,
+      'bot'
+    );
+
+    console.error('Ultron API error:', error);
+  }
+});
 }
 
 /* PWA works on HTTPS/GitHub Pages. It is skipped for local file:// previews. */
