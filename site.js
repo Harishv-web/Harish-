@@ -208,10 +208,12 @@ function initialiseAssistant() {
     const bubble = document.createElement('p'); bubble.className = 'chat-bubble'; bubble.textContent = message;
     row.append(avatar, bubble); chat.append(row); chat.scrollTop = chat.scrollHeight;
   };
-  form.addEventListener('submit', async (event) => {
+  const conversationHistory = [];
+
+ form.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  const question = input.value.trim();
+   const question = input.value.trim();
   if (!question) return;
 
   addMessage(question, 'user');
@@ -241,7 +243,13 @@ function initialiseAssistant() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          message: question
+          messages: [
+            ...conversationHistory,
+            {
+              role: 'user',
+              content: question
+            }
+          ]
         })
       }
     );
@@ -258,9 +266,21 @@ function initialiseAssistant() {
       );
     }
 
-    addMessage(
-      data.answer || 'Ultron returned an empty response.',
-      'bot'
+
+
+    const answer = data.answer || 'Ultron returned an empty response.';
+
+    addMessage(answer, 'bot');
+
+    conversationHistory.push(
+      {
+        role: 'user',
+        content: question
+      },
+      {
+        role: 'assistant',
+        content: answer
+      }
     );
   } catch (error) {
     loadingMessage.remove();
