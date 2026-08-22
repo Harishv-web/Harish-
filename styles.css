@@ -53,8 +53,11 @@ a { color: inherit; }
 .brand:hover .nav-logo-img { transform: rotate(5deg) scale(1.06); }
 .brand-name { font-size: 1.16rem; font-weight: 700; letter-spacing: .03em; background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .nav-links { display: flex; align-items: center; list-style: none; gap: 3px; }
-.nav-links a { display: block; padding: 10px 11px; border-radius: 9px; color: #d6d9e1; text-decoration: none; font-size: .88rem; transition: .2s; }
+.nav-links a { display: inline-flex; align-items: center; gap: 7px; padding: 10px 11px; border-radius: 9px; color: #d6d9e1; text-decoration: none; font-size: .88rem; transition: .2s; }
 .nav-links a:hover, .nav-links a:focus-visible { color: white; background: rgba(139, 92, 246, .14); outline: none; }
+.nav-link-emoji, .action-emoji { display: inline-grid; place-items: center; flex: 0 0 auto; line-height: 1; }
+.nav-link-emoji { width: 1.15em; font-size: 1.05em; filter: drop-shadow(0 0 7px rgba(6, 182, 212, .24)); }
+.nav-links a:hover .nav-link-emoji, .nav-links a:focus-visible .nav-link-emoji { transform: scale(1.12); }
 .language-picker {
   min-width: 116px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 9px; outline: none;
   background: #101016; color: white; cursor: pointer;
@@ -299,7 +302,7 @@ a { color: inherit; }
 .calendar-day.birthday { border-color: var(--purple); background: linear-gradient(135deg, rgba(139, 92, 246, .5), rgba(6, 182, 212, .28)); color: white; font-weight: 800; box-shadow: 0 0 16px rgba(139, 92, 246, .35); }
 .calendar-day.empty { visibility: hidden; }
 .birthday-key { margin-top: 18px; color: #c4b5fd; text-align: center; font-size: .9rem; }
-.top-back { position: fixed; top: 14px; right: clamp(14px, 3vw, 48px); z-index: 1002; min-height: 46px; padding: 10px 15px; border: 1px solid rgba(6, 182, 212, .6); border-radius: 10px; background: rgba(8, 8, 14, .95); color: #a5f3fc; font-weight: 700; cursor: pointer; backdrop-filter: blur(14px); }
+.top-back { position: fixed; top: 14px; right: clamp(14px, 3vw, 48px); z-index: 1002; min-height: 46px; padding: 10px 15px; display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(6, 182, 212, .6); border-radius: 10px; background: rgba(8, 8, 14, .95); color: #a5f3fc; font-weight: 700; cursor: pointer; backdrop-filter: blur(14px); }
 .top-back:hover { background: rgba(6, 182, 212, .15); }
 .offline-chip { display: inline-flex; gap: 7px; margin-top: 18px; padding: 7px 12px; border: 1px solid rgba(52, 211, 153, .35); border-radius: 999px; color: #86efac; background: rgba(52, 211, 153, .08); font-size: .82rem; }
 .offline-chip.is-offline { border-color: rgba(251, 113, 133, .45); color: #fda4af; background: rgba(251, 113, 133, .08); }
