@@ -5,10 +5,10 @@
    require an internet connection by their nature.
    ================================================================ */
 
-const CACHE_NAME = 'harish-v-portfolio-v2';
+const CACHE_NAME = 'harish-v-portfolio-v3';
 const CORE_FILES = [
   './', './index.html', './free-services.html', './styles.css', './site.js',
-  './tools.js', './manifest.webmanifest', './icon.svg', './profile.jpg'
+  './tools.js', './games.html', './games.js', './manifest.webmanifest', './icon.svg', './profile.jpg'
 ];
 
 self.addEventListener('install', (event) => {
