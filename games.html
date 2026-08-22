@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#020202">
+  <meta name="description" content="Play free browser games by Harish V: Neon Snake and Maze Chaser.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <title>Games Offered by Me | Harish V</title>
+</head>
+<body class="tools-page games-page">
+  <canvas id="matrix" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <button class="top-back" id="backToGames" type="button">← Back to Free Services</button>
+  <nav class="site-nav" aria-label="Games header">
+    <a class="brand" href="index.html#services" aria-label="Harish V services">
+      <img class="nav-logo-img" src="profile.jpg" alt="Harish V profile picture" onerror="this.onerror=null;this.src='icon.svg';">
+      <span class="brand-name">Harish V</span>
+    </a>
+  </nav>
+
+  <main>
+    <section class="tools-hero games-hero">
+      <span class="games-kicker">FREE ARCADE</span>
+      <h1 class="gradient-text">Games Offered by Me</h1>
+      <p>Two fast, responsive browser games made to match the portfolio. Choose a game, set your high score, and play with keyboard or touch controls.</p>
+      <div class="games-legend" aria-label="Game features">
+        <span>⌨ Keyboard controls</span>
+        <span>▦ Touch controls</span>
+        <span>✦ Saved high scores</span>
+      </div>
+    </section>
+
+    <section class="games-grid" aria-label="Free browser games">
+      <!-- =========================== SNAKE =========================== -->
+      <article class="game-card" id="snakeGame" data-game="snake">
+        <div class="game-card-heading">
+          <div>
+            <span class="games-kicker">CLASSIC RECHARGED</span>
+            <h2>Neon Snake</h2>
+            <p>Collect energy cores, build your trail and keep the run alive as the pace increases.</p>
+          </div>
+          <span class="game-symbol" aria-hidden="true">⌁</span>
+        </div>
+
+        <div class="game-stats" aria-label="Snake game status">
+          <div><span>Score</span><strong id="snakeScore">0</strong></div>
+          <div><span>High score</span><strong id="snakeHighScore">0</strong></div>
+          <div><span>Level</span><strong id="snakeLevel">1</strong></div>
+        </div>
+
+        <div class="game-canvas-shell">
+          <canvas id="snakeCanvas" width="480" height="480" tabindex="0" role="img" aria-label="Neon Snake game board. Use arrow keys, WASD, or the direction buttons to play."></canvas>
+          <div class="game-overlay" id="snakeOverlay">
+            <strong id="snakeOverlayTitle">Ready to play?</strong>
+            <span id="snakeOverlayCopy">Collect the purple core and avoid your trail.</span>
+          </div>
+        </div>
+
+        <p class="game-status" id="snakeStatus" role="status" aria-live="polite">Press Start Game to begin.</p>
+        <div class="game-actions">
+          <button class="tool-button" id="snakeStart" type="button">Start Game</button>
+          <button class="tool-button button-secondary" id="snakePause" type="button" disabled>Pause</button>
+          <button class="tool-button button-danger" id="snakeRestart" type="button">Restart</button>
+          <button class="game-audio-button" id="snakeAudio" type="button" aria-pressed="false">Sound: Off</button>
+        </div>
+
+        <div class="game-controls" data-controls="snake" aria-label="Snake direction controls">
+          <button class="direction-button direction-up" type="button" data-direction="up" aria-label="Move up">↑</button>
+          <button class="direction-button direction-left" type="button" data-direction="left" aria-label="Move left">←</button>
+          <button class="direction-button direction-down" type="button" data-direction="down" aria-label="Move down">↓</button>
+          <button class="direction-button direction-right" type="button" data-direction="right" aria-label="Move right">→</button>
+        </div>
+        <p class="game-help"><strong>How to play:</strong> Use Arrow keys or WASD. Purple cores give 10 points; cyan bonus orbs give 30 points while active.</p>
+      </article>
+
+      <!-- ======================== MAZE CHASER ======================== -->
+      <article class="game-card" id="mazeGame" data-game="maze">
+        <div class="game-card-heading">
+          <div>
+            <span class="games-kicker">ARCADE MAZE</span>
+            <h2>Maze Chaser</h2>
+            <p>Guide the comet through the neon maze, gather every spark and outsmart the sentinels.</p>
+          </div>
+          <span class="game-symbol" aria-hidden="true">✦</span>
+        </div>
+
+        <div class="game-stats" aria-label="Maze Chaser game status">
+          <div><span>Score</span><strong id="mazeScore">0</strong></div>
+          <div><span>High score</span><strong id="mazeHighScore">0</strong></div>
+          <div><span>Lives</span><strong id="mazeLives">3</strong></div>
+        </div>
+
+        <div class="game-canvas-shell maze-canvas-shell">
+          <canvas id="mazeCanvas" width="532" height="532" tabindex="0" role="img" aria-label="Maze Chaser game board. Use arrow keys, WASD, or the direction buttons to play."></canvas>
+          <div class="game-overlay" id="mazeOverlay">
+            <strong id="mazeOverlayTitle">Ready to chase?</strong>
+            <span id="mazeOverlayCopy">Clear every spark and use power stars to turn the tide.</span>
+          </div>
+        </div>
+
+        <p class="game-status" id="mazeStatus" role="status" aria-live="polite">Press Start Game to enter the maze.</p>
+        <div class="game-actions">
+          <button class="tool-button" id="mazeStart" type="button">Start Game</button>
+          <button class="tool-button button-secondary" id="mazePause" type="button" disabled>Pause</button>
+          <button class="tool-button button-danger" id="mazeRestart" type="button">Restart</button>
+          <button class="game-audio-button" id="mazeAudio" type="button" aria-pressed="false">Sound: Off</button>
+        </div>
+
+        <div class="game-controls" data-controls="maze" aria-label="Maze Chaser direction controls">
+          <button class="direction-button direction-up" type="button" data-direction="up" aria-label="Move up">↑</button>
+          <button class="direction-button direction-left" type="button" data-direction="left" aria-label="Move left">←</button>
+          <button class="direction-button direction-down" type="button" data-direction="down" aria-label="Move down">↓</button>
+          <button class="direction-button direction-right" type="button" data-direction="right" aria-label="Move right">→</button>
+        </div>
+        <p class="game-help"><strong>How to play:</strong> Collect every spark. Power stars let you send sentinels home for bonus points. Arrow keys and WASD both work.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer"><strong>HARISH V</strong><br><span>B.Com Computer Applications · SASTRA University</span><br>© 2026 All Rights Reserved</footer>
+
+  <script src="site.js" defer></script>
+  <script src="games.js" defer></script>
+</body>
+</html>
