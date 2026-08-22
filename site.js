@@ -295,10 +295,17 @@ function initialiseAssistant() {
 });
 }
 
-/* PWA works on HTTPS/GitHub Pages. It is skipped for local file:// previews. */
+/* PWA checks bypass the browser HTTP cache so deployed updates are discovered promptly. */
+const PWA_VERSION = '2026.08.22.1';
+
 function registerPwa() {
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-    window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(() => { /* Site works normally if registration fails. */ }));
+    window.addEventListener('load', () => {
+      navigator.serviceWorker
+        .register(`./sw.js?v=${PWA_VERSION}`, { updateViaCache: 'none' })
+        .then((registration) => registration.update().catch(() => { /* The next visit will retry. */ }))
+        .catch(() => { /* Site works normally if registration fails. */ });
+    }, { once: true });
   }
 }
 
