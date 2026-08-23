@@ -11,7 +11,7 @@ const translations = {
     heroGreeting: "Hi, I'm", heroCopy: 'B.Com Computer Applications student at SASTRA University. I enjoy modern web technology, automation, and building professional digital experiences.',
     connect: "Let's Connect", freeTools: 'Free Services Offered by Me', instagram: 'Instagram Profile', linkedin: 'LinkedIn Profile',
     aboutTitle: 'About Me', liveStatusTitle: 'HARISH IS CURRENTLY', liveBuilding: 'Building', liveLearning: 'Learning', liveCommit: 'Latest commit', liveStatus: 'Status', liveOnline: 'Online',  aboutCopy: 'I am pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and improving my skills through hands-on projects.',
-    skillsTitle: 'Skills', computerApps: 'Computer Applications', projectsTitle: 'Projects', projectPortfolio: 'Personal Portfolio', projectPortfolioCopy: 'A professional portfolio website built with responsive HTML, CSS and JavaScript.', projectJourney: 'Web Development Journey', projectJourneyCopy: 'A growing collection of practice projects and experiments in web development.', projectFuture: 'Future Web Projects', projectFutureCopy: 'Exploring practical software and digital solutions for students and businesses.',
+    skillsTitle: 'Skills', computerApps: 'Computer Applications', projectsTitle: 'Projects', projectLive: 'Live project', liveDemo: 'Live Demo', viewSource: 'GitHub', projectPortfolio: 'Personal Portfolio', projectPortfolioCopy: 'A professional portfolio website built with responsive HTML, CSS and JavaScript.', projectServices: 'Free Digital Services', projectServicesCopy: 'Browser tools for network checks, QR codes, typing practice, timing, calendars, and games.', projectUltron: 'ULTRON AI', projectUltronCopy: 'An AI assistant that answers verified questions about Harish, his portfolio, and services.',
     educationTitle: 'Education', degree: 'B.Com Computer Applications', higherSecondary: 'Higher Secondary Education', higherSecondaryCopy: '85% · Maxwell Matriculation Higher Secondary School · 2025', sslc: 'SSLC', sslcCopy: '65% · Maxwell Matriculation Higher Secondary School · 2023',
     journeyTitle: 'My Journey', timelineBorn: 'Born on 15 May 2008 — the beginning of a journey of learning and ambition.', timelineSslc: 'Completed SSLC at Maxwell Matriculation Higher Secondary School.', timelineHsc: 'Completed Higher Secondary Education with 85%.', present: 'Present', timelineDegree: 'Studying B.Com Computer Applications at SASTRA Deemed University.', futureVision: 'Future Vision', timelineFuture: 'To become a skilled technology professional, web developer and entrepreneur.',
     servicesTitle: 'Services', servicesLead: 'Professional digital help for students, creators and small businesses.', available: 'Available', serviceWeb: 'Website Creation', serviceWebCopy: 'Professional, responsive websites for students and businesses.', serviceStudent: 'Student Portfolio Websites', serviceStudentCopy: 'Personal websites to present skills, education, achievements and projects.', serviceCollege: 'College Project Websites', serviceCollegeCopy: 'Clean front-end projects for academic presentations and submissions.', serviceBusiness: 'Small Business Websites', serviceBusinessCopy: 'Service details, contact forms, WhatsApp integration and branding.', serviceLanding: 'Landing Pages', serviceLandingCopy: 'Focused pages for products, events, promotions and marketing campaigns.', serviceEditing: 'Photo & Video Editing', serviceEditingCopy: 'Photo enhancement, social-media creatives and video editing.', requestService: 'Request a Service',
@@ -24,7 +24,7 @@ const translations = {
     heroGreeting: 'வணக்கம், நான்', heroCopy: 'சாஸ்திரா பல்கலைக்கழகத்தில் B.Com கணினி பயன்பாடுகள் மாணவர். நவீன வலைத் தொழில்நுட்பம், தானியக்கம் மற்றும் சிறந்த டிஜிட்டல் அனுபவங்களை உருவாக்குவதில் ஆர்வம் கொண்டவன்.',
     connect: 'தொடர்பு கொள்ளுங்கள்', freeTools: 'என்னால் வழங்கப்படும் இலவச சேவைகள்', instagram: 'Instagram சுயவிவரம்', linkedin: 'LinkedIn சுயவிவரம்',
     aboutTitle: 'என்னைப் பற்றி', aboutCopy: 'நான் தஞ்சாவூரில் உள்ள சாஸ்திரா பல்கலைக்கழகத்தில் B.Com கணினி பயன்பாடுகள் படித்து வருகிறேன். வலை உருவாக்கம், தொழில்நுட்பம், தானியக்கம், டிஜிட்டல் அமைப்புகள் மற்றும் மென்பொருள் தீர்வுகள் ஆகியவற்றில் எனக்கு ஆர்வம் உள்ளது. செயல்முறை திட்டங்கள் மூலம் என் திறன்களை மேம்படுத்துகிறேன்.',
-    skillsTitle: 'திறன்கள்', computerApps: 'கணினி பயன்பாடுகள்', projectsTitle: 'திட்டங்கள்', projectPortfolio: 'தனிப்பட்ட போர்ட்ஃபோலியோ', projectPortfolioCopy: 'பதிலளிக்கும் HTML, CSS மற்றும் JavaScript கொண்டு உருவாக்கப்பட்ட தொழில்முறை போர்ட்ஃபோலியோ தளம்.', projectJourney: 'வலை உருவாக்கப் பயணம்', projectJourneyCopy: 'வலை உருவாக்க பயிற்சித் திட்டங்கள் மற்றும் முயற்சிகளின் வளர்ந்து வரும் தொகுப்பு.', projectFuture: 'எதிர்கால வலைத் திட்டங்கள்', projectFutureCopy: 'மாணவர்கள் மற்றும் வணிகங்களுக்கு பயனுள்ள மென்பொருள் மற்றும் டிஜிட்டல் தீர்வுகளை ஆராய்கிறேன்.',
+    skillsTitle: 'திறன்கள்', computerApps: 'கணினி பயன்பாடுகள்', projectsTitle: 'திட்டங்கள்', projectLive: 'நேரடி திட்டம்', liveDemo: 'நேரடி டெமோ', viewSource: 'GitHub', projectPortfolio: 'தனிப்பட்ட போர்ட்ஃபோலியோ', projectPortfolioCopy: 'பதிலளிக்கும் HTML, CSS மற்றும் JavaScript கொண்டு உருவாக்கப்பட்ட தொழில்முறை போர்ட்ஃபோலியோ தளம்.', projectServices: 'இலவச டிஜிட்டல் சேவைகள்', projectServicesCopy: 'நெட்வொர்க் சோதனை, QR குறியீடு, தட்டச்சுப் பயிற்சி, நேரக் கருவிகள், நாட்காட்டி மற்றும் விளையாட்டுகளுக்கான உலாவி கருவிகள்.', projectUltron: 'ULTRON AI', projectUltronCopy: 'ஹரிஷ், அவரது போர்ட்ஃபோலியோ மற்றும் சேவைகள் பற்றிய சரிபார்க்கப்பட்ட கேள்விகளுக்கு பதிலளிக்கும் AI உதவியாளர்.',
     educationTitle: 'கல்வி', degree: 'B.Com கணினி பயன்பாடுகள்', higherSecondary: 'மேல்நிலை கல்வி', higherSecondaryCopy: '85% · மேக்ஸ்வெல் மெட்ரிகுலேஷன் மேல்நிலைப் பள்ளி · 2025', sslc: 'SSLC', sslcCopy: '65% · மேக்ஸ்வெல் மெட்ரிகுலேஷன் மேல்நிலைப் பள்ளி · 2023',
     journeyTitle: 'என் பயணம்', timelineBorn: '15 மே 2008 இல் பிறந்தேன் — கற்றல் மற்றும் லட்சியத்தின் பயணம் தொடங்கியது.', timelineSslc: 'மேக்ஸ்வெல் மெட்ரிகுலேஷன் மேல்நிலைப் பள்ளியில் SSLC முடித்தேன்.', timelineHsc: '85% உடன் மேல்நிலை கல்வியை முடித்தேன்.', present: 'தற்போது', timelineDegree: 'சாஸ்திரா பல்கலைக்கழகத்தில் B.Com கணினி பயன்பாடுகள் படிக்கிறேன்.', futureVision: 'எதிர்கால நோக்கம்', timelineFuture: 'திறமையான தொழில்நுட்ப நிபுணர், வலை உருவாக்குநர் மற்றும் தொழில்முனைவோர் ஆக வேண்டும்.',
     servicesTitle: 'சேவைகள்', servicesLead: 'மாணவர்கள், படைப்பாளிகள் மற்றும் சிறு வணிகங்களுக்கான தொழில்முறை டிஜிட்டல் உதவி.', available: 'கிடைக்கிறது', serviceWeb: 'இணையதள உருவாக்கம்', serviceWebCopy: 'மாணவர்கள் மற்றும் வணிகங்களுக்கான தொழில்முறை, பதிலளிக்கும் இணையதளங்கள்.', serviceStudent: 'மாணவர் போர்ட்ஃபோலியோ இணையதளங்கள்', serviceStudentCopy: 'திறன்கள், கல்வி, சாதனைகள் மற்றும் திட்டங்களைக் காட்ட தனிப்பட்ட இணையதளங்கள்.', serviceCollege: 'கல்லூரித் திட்ட இணையதளங்கள்', serviceCollegeCopy: 'கல்வி விளக்கங்கள் மற்றும் சமர்ப்பிப்புகளுக்கான அழகான முன்தளத் திட்டங்கள்.', serviceBusiness: 'சிறு வணிக இணையதளங்கள்', serviceBusinessCopy: 'சேவை விவரங்கள், தொடர்புப் படிவங்கள், WhatsApp இணைப்பு மற்றும் பிராண்டிங்.', serviceLanding: 'லேண்டிங் பக்கங்கள்', serviceLandingCopy: 'தயாரிப்புகள், நிகழ்வுகள் மற்றும் விளம்பரங்களுக்கு மையப்படுத்தப்பட்ட பக்கங்கள்.', serviceEditing: 'புகைப்படம் மற்றும் வீடியோ எடிட்டிங்', serviceEditingCopy: 'புகைப்பட மேம்பாடு, சமூக ஊடக படைப்புகள் மற்றும் வீடியோ எடிட்டிங்.', requestService: 'சேவையைக் கோருங்கள்',
@@ -37,7 +37,7 @@ const translations = {
     heroGreeting: 'नमस्ते, मैं हूँ', heroCopy: 'SASTRA University में B.Com Computer Applications का छात्र। आधुनिक वेब तकनीक, ऑटोमेशन और बेहतरीन डिजिटल अनुभव बनाने में रुचि रखता हूँ।',
     connect: 'संपर्क करें', freeTools: 'मेरी निःशुल्क सेवाएँ', instagram: 'Instagram प्रोफ़ाइल', linkedin: 'LinkedIn प्रोफ़ाइल',
     aboutTitle: 'मेरे बारे में', aboutCopy: 'मैं SASTRA University, तंजावुर में B.Com Computer Applications कर रहा हूँ। मेरी रुचि वेब डेवलपमेंट, तकनीक, ऑटोमेशन, डिजिटल सिस्टम और सॉफ्टवेयर समाधानों में है। मैं प्रायोगिक प्रोजेक्टों के माध्यम से अपने कौशल में सुधार करता हूँ।',
-    skillsTitle: 'कौशल', computerApps: 'कंप्यूटर एप्लीकेशन्स', projectsTitle: 'प्रोजेक्ट', projectPortfolio: 'व्यक्तिगत पोर्टफोलियो', projectPortfolioCopy: 'रिस्पॉन्सिव HTML, CSS और JavaScript से बनी पेशेवर पोर्टफोलियो वेबसाइट।', projectJourney: 'वेब डेवलपमेंट यात्रा', projectJourneyCopy: 'वेब डेवलपमेंट के अभ्यास प्रोजेक्टों और प्रयोगों का बढ़ता संग्रह।', projectFuture: 'भविष्य के वेब प्रोजेक्ट', projectFutureCopy: 'छात्रों और व्यवसायों के लिए उपयोगी सॉफ्टवेयर व डिजिटल समाधान तलाश रहा हूँ।',
+    skillsTitle: 'कौशल', computerApps: 'कंप्यूटर एप्लीकेशन्स', projectsTitle: 'प्रोजेक्ट', projectLive: 'लाइव प्रोजेक्ट', liveDemo: 'लाइव डेमो', viewSource: 'GitHub', projectPortfolio: 'व्यक्तिगत पोर्टफोलियो', projectPortfolioCopy: 'रिस्पॉन्सिव HTML, CSS और JavaScript से बनी पेशेवर पोर्टफोलियो वेबसाइट।', projectServices: 'निःशुल्क डिजिटल सेवाएँ', projectServicesCopy: 'नेटवर्क जांच, QR कोड, टाइपिंग अभ्यास, समय उपकरण, कैलेंडर और गेम के लिए ब्राउज़र टूल।', projectUltron: 'ULTRON AI', projectUltronCopy: 'हरिश, उनके पोर्टफोलियो और सेवाओं के बारे में सत्यापित प्रश्नों के उत्तर देने वाला AI सहायक।',
     educationTitle: 'शिक्षा', degree: 'B.Com Computer Applications', higherSecondary: 'उच्च माध्यमिक शिक्षा', higherSecondaryCopy: '85% · Maxwell Matriculation Higher Secondary School · 2025', sslc: 'SSLC', sslcCopy: '65% · Maxwell Matriculation Higher Secondary School · 2023',
     journeyTitle: 'मेरी यात्रा', timelineBorn: '15 मई 2008 को जन्म — सीखने और महत्वाकांक्षा की यात्रा की शुरुआत।', timelineSslc: 'Maxwell Matriculation Higher Secondary School से SSLC पूरा किया।', timelineHsc: '85% के साथ उच्च माध्यमिक शिक्षा पूरी की।', present: 'वर्तमान', timelineDegree: 'SASTRA Deemed University में B.Com Computer Applications की पढ़ाई कर रहा हूँ।', futureVision: 'भविष्य की सोच', timelineFuture: 'एक कुशल तकनीकी पेशेवर, वेब डेवलपर और उद्यमी बनना।',
     servicesTitle: 'सेवाएँ', servicesLead: 'छात्रों, रचनाकारों और छोटे व्यवसायों के लिए पेशेवर डिजिटल सहायता।', available: 'उपलब्ध', serviceWeb: 'वेबसाइट निर्माण', serviceWebCopy: 'छात्रों और व्यवसायों के लिए पेशेवर, रिस्पॉन्सिव वेबसाइटें।', serviceStudent: 'छात्र पोर्टफोलियो वेबसाइटें', serviceStudentCopy: 'कौशल, शिक्षा, उपलब्धियाँ और प्रोजेक्ट दिखाने के लिए व्यक्तिगत वेबसाइटें।', serviceCollege: 'कॉलेज प्रोजेक्ट वेबसाइटें', serviceCollegeCopy: 'शैक्षणिक प्रस्तुतियों और सबमिशन के लिए साफ़ फ्रंट-एंड प्रोजेक्ट।', serviceBusiness: 'छोटे व्यवसाय की वेबसाइटें', serviceBusinessCopy: 'सेवा विवरण, संपर्क फ़ॉर्म, WhatsApp एकीकरण और ब्रांडिंग।', serviceLanding: 'लैंडिंग पेज', serviceLandingCopy: 'उत्पादों, कार्यक्रमों, प्रचार और मार्केटिंग के लिए केंद्रित पेज।', serviceEditing: 'फोटो और वीडियो एडिटिंग', serviceEditingCopy: 'फोटो एन्हांसमेंट, सोशल मीडिया क्रिएटिव और वीडियो एडिटिंग।', requestService: 'सेवा का अनुरोध करें',
@@ -296,7 +296,7 @@ function initialiseAssistant() {
 }
 
 /* PWA checks bypass the browser HTTP cache so deployed updates are discovered promptly. */
-const PWA_VERSION = '2026.08.22.1';
+const PWA_VERSION = '2026.08.23.1';
 
 function registerPwa() {
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
@@ -309,9 +309,36 @@ function registerPwa() {
   }
 }
 
+/*
+  Records one anonymous page-view event for the portfolio owner. No cookies,
+  identifiers, IP addresses, browser versions, or full user-agent strings are
+  collected. Visitors who enable a privacy preference are not tracked.
+*/
+function initialiseVisitorAnalytics() {
+  const isPortfolioHost = /(^|\.)harishv\.co\.in$/i.test(location.hostname);
+  const privacyControlEnabled = navigator.globalPrivacyControl === true || navigator.doNotTrack === '1' || window.doNotTrack === '1';
+  if (location.protocol !== 'https:' || !isPortfolioHost || privacyControlEnabled) return;
+
+  const device = window.matchMedia('(max-width: 700px)').matches
+    ? 'mobile'
+    : window.matchMedia('(max-width: 1024px)').matches
+      ? 'tablet'
+      : 'desktop';
+
+  const payload = JSON.stringify({ page: location.pathname || '/', device });
+  window.setTimeout(() => {
+    fetch('https://ultron.v90300560.workers.dev/analytics', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: payload,
+      keepalive: true
+    }).catch(() => { /* Analytics must never affect the visitor experience. */ });
+  }, 0);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initialiseLanguagePicker(); initialiseMenu(); initialiseTyping(); initialiseRevealEffects();
-  initialiseBackground(); initialiseBackToTop(); initialiseAssistant(); registerPwa();
+  initialiseBackground(); initialiseBackToTop(); initialiseAssistant(); initialiseVisitorAnalytics(); registerPwa();
   const glow = document.querySelector('.cursor-glow');
   if (glow && matchMedia('(pointer:fine)').matches) document.addEventListener('pointermove', (event) => { glow.style.left = `${event.clientX}px`; glow.style.top = `${event.clientY}px`; });
 });
