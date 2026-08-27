@@ -79,6 +79,16 @@
   </script>
 </head>
 <body>
+  <div class="command-loader" id="commandLoader" aria-hidden="true">
+    <div class="command-loader-panel">
+      <p class="command-loader-kicker">// HARISH V / COMMAND CENTER</p>
+      <div class="command-loader-title"><span class="command-loader-orb">◈</span><strong>INITIALISING PORTFOLIO</strong></div>
+      <p class="command-loader-copy">Loading project archive, tools deck and live interface.</p>
+      <div class="command-loader-lines" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="command-loader-progress" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+
   <!-- Decorative background -->
   <canvas id="matrix" aria-hidden="true"></canvas>
   <div class="cursor-glow" aria-hidden="true"></div>
@@ -127,6 +137,12 @@
           <div class="button-row" style="justify-content:flex-start">
             <a class="button" style="background:linear-gradient(100deg,#e1306c,#f77737)" href="https://www.instagram.com/mr_harish.v" target="_blank" rel="noopener" data-i18n="instagram">Instagram Profile📷</a>
             <a class="button" style="background:linear-gradient(100deg,#0077b5,#00a0dc)" href="https://www.linkedin.com/in/harish-v-253011362" target="_blank" rel="noopener" data-i18n="linkedin">LinkedIn Profile👨🏻‍🎓</a>
+          </div>
+          <div class="command-center-strip" role="status" aria-live="polite">
+            <span class="command-status-dot" aria-hidden="true"></span>
+            <span class="command-status-label">NETWORK LINK</span>
+            <strong id="commandNetworkStatus">CHECKING</strong>
+            <span class="command-status-meta" id="commandNetworkDetail">Preparing interface</span>
           </div>
         </div>
         <!-- profile.jpg uses contain instead of crop, especially on mobile. -->
@@ -212,6 +228,7 @@
           <div class="project-tech" aria-label="Technologies used"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
           <div class="project-actions">
             <a class="button project-action" href="https://harishv.co.in/" target="_blank" rel="noopener"><span class="action-emoji" aria-hidden="true">↗️</span><span data-i18n="liveDemo">Live Demo</span></a>
+            <button class="button button-secondary project-action project-case-study" type="button" data-case-study="portfolio"><span class="action-emoji" aria-hidden="true">◎</span><span data-i18n="caseStudy">Case Study</span></button>
             <a class="button button-secondary project-action" href="https://github.com/Harishv-web/Harish-" target="_blank" rel="noopener"><span class="action-emoji" aria-hidden="true">⌘</span><span data-i18n="viewSource">GitHub</span></a>
           </div>
         </article>
@@ -231,6 +248,7 @@
           <div class="project-tech" aria-label="Technologies used"><span>HTML</span><span>JavaScript</span><span>PWA</span></div>
           <div class="project-actions">
             <a class="button project-action" href="free-services.html"><span class="action-emoji" aria-hidden="true">↗️</span><span data-i18n="liveDemo">Live Demo</span></a>
+            <button class="button button-secondary project-action project-case-study" type="button" data-case-study="services"><span class="action-emoji" aria-hidden="true">◎</span><span data-i18n="caseStudy">Case Study</span></button>
             <a class="button button-secondary project-action" href="https://github.com/Harishv-web/Harish-" target="_blank" rel="noopener"><span class="action-emoji" aria-hidden="true">⌘</span><span data-i18n="viewSource">GitHub</span></a>
           </div>
         </article>
@@ -251,11 +269,32 @@
           <div class="project-tech" aria-label="Technologies used"><span>JavaScript</span><span>Workers</span><span>Groq API</span></div>
           <div class="project-actions">
             <a class="button project-action" href="#assistant🤖"><span class="action-emoji" aria-hidden="true">↗️</span><span data-i18n="liveDemo">Live Demo</span></a>
+            <button class="button button-secondary project-action project-case-study" type="button" data-case-study="ultron"><span class="action-emoji" aria-hidden="true">◎</span><span data-i18n="caseStudy">Case Study</span></button>
             <a class="button button-secondary project-action" href="https://github.com/Harishv-web/Harish-" target="_blank" rel="noopener"><span class="action-emoji" aria-hidden="true">⌘</span><span data-i18n="viewSource">GitHub</span></a>
           </div>
         </article>
       </div>
     </section>
+
+    <dialog class="case-study-dialog" id="caseStudyDialog" aria-labelledby="caseStudyTitle">
+      <div class="case-study-shell">
+        <button class="case-study-close" id="caseStudyClose" type="button" aria-label="Close case study">×</button>
+        <p class="case-study-kicker">PROJECT CASE STUDY</p>
+        <h2 id="caseStudyTitle">Project</h2>
+        <p class="case-study-intro" id="caseStudyIntro"></p>
+        <div class="case-study-grid">
+          <section><h3 data-i18n="caseChallenge">The challenge</h3><p id="caseStudyChallenge"></p></section>
+          <section><h3 data-i18n="caseSolution">What I built</h3><p id="caseStudySolution"></p></section>
+        </div>
+        <h3 class="case-study-section-title" data-i18n="caseHighlights">Highlights</h3>
+        <ul class="case-study-highlights" id="caseStudyHighlights"></ul>
+        <div class="project-tech case-study-tech" id="caseStudyTech" aria-label="Technologies used"></div>
+        <div class="case-study-actions">
+          <a class="button" id="caseStudyDemo" href="https://harishv.co.in/" target="_blank" rel="noopener"><span aria-hidden="true">↗️</span><span data-i18n="openProject">Open project</span></a>
+          <a class="button button-secondary" href="https://github.com/Harishv-web/Harish-" target="_blank" rel="noopener"><span aria-hidden="true">⌘</span><span data-i18n="viewSource">GitHub</span></a>
+        </div>
+      </div>
+    </dialog>
 
     <!-- ========================= EDUCATION ======================== -->
     <section class="section hidden-on-load" id="education">

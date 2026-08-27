@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#020202">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <title>Private Analytics Dashboard | Harish V</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dashboard-page">
+  <main class="dashboard-shell">
+    <header class="dashboard-header">
+      <div>
+        <a class="dashboard-back" href="index.html">← Back to portfolio</a>
+        <h1 class="gradient-text">Analytics Command Center</h1>
+        <p>Private, privacy-conscious visitor trends from the portfolio. Your access key stays only in this browser tab and is never saved.</p>
+      </div>
+      <span class="dashboard-lock" aria-label="Private dashboard">🔒 PRIVATE</span>
+    </header>
+
+    <form class="dashboard-access" id="dashboardAccessForm">
+      <label class="sr-only" for="dashboardAccessKey">Dashboard access key</label>
+      <input class="form-field" id="dashboardAccessKey" type="password" autocomplete="off" required placeholder="Enter dashboard access key">
+      <button class="button" id="dashboardUnlockButton" type="submit">Unlock dashboard</button>
+    </form>
+    <p class="status-note dashboard-status" id="dashboardStatus" role="status" aria-live="polite">Enter your access key to load the last seven days.</p>
+
+    <section class="dashboard-panel" id="dashboardPanel" hidden aria-live="polite">
+      <div class="dashboard-toolbar">
+        <p id="dashboardUpdated">Last updated —</p>
+        <button class="button button-secondary dashboard-lock-button" id="dashboardLockButton" type="button">Lock dashboard</button>
+      </div>
+
+      <div class="dashboard-metric-grid">
+        <article class="dashboard-metric"><span class="dashboard-metric-label">LAST 7 DAYS</span><strong id="dashboardTotalViews">0</strong><small>anonymous page views</small></article>
+        <article class="dashboard-metric"><span class="dashboard-metric-label">POPULAR PAGES</span><strong id="dashboardPageCount">0</strong><small>tracked portfolio pages</small></article>
+        <article class="dashboard-metric"><span class="dashboard-metric-label">DEVICE TYPES</span><strong id="dashboardDeviceCount">0</strong><small>broad device categories</small></article>
+      </div>
+
+      <div class="dashboard-data-grid">
+        <article class="dashboard-data-card">
+          <h2>Most visited pages</h2>
+          <ul class="dashboard-list" id="dashboardPages"></ul>
+          <p class="dashboard-empty" id="dashboardPagesEmpty" hidden>No page-view data has arrived yet.</p>
+        </article>
+        <article class="dashboard-data-card">
+          <h2>Visitor devices</h2>
+          <ul class="dashboard-list" id="dashboardDevices"></ul>
+          <p class="dashboard-empty" id="dashboardDevicesEmpty" hidden>No device data has arrived yet.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script src="dashboard.js" defer></script>
+</body>
+</html>

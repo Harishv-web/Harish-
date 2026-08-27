@@ -1,4 +1,5 @@
 ﻿User-agent: *
 Allow: /
+Disallow: /dashboard.html
 
 Sitemap: https://harishv.co.in/sitemap.xml
