@@ -5,7 +5,7 @@
    require an internet connection by their nature.
    ================================================================ */
 
-const CACHE_NAME = 'harish-v-portfolio-v5';
+const CACHE_NAME = 'harish-v-portfolio-v6';
 const CORE_FILES = [
   './', './index.html', './free-services.html', './styles.css', './site.js',
   './tools.js', './games.html', './games.js', './manifest.webmanifest', './icon.svg', './profile.jpg'
