@@ -85,10 +85,9 @@ async function requestDashboardData() {
   const response = await fetch(DASHBOARD_ENDPOINT, {
     method: 'POST',
     headers: {
-      'Content-Type': 'application/json',
-      'X-Dashboard-Key': dashboardAccessKey
+      'Content-Type': 'text/plain;charset=UTF-8'
     },
-    body: '{}',
+    body: JSON.stringify({ accessKey: dashboardAccessKey }),
     cache: 'no-store'
   });
   const payload = await response.json().catch(() => ({}));
