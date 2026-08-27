@@ -315,12 +315,110 @@ function initialiseCaseStudies() {
   });
 }
 
+/* Visitors can try short challenges locally; scores are never stored or sent anywhere. */
+function initialiseSkillsLab() {
+  const lab = document.getElementById('skills-lab');
+  const scoreElement = document.getElementById('labScore');
+  const scoreLabel = document.getElementById('labScoreLabel');
+  const terminal = document.getElementById('labTerminal');
+  const terminalStatus = document.getElementById('labTerminalStatus');
+  const resetButton = document.getElementById('labReset');
+  if (!lab || !scoreElement || !scoreLabel || !terminal || !terminalStatus || !resetButton) return;
+
+  const challenges = [...lab.querySelectorAll('.lab-challenge')];
+  let completed = 0;
+
+  const writeTerminal = (text, state = '') => {
+    const line = document.createElement('p');
+    line.textContent = text;
+    if (state) line.className = state;
+    terminal.append(line);
+    terminal.scrollTop = terminal.scrollHeight;
+  };
+
+  const updateScore = () => {
+    scoreElement.textContent = String(completed);
+    scoreLabel.textContent = completed === 3
+      ? 'All missions complete'
+      : completed ? `${3 - completed} mission${3 - completed === 1 ? '' : 's'} remaining` : 'Ready to begin';
+    terminalStatus.textContent = completed === 3 ? 'COMPLETE' : completed ? `MISSION ${completed + 1}` : 'STANDBY';
+    terminalStatus.classList.toggle('is-active', completed > 0);
+  };
+
+  const reset = () => {
+    completed = 0;
+    terminal.replaceChildren();
+    writeTerminal('harish@portfolio:~$ initialise skill-lab');
+    writeTerminal('System ready. Choose a mission to run a quick knowledge check.', 'terminal-muted');
+    challenges.forEach((challenge) => {
+      challenge.classList.remove('is-complete', 'is-wrong');
+      challenge.dataset.completed = 'false';
+      const feedback = challenge.querySelector('.lab-feedback');
+      if (feedback) {
+        feedback.textContent = '';
+        feedback.className = 'lab-feedback';
+      }
+      challenge.querySelectorAll('.lab-answer').forEach((answer) => {
+        answer.disabled = false;
+        answer.classList.remove('is-correct', 'is-incorrect');
+      });
+    });
+    updateScore();
+  };
+
+  challenges.forEach((challenge) => {
+    const mission = challenge.dataset.challenge || 'skill';
+    const feedback = challenge.querySelector('.lab-feedback');
+    challenge.querySelectorAll('.lab-answer').forEach((answer) => {
+      answer.addEventListener('click', () => {
+        if (challenge.dataset.completed === 'true') return;
+
+        const isCorrect = answer.dataset.correct === 'true';
+        if (!isCorrect) {
+          answer.classList.add('is-incorrect');
+          challenge.classList.remove('is-wrong');
+          void challenge.offsetWidth;
+          challenge.classList.add('is-wrong');
+          if (feedback) {
+            feedback.textContent = 'Not quite — try another command.';
+            feedback.className = 'lab-feedback error';
+          }
+          writeTerminal(`✕ ${mission} mission: command needs a correction.`, 'terminal-error');
+          return;
+        }
+
+        challenge.dataset.completed = 'true';
+        challenge.classList.add('is-complete');
+        challenge.querySelectorAll('.lab-answer').forEach((button) => { button.disabled = true; });
+        answer.classList.add('is-correct');
+        completed += 1;
+        if (feedback) {
+          feedback.textContent = 'Mission passed — clean execution.';
+          feedback.className = 'lab-feedback success';
+        }
+        writeTerminal(`✓ ${mission} mission passed. Skill signal verified.`, 'terminal-success');
+        if (completed === 3) writeTerminal('◈ All three missions complete. Command-center badge unlocked.', 'terminal-success');
+        updateScore();
+      });
+    });
+  });
+
+  resetButton.addEventListener('click', reset);
+  updateScore();
+}
+
 /* ULTRON sends only chat messages to its Cloudflare Worker; analytics remains separate and anonymous. */
 function initialiseAssistant() {
   const form = document.getElementById('assistantForm');
   const input = document.getElementById('assistantInput');
   const chat = document.getElementById('assistantChat');
+  const voiceConsole = document.getElementById('voiceConsole');
+  const voiceInputButton = document.getElementById('voiceInputButton');
+  const voiceReplyButton = document.getElementById('voiceReplyButton');
+  const voiceStopButton = document.getElementById('voiceStopButton');
+  const voiceStatus = document.getElementById('voiceStatus');
   if (!form || !input || !chat) return;
+
   const addMessage = (message, sender) => {
     const row = document.createElement('div'); row.className = `chat-message ${sender}`;
     const avatar = document.createElement('div'); avatar.className = 'chat-avatar'; avatar.textContent = sender === 'user' ? '●' : '◈';
@@ -329,93 +427,158 @@ function initialiseAssistant() {
   };
   const conversationHistory = [];
 
- form.addEventListener('submit', async (event) => {
-  event.preventDefault();
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const speechSupported = Boolean(SpeechRecognition);
+  const speechSynthesisSupported = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  let recognition = null;
+  let listening = false;
+  let voiceRepliesEnabled = false;
 
-   const question = input.value.trim();
-  if (!question) return;
+  const voiceLanguage = () => ({ ta: 'ta-IN', hi: 'hi-IN', en: 'en-IN' })[activeLanguage] || 'en-IN';
+  const setVoiceStatus = (message) => { if (voiceStatus) voiceStatus.textContent = message; };
+  const setListening = (active) => {
+    listening = active;
+    voiceConsole?.classList.toggle('is-listening', active);
+    voiceInputButton?.setAttribute('aria-pressed', String(active));
+    const label = voiceInputButton?.querySelector('span:last-child');
+    if (label) label.textContent = active ? 'Listening… tap to stop' : 'Speak to ULTRON';
+  };
+  const stopSpeaking = () => {
+    if (speechSynthesisSupported) window.speechSynthesis.cancel();
+    if (voiceStopButton) voiceStopButton.disabled = true;
+  };
+  const speakAnswer = (text) => {
+    if (!voiceRepliesEnabled || !speechSynthesisSupported) return;
+    stopSpeaking();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = voiceLanguage();
+    utterance.rate = .98;
+    utterance.onstart = () => {
+      if (voiceStopButton) voiceStopButton.disabled = false;
+      setVoiceStatus('ULTRON is speaking. Press stop at any time.');
+    };
+    utterance.onend = () => {
+      if (voiceStopButton) voiceStopButton.disabled = true;
+      setVoiceStatus('Voice replies are ready.');
+    };
+    utterance.onerror = () => {
+      if (voiceStopButton) voiceStopButton.disabled = true;
+      setVoiceStatus('Voice reply could not play. You can still read the answer.');
+    };
+    window.speechSynthesis.speak(utterance);
+  };
 
-  addMessage(question, 'user');
-  input.value = '';
-
-  const loadingMessage = document.createElement('div');
-  loadingMessage.className = 'chat-message bot';
-
-  const loadingAvatar = document.createElement('div');
-  loadingAvatar.className = 'chat-avatar';
-  loadingAvatar.textContent = '◈';
-
-  const loadingBubble = document.createElement('p');
-  loadingBubble.className = 'chat-bubble';
-  loadingBubble.textContent = 'Ultron is thinking…';
-
-  loadingMessage.append(loadingAvatar, loadingBubble);
-  chat.append(loadingMessage);
-  chat.scrollTop = chat.scrollHeight;
-
-  try {
-    const response = await fetch(
-      'https://ultron.v90300560.workers.dev/chat',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          messages: [
-            ...conversationHistory,
-            {
-              role: 'user',
-              content: question
-            }
-          ]
-        })
-      }
-    );
-
-    const data = await response.json();
-
-    loadingMessage.remove();
-
-    if (!response.ok) {
-      throw new Error(
-        data?.details ||
-        data?.error ||
-        'Ultron could not process the request.'
-      );
+  if (voiceInputButton) {
+    if (!speechSupported) {
+      voiceInputButton.disabled = true;
+      setVoiceStatus('Voice input is not supported in this browser. You can still type to ULTRON.');
+    } else {
+      recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = true;
+      recognition.maxAlternatives = 1;
+      recognition.onstart = () => {
+        setListening(true);
+        setVoiceStatus('Listening locally… speak your question naturally.');
+      };
+      recognition.onresult = (event) => {
+        let transcript = '';
+        let isFinal = false;
+        for (let index = event.resultIndex; index < event.results.length; index += 1) {
+          transcript += event.results[index][0].transcript;
+          isFinal ||= event.results[index].isFinal;
+        }
+        input.value = transcript.trim();
+        if (isFinal && input.value) {
+          setVoiceStatus('Voice captured. Sending your question to ULTRON…');
+          form.requestSubmit();
+        }
+      };
+      recognition.onerror = (event) => {
+        const messages = {
+          'not-allowed': 'Microphone permission was not granted. You can type to ULTRON instead.',
+          'no-speech': 'No speech was detected. Please try again.',
+          'audio-capture': 'No microphone was found. You can type to ULTRON instead.',
+          network: 'Voice input needs an internet connection in this browser.'
+        };
+        setVoiceStatus(messages[event.error] || 'Voice input stopped. Please try again or type your question.');
+      };
+      recognition.onend = () => setListening(false);
+      voiceInputButton.addEventListener('click', () => {
+        if (listening) {
+          recognition.stop();
+          return;
+        }
+        stopSpeaking();
+        recognition.lang = voiceLanguage();
+        try { recognition.start(); } catch { setVoiceStatus('Voice input is already starting. Please wait a moment.'); }
+      });
     }
-
-
-
-    const answer = data.answer || 'Ultron returned an empty response.';
-
-    addMessage(answer, 'bot');
-
-    conversationHistory.push(
-      {
-        role: 'user',
-        content: question
-      },
-      {
-        role: 'assistant',
-        content: answer
-      }
-    );
-  } catch (error) {
-    loadingMessage.remove();
-
-    addMessage(
-      `Sorry, Ultron is temporarily unavailable. ${error.message}`,
-      'bot'
-    );
-
-    console.error('Ultron API error:', error);
   }
-});
+
+  if (voiceReplyButton) {
+    if (!speechSynthesisSupported) {
+      voiceReplyButton.disabled = true;
+      voiceReplyButton.querySelector('span:last-child').textContent = 'Voice replies unavailable';
+    } else {
+      voiceReplyButton.addEventListener('click', () => {
+        voiceRepliesEnabled = !voiceRepliesEnabled;
+        voiceReplyButton.setAttribute('aria-pressed', String(voiceRepliesEnabled));
+        voiceReplyButton.querySelector('span:last-child').textContent = `Voice replies: ${voiceRepliesEnabled ? 'On' : 'Off'}`;
+        if (!voiceRepliesEnabled) stopSpeaking();
+        setVoiceStatus(voiceRepliesEnabled ? 'Voice replies enabled. ULTRON will read new answers aloud.' : 'Voice replies are off.');
+      });
+    }
+  }
+  voiceStopButton?.addEventListener('click', () => {
+    stopSpeaking();
+    setVoiceStatus('Voice reply stopped.');
+  });
+  window.addEventListener('site-language-changed', () => { if (recognition) recognition.lang = voiceLanguage(); });
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const question = input.value.trim();
+    if (!question) return;
+
+    addMessage(question, 'user');
+    input.value = '';
+    const loadingMessage = document.createElement('div');
+    loadingMessage.className = 'chat-message bot';
+    const loadingAvatar = document.createElement('div');
+    loadingAvatar.className = 'chat-avatar';
+    loadingAvatar.textContent = '◈';
+    const loadingBubble = document.createElement('p');
+    loadingBubble.className = 'chat-bubble';
+    loadingBubble.textContent = 'Ultron is thinking…';
+    loadingMessage.append(loadingAvatar, loadingBubble);
+    chat.append(loadingMessage);
+    chat.scrollTop = chat.scrollHeight;
+
+    try {
+      const response = await fetch('https://ultron.v90300560.workers.dev/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: [...conversationHistory, { role: 'user', content: question }] })
+      });
+      const data = await response.json().catch(() => ({}));
+      loadingMessage.remove();
+      if (!response.ok) throw new Error(data?.details || data?.error || 'Ultron could not process the request.');
+
+      const answer = data.answer || 'Ultron returned an empty response.';
+      addMessage(answer, 'bot');
+      conversationHistory.push({ role: 'user', content: question }, { role: 'assistant', content: answer });
+      speakAnswer(answer);
+    } catch (error) {
+      loadingMessage.remove();
+      addMessage(`Sorry, Ultron is temporarily unavailable. ${error.message}`, 'bot');
+      console.error('Ultron API error:', error);
+    }
+  });
 }
 
 /* PWA checks bypass the browser HTTP cache so deployed updates are discovered promptly. */
-const PWA_VERSION = '2026.08.27.2';
+const PWA_VERSION = '2026.08.27.3';
 
 function registerPwa() {
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
@@ -490,7 +653,7 @@ function initialiseContactForm() {
 
 document.addEventListener('DOMContentLoaded', () => {
   initialiseLanguagePicker(); initialiseMenu(); initialiseTyping(); initialiseRevealEffects();
-  initialiseCommandCenter(); initialiseCommandStatus(); initialiseBackground(); initialiseBackToTop(); initialiseCaseStudies(); initialiseAssistant(); initialiseVisitorAnalytics(); initialiseContactForm(); registerPwa();
+  initialiseCommandCenter(); initialiseCommandStatus(); initialiseBackground(); initialiseBackToTop(); initialiseCaseStudies(); initialiseSkillsLab(); initialiseAssistant(); initialiseVisitorAnalytics(); initialiseContactForm(); registerPwa();
   const glow = document.querySelector('.cursor-glow');
   if (glow && matchMedia('(pointer:fine)').matches) document.addEventListener('pointermove', (event) => { glow.style.left = `${event.clientX}px`; glow.style.top = `${event.clientY}px`; });
 });

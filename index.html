@@ -208,6 +208,91 @@
       </div>
     </section>
 
+    <!-- ========================== SKILLS LAB ======================= -->
+    <section class="section hidden-on-load" id="skills-lab" aria-labelledby="skillsLabTitle">
+      <div class="skills-lab-heading">
+        <div>
+          <p class="lab-kicker">// INTERACTIVE SKILLS LAB</p>
+          <h2 class="section-heading gradient-text" id="skillsLabTitle">Skills Lab 🧪</h2>
+          <p>Explore Harish’s core stack, complete three quick missions, and unlock the command-center badge.</p>
+        </div>
+        <div class="lab-score-card" aria-live="polite">
+          <span>MISSION SCORE</span>
+          <strong><b id="labScore">0</b><small>/3</small></strong>
+          <em id="labScoreLabel">Ready to begin</em>
+        </div>
+      </div>
+
+      <div class="skills-lab-grid">
+        <article class="card skill-radar-card">
+          <div class="lab-card-header"><span class="lab-node" aria-hidden="true"></span><span>CORE STACK SIGNAL</span></div>
+          <div class="skill-radar-wrap">
+            <svg class="skill-radar" viewBox="0 0 320 300" role="img" aria-labelledby="radarTitle radarDescription">
+              <title id="radarTitle">Harish’s technical skills radar</title>
+              <desc id="radarDescription">HTML and CSS at 90 percent, Computer Applications at 85 percent, C++ at 80 percent, and JavaScript at 75 percent.</desc>
+              <g class="radar-grid" aria-hidden="true">
+                <polygon points="160,24 288,116 239,266 81,266 32,116"></polygon>
+                <polygon points="160,57 257,127 220,240 100,240 63,127"></polygon>
+                <polygon points="160,90 226,138 202,214 118,214 94,138"></polygon>
+                <line x1="160" y1="145" x2="160" y2="24"></line><line x1="160" y1="145" x2="288" y2="116"></line><line x1="160" y1="145" x2="239" y2="266"></line><line x1="160" y1="145" x2="81" y2="266"></line><line x1="160" y1="145" x2="32" y2="116"></line>
+              </g>
+              <polygon class="radar-signal" points="160,36 256,123 203,211 104,232 65,124"></polygon>
+              <g class="radar-points" aria-hidden="true"><circle cx="160" cy="36" r="5"></circle><circle cx="256" cy="123" r="5"></circle><circle cx="203" cy="211" r="5"></circle><circle cx="104" cy="232" r="5"></circle><circle cx="65" cy="124" r="5"></circle></g>
+              <g class="radar-labels" aria-hidden="true"><text x="160" y="16">HTML / CSS</text><text x="271" y="105">90%</text><text x="218" y="285">C++ 80%</text><text x="27" y="285">JS 75%</text><text x="6" y="105">APPS 85%</text></g>
+            </svg>
+          </div>
+          <ul class="radar-legend" aria-label="Skill values"><li><span></span> HTML &amp; CSS <strong>90%</strong></li><li><span></span> Computer Applications <strong>85%</strong></li><li><span></span> C++ Programming <strong>80%</strong></li><li><span></span> JavaScript <strong>75%</strong></li></ul>
+        </article>
+
+        <article class="card lab-terminal-card">
+          <div class="lab-card-header"><span class="lab-node" aria-hidden="true"></span><span>LIVE TERMINAL</span><span class="lab-terminal-status" id="labTerminalStatus">STANDBY</span></div>
+          <div class="lab-terminal" id="labTerminal" role="log" aria-live="polite" aria-label="Skills lab terminal output">
+            <p><span>harish@portfolio:~$</span> initialise skill-lab</p>
+            <p class="terminal-muted">System ready. Choose a mission to run a quick knowledge check.</p>
+          </div>
+          <button class="button button-secondary lab-reset" id="labReset" type="button">↻ Reset missions</button>
+        </article>
+      </div>
+
+      <div class="lab-challenge-grid" id="labChallenges">
+        <article class="card lab-challenge" data-challenge="semantic">
+          <div class="lab-challenge-number">01</div><span class="project-tag">HTML mission</span>
+          <h3>Choose the semantic heading</h3>
+          <p>A page needs its most important title. Which element gives it the best meaning?</p>
+          <div class="lab-answer-list" role="group" aria-label="HTML mission answers">
+            <button type="button" class="lab-answer"><code>&lt;div&gt;</code></button>
+            <button type="button" class="lab-answer" data-correct="true"><code>&lt;h1&gt;</code></button>
+            <button type="button" class="lab-answer"><code>&lt;span&gt;</code></button>
+          </div>
+          <p class="lab-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="card lab-challenge" data-challenge="responsive">
+          <div class="lab-challenge-number">02</div><span class="project-tag">CSS mission</span>
+          <h3>Build a responsive card grid</h3>
+          <p>Choose the CSS rule that lets cards adapt smoothly to the visitor’s screen.</p>
+          <div class="lab-answer-list" role="group" aria-label="CSS mission answers">
+            <button type="button" class="lab-answer"><code>position: absolute</code></button>
+            <button type="button" class="lab-answer" data-correct="true"><code>repeat(auto-fit, minmax())</code></button>
+            <button type="button" class="lab-answer"><code>width: 220px</code></button>
+          </div>
+          <p class="lab-feedback" aria-live="polite"></p>
+        </article>
+
+        <article class="card lab-challenge" data-challenge="javascript">
+          <div class="lab-challenge-number">03</div><span class="project-tag">JavaScript mission</span>
+          <h3>Format a name in uppercase</h3>
+          <p>Pick the JavaScript expression that changes <code>harish</code> to <code>HARISH</code>.</p>
+          <div class="lab-answer-list" role="group" aria-label="JavaScript mission answers">
+            <button type="button" class="lab-answer"><code>name.upper()</code></button>
+            <button type="button" class="lab-answer" data-correct="true"><code>name.toUpperCase()</code></button>
+            <button type="button" class="lab-answer"><code>name.capitalize()</code></button>
+          </div>
+          <p class="lab-feedback" aria-live="polite"></p>
+        </article>
+      </div>
+    </section>
+
     <!-- ========================== OVERVIEW ======================== -->
     <section class="section hidden-on-load" id="projects">
       <h2 class="section-heading gradient-text" data-i18n="projectsTitle">Projects💪🏻</h2>
@@ -342,6 +427,14 @@
       <h2 class="section-heading gradient-text" data-i18n="assistantTitle">Meet Ultron 🤖</h2>
       <div class="card assistant">
         <div class="assistant-header"><div class="assistant-icon" aria-hidden="true">◈</div><div><h3>Ultron AI🤖</h3><p data-i18n="assistantSub">A simple browser assistant for questions about Harish and his services.</p></div></div>
+        <div class="voice-console" id="voiceConsole">
+          <div class="voice-console-copy"><span class="voice-pulse" aria-hidden="true"></span><div><strong>VOICE MODE</strong><p id="voiceStatus" role="status" aria-live="polite">Optional browser microphone. Nothing is recorded.</p></div></div>
+          <div class="voice-console-actions">
+            <button class="button voice-button" id="voiceInputButton" type="button" aria-pressed="false"><span aria-hidden="true">🎙️</span><span>Speak to ULTRON</span></button>
+            <button class="button button-secondary voice-button" id="voiceReplyButton" type="button" aria-pressed="false"><span aria-hidden="true">🔊</span><span>Voice replies: Off</span></button>
+            <button class="voice-stop-button" id="voiceStopButton" type="button" disabled aria-label="Stop ULTRON voice reply">■</button>
+          </div>
+        </div>
         <div class="assistant-chat" id="assistantChat" aria-live="polite">
           <div class="chat-message"><div class="chat-avatar">🤖 </div><p class="chat-bubble" data-i18n="assistantWelcome">Hello! Ask me about Harish, his skills, contact details or services.</p></div>
         </div>
