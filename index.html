@@ -197,14 +197,176 @@
       </div>
     </section>
 
-    <!-- =========================== SKILLS ========================= -->
-    <section class="section hidden-on-load" id="skills">
-      <h2 class="section-heading gradient-text" data-i18n="skillsTitle">Skills🤸🏻‍♂️</h2>
-      <div class="card">
-        <div class="skill-card"><div class="skill-title"><span>HTML &amp; CSS</span><span>90%</span></div><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
-        <div class="skill-card"><div class="skill-title"><span>JavaScript</span><span>75%</span></div><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
-        <div class="skill-card"><div class="skill-title"><span>C++ Programming</span><span>80%</span></div><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
-        <div class="skill-card" style="margin-bottom:0"><div class="skill-title"><span data-i18n="computerApps">Computer Applications</span><span>85%</span></div><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+    <!-- ================= SKILLS HUD SECTION ================= -->
+    <section id="skills" class="skills-section cyber-section hidden-on-load" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-header">
+          <div class="cyber-badge-sub">
+            <span class="live-pulse-dot"></span>
+            <span class="cyber-mono">SYSTEM_CAPABILITIES // MATRIX</span>
+          </div>
+          <h2 id="skills-heading" class="section-heading gradient-text">Technical Expertise</h2>
+          <p class="section-subtitle">
+            Categorized core competencies, development toolchains, and active technical domains.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- CATEGORY 1: FRONTEND -->
+          <div class="skill-card hud-card" data-category="frontend">
+            <div class="hud-card-corner top-left"></div>
+            <div class="hud-card-corner top-right"></div>
+            <div class="hud-card-header">
+              <div class="hud-icon-wrap neon-cyan">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <div>
+                <span class="hud-category-code cyber-mono">MODULE_01</span>
+                <h3 class="skill-group-title">Frontend Architecture</h3>
+              </div>
+            </div>
+            <p class="skill-group-desc">Crafting responsive, performant, accessible web interfaces and design systems.</p>
+            <ul class="skill-badge-list" role="list">
+              <li class="skill-badge neon-badge-cyan">
+                <span class="badge-dot"></span>
+                <span class="badge-name">HTML5</span>
+                <span class="badge-meta cyber-mono">Semantics</span>
+              </li>
+              <li class="skill-badge neon-badge-cyan">
+                <span class="badge-dot"></span>
+                <span class="badge-name">CSS3</span>
+                <span class="badge-meta cyber-mono">Grid/Flex</span>
+              </li>
+              <li class="skill-badge neon-badge-cyan">
+                <span class="badge-dot"></span>
+                <span class="badge-name">JavaScript</span>
+                <span class="badge-meta cyber-mono">ES6+</span>
+              </li>
+              <li class="skill-badge neon-badge-cyan">
+                <span class="badge-dot"></span>
+                <span class="badge-name">Responsive Design</span>
+                <span class="badge-meta cyber-mono">Cross-Device</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- CATEGORY 2: PROGRAMMING -->
+          <div class="skill-card hud-card" data-category="programming">
+            <div class="hud-card-corner top-left"></div>
+            <div class="hud-card-corner top-right"></div>
+            <div class="hud-card-header">
+              <div class="hud-icon-wrap neon-emerald">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+              <div>
+                <span class="hud-category-code cyber-mono">MODULE_02</span>
+                <h3 class="skill-group-title">Programming &amp; Logic</h3>
+              </div>
+            </div>
+            <p class="skill-group-desc">Core problem solving, computational algorithms, and computer applications.</p>
+            <ul class="skill-badge-list" role="list">
+              <li class="skill-badge neon-badge-emerald">
+                <span class="badge-dot"></span>
+                <span class="badge-name">C++</span>
+                <span class="badge-meta cyber-mono">OOP / Logic</span>
+              </li>
+              <li class="skill-badge neon-badge-emerald">
+                <span class="badge-dot"></span>
+                <span class="badge-name">JavaScript</span>
+                <span class="badge-meta cyber-mono">DOM / Async</span>
+              </li>
+              <li class="skill-badge neon-badge-emerald">
+                <span class="badge-dot"></span>
+                <span class="badge-name">Computer Applications</span>
+                <span class="badge-meta cyber-mono">Applied Tech</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- CATEGORY 3: TOOLS &amp; CLOUD -->
+          <div class="skill-card hud-card" data-category="tools">
+            <div class="hud-card-corner top-left"></div>
+            <div class="hud-card-corner top-right"></div>
+            <div class="hud-card-header">
+              <div class="hud-icon-wrap neon-purple">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                  <line x1="8" y1="21" x2="16" y2="21"></line>
+                  <line x1="12" y1="17" x2="12" y2="21"></line>
+                </svg>
+              </div>
+              <div>
+                <span class="hud-category-code cyber-mono">MODULE_03</span>
+                <h3 class="skill-group-title">Tools &amp; Ecosystem</h3>
+              </div>
+            </div>
+            <p class="skill-group-desc">Version control, edge deployment platforms, and developer tooling.</p>
+            <ul class="skill-badge-list" role="list">
+              <li class="skill-badge neon-badge-purple">
+                <span class="badge-dot"></span>
+                <span class="badge-name">Git</span>
+                <span class="badge-meta cyber-mono">VCS</span>
+              </li>
+              <li class="skill-badge neon-badge-purple">
+                <span class="badge-dot"></span>
+                <span class="badge-name">GitHub</span>
+                <span class="badge-meta cyber-mono">CI/Pages</span>
+              </li>
+              <li class="skill-badge neon-badge-purple">
+                <span class="badge-dot"></span>
+                <span class="badge-name">Cloudflare Workers</span>
+                <span class="badge-meta cyber-mono">Serverless</span>
+              </li>
+              <li class="skill-badge neon-badge-purple">
+                <span class="badge-dot"></span>
+                <span class="badge-name">VS Code</span>
+                <span class="badge-meta cyber-mono">IDE</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- CATEGORY 4: CURRENTLY LEARNING / EXPANDING -->
+          <div class="skill-card hud-card learning-card" data-category="learning">
+            <div class="hud-card-corner top-left"></div>
+            <div class="hud-card-corner top-right"></div>
+            <div class="hud-card-header">
+              <div class="hud-icon-wrap neon-amber">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                </svg>
+              </div>
+              <div>
+                <span class="hud-category-code cyber-mono pulse-text">ACTIVE_INNOVATION</span>
+                <h3 class="skill-group-title">Currently Mastering</h3>
+              </div>
+            </div>
+            <p class="skill-group-desc">Actively expanding knowledge into modern artificial intelligence and backend engineering.</p>
+            <ul class="skill-badge-list" role="list">
+              <li class="skill-badge neon-badge-amber">
+                <span class="badge-dot pulse-amber"></span>
+                <span class="badge-name">AI Engineering</span>
+                <span class="badge-meta cyber-mono">LLMs/Agents</span>
+              </li>
+              <li class="skill-badge neon-badge-amber">
+                <span class="badge-dot pulse-amber"></span>
+                <span class="badge-name">Backend Development</span>
+                <span class="badge-meta cyber-mono">Cloud Architecture</span>
+              </li>
+              <li class="skill-badge neon-badge-amber">
+                <span class="badge-dot pulse-amber"></span>
+                <span class="badge-name">REST APIs</span>
+                <span class="badge-meta cyber-mono">Integration</span>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
