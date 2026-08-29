@@ -578,14 +578,54 @@ function initialiseAssistant() {
 }
 
 /* PWA checks bypass the browser HTTP cache so deployed updates are discovered promptly. */
-const PWA_VERSION = '2026.08.27.3';
+const PWA_VERSION = '2026.08.29.1';
+
+function initialisePwaExperience() {
+  if (!('serviceWorker' in navigator) || location.protocol === 'file:') return;
+
+  const banner = document.createElement('aside');
+  banner.className = 'pwa-banner';
+  banner.setAttribute('role', 'status');
+  banner.innerHTML = '<span class="pwa-banner-copy"></span><button class="pwa-banner-action button" type="button"></button><button class="pwa-banner-close icon-button" type="button" aria-label="Dismiss">×</button>';
+  document.body.append(banner);
+  const copy = banner.querySelector('.pwa-banner-copy');
+  const action = banner.querySelector('.pwa-banner-action');
+  const close = banner.querySelector('.pwa-banner-close');
+  let installPrompt = null;
+  const show = (message, label, handler) => {
+    copy.textContent = message; action.textContent = label; action.onclick = handler; banner.classList.add('is-visible');
+  };
+  close.addEventListener('click', () => banner.classList.remove('is-visible'));
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault(); installPrompt = event;
+    if (!localStorage.getItem('harish-install-dismissed')) show('Install Harish V as a cleaner app for faster access and offline tools.', 'Install app', async () => {
+      installPrompt.prompt();
+      const choice = await installPrompt.userChoice;
+      if (choice.outcome === 'accepted') banner.classList.remove('is-visible');
+      installPrompt = null;
+    });
+  });
+  window.addEventListener('appinstalled', () => { installPrompt = null; banner.classList.remove('is-visible'); });
+  close.addEventListener('click', () => { if (copy.textContent.startsWith('Install')) localStorage.setItem('harish-install-dismissed', '1'); });
+
+  navigator.serviceWorker.addEventListener('controllerchange', () => window.location.reload());
+  navigator.serviceWorker.ready.then((registration) => {
+    const showUpdate = () => {
+      if (!registration.waiting) return;
+      show('A fresh Harish V update is ready — refresh your app to see the latest improvements.', 'Update now', () => registration.waiting.postMessage({ type: 'SKIP_WAITING' }));
+    };
+    showUpdate();
+    registration.addEventListener('updatefound', () => registration.installing?.addEventListener('statechange', showUpdate));
+  });
+}
 
 function registerPwa() {
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     window.addEventListener('load', () => {
       navigator.serviceWorker
         .register(`./sw.js?v=${PWA_VERSION}`, { updateViaCache: 'none' })
-        .then((registration) => registration.update().catch(() => { /* The next visit will retry. */ }))
+        .then((registration) => { initialisePwaExperience(); return registration.update().catch(() => { /* The next visit will retry. */ }); })
         .catch(() => { /* Site works normally if registration fails. */ });
     }, { once: true });
   }
