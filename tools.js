@@ -285,7 +285,7 @@ function initialiseTimer() {
   const readInputs = () => Math.max(0, Math.min(999, Number(minutes.value) || 0)) * 60 + Math.max(0, Math.min(59, Number(seconds.value) || 0));
   const render = () => { display.textContent = format(remainingSeconds); };
   const stopAlarm = () => { clearInterval(alarmInterval); alarmInterval = null; if (audioContext) { audioContext.close().catch(() => {}); audioContext = null; } };
-  const prepareAudio = () => { if (!audioContext) audioContext = new (window.AudioContext || window.webkitAudioContext)(); if (audioContext.state === 'suspended') audioContext.resume().catch(() => {}); };
+  const prepareAudio = () => { const AudioContextClass = window.AudioContext || window.webkitAudioContext; if (!AudioContextClass) return null; if (!audioContext) audioContext = new AudioContextClass(); if (audioContext.state === 'suspended') audioContext.resume().catch(() => {}); return audioContext; };
   const playBeep = () => {
     if (!audioContext) return; const oscillator = audioContext.createOscillator(); const gain = audioContext.createGain();
     oscillator.frequency.setValueAtTime(760, audioContext.currentTime); gain.gain.setValueAtTime(.0001, audioContext.currentTime); gain.gain.exponentialRampToValueAtTime(.22, audioContext.currentTime + .03); gain.gain.exponentialRampToValueAtTime(.0001, audioContext.currentTime + .42);
@@ -293,7 +293,7 @@ function initialiseTimer() {
   };
   const finish = () => {
     running = false; clearInterval(interval); remainingSeconds = 0; render(); start.textContent = window.getSiteText('start'); status.textContent = 'Time is complete! Alarm is playing.'; status.className = 'status-note success';
-    prepareAudio(); playBeep(); alarmInterval = setInterval(playBeep, 850); if (navigator.vibrate) navigator.vibrate([300, 120, 300, 120, 500]);
+    if (prepareAudio()) { playBeep(); alarmInterval = setInterval(playBeep, 850); } if (navigator.vibrate) navigator.vibrate([300, 120, 300, 120, 500]);
     if ('Notification' in window && Notification.permission === 'granted') new Notification('Timer finished', { body: 'Your Harish V free-services timer is complete.', icon: 'icon-192.png' });
   };
   const tick = () => { remainingSeconds = Math.max(0, Math.ceil((deadline - Date.now()) / 1000)); render(); if (remainingSeconds <= 0) finish(); };

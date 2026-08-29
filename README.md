@@ -1,5 +1,5 @@
 - `index.html` is the portfolio home page.
-- `free-srvices.html` is the new free-services page.
+- `free-services.html` is the new free-services page.
 - `styles.css`, `site.js`, and `tools.js` must remain beside both HTML files.
 - `manifest.webmanifest`, `sw.js`, and the profile-photo PNG icons enable the installable PWA/offline experience.
 
