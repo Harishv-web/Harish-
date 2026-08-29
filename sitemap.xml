@@ -13,4 +13,10 @@
     <priority>0.8</priority>
   </url>
 
+  <url>
+    <loc>https://harishv.co.in/identity/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>

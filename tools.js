@@ -294,7 +294,7 @@ function initialiseTimer() {
   const finish = () => {
     running = false; clearInterval(interval); remainingSeconds = 0; render(); start.textContent = window.getSiteText('start'); status.textContent = 'Time is complete! Alarm is playing.'; status.className = 'status-note success';
     prepareAudio(); playBeep(); alarmInterval = setInterval(playBeep, 850); if (navigator.vibrate) navigator.vibrate([300, 120, 300, 120, 500]);
-    if ('Notification' in window && Notification.permission === 'granted') new Notification('Timer finished', { body: 'Your Harish V free-services timer is complete.', icon: 'icon.svg' });
+    if ('Notification' in window && Notification.permission === 'granted') new Notification('Timer finished', { body: 'Your Harish V free-services timer is complete.', icon: 'icon-192.png' });
   };
   const tick = () => { remainingSeconds = Math.max(0, Math.ceil((deadline - Date.now()) / 1000)); render(); if (remainingSeconds <= 0) finish(); };
   start.addEventListener('click', () => {
