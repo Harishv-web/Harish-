@@ -1,22 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title description">
-  <title id="title">Harish V Portfolio</title>
-  <desc id="description">A futuristic H monogram in violet and cyan.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Harish V Portfolio">
   <defs>
-    <linearGradient id="background" x1="0" x2="1" y1="0" y2="1">
-      <stop stop-color="#08081a"/>
-      <stop offset="1" stop-color="#12072b"/>
-    </linearGradient>
-    <linearGradient id="signal" x1="90" x2="420" y1="90" y2="420" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#8b5cf6"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b5cf6"/>
       <stop offset="1" stop-color="#06b6d4"/>
     </linearGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="14" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
   </defs>
-  <rect width="512" height="512" rx="112" fill="url(#background)"/>
-  <rect x="24" y="24" width="464" height="464" rx="94" fill="none" stroke="#67e8f9" stroke-opacity=".32" stroke-width="4"/>
-  <path d="M130 114h78v105h96V114h78v284h-78V287h-96v111h-78V114Z" fill="url(#signal)" filter="url(#glow)"/>
-  <circle cx="128" cy="382" r="11" fill="#67e8f9"/><circle cx="384" cy="130" r="11" fill="#c4b5fd"/>
+  <rect width="512" height="512" rx="112" fill="#080811"/>
+  <rect x="40" y="40" width="432" height="432" rx="88" fill="url(#bg)"/>
+  <path d="M142 154h228v54H196v45h142v51H196v54h174v54H142z" fill="#fff"/>
+  <circle cx="369" cy="181" r="17" fill="#080811"/>
 </svg>
