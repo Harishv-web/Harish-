@@ -7,6 +7,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   initialiseBackButton();
   initialiseConnectionStatus();
+  initialisePwaInstall();
+  initialiseWebsiteStudio();
   initialiseToolShortcuts();
   initialiseSpeedTester();
   initialiseQrGenerator();
@@ -15,6 +17,136 @@ document.addEventListener('DOMContentLoaded', () => {
   initialiseTimer();
   initialiseCalendar();
 });
+
+/* ============================= PWA INSTALL ================================ */
+function initialisePwaInstall() {
+  const button = document.getElementById('pwaInstallButton');
+  const status = document.getElementById('pwaInstallStatus');
+  if (!button || !status) return;
+
+  let installPrompt = null;
+  const installed = () => window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  const showInstalledState = () => {
+    button.hidden = true;
+    status.textContent = 'Harish V App is installed. New updates arrive automatically when you open it online.';
+    status.className = 'pwa-install-status success';
+  };
+
+  if (installed()) showInstalledState();
+  else status.textContent = 'Install the Harish V App for a full-screen shortcut and offline tools.';
+
+  window.addEventListener('beforeinstallprompt', (event) => {
+    event.preventDefault();
+    installPrompt = event;
+    if (!installed()) {
+      button.hidden = false;
+      status.textContent = 'Install the Harish V App for a full-screen shortcut and offline tools.';
+    }
+  });
+
+  button.addEventListener('click', async () => {
+    if (!installPrompt) {
+      status.textContent = 'Use your browser menu and choose “Install app” or “Add to Home screen”.';
+      return;
+    }
+    button.disabled = true;
+    await installPrompt.prompt();
+    const choice = await installPrompt.userChoice;
+    installPrompt = null;
+    button.disabled = false;
+    button.hidden = true;
+    status.textContent = choice.outcome === 'accepted' ? 'Installing Harish V App…' : 'Installation was cancelled. You can install later from your browser menu.';
+  });
+
+  window.addEventListener('appinstalled', showInstalledState);
+}
+
+/* =========================== WEBSITE STUDIO ================================ */
+function initialiseWebsiteStudio() {
+  const form = document.getElementById('websiteStudioForm');
+  const preview = document.getElementById('studioPreview');
+  const websiteType = document.getElementById('studioWebsiteType');
+  const name = document.getElementById('studioName');
+  const profession = document.getElementById('studioProfession');
+  const style = document.getElementById('studioStyle');
+  const previewType = document.getElementById('studioPreviewType');
+  const previewBrand = document.getElementById('studioPreviewBrand');
+  const previewName = document.getElementById('studioPreviewName');
+  const previewProfession = document.getElementById('studioPreviewProfession');
+  const previewStyle = document.getElementById('studioPreviewStyle');
+  const previewSections = document.getElementById('studioPreviewSections');
+  const whatsapp = document.getElementById('studioWhatsApp');
+  const generate = document.getElementById('generatePersonalDemo');
+  const status = document.getElementById('studioStatus');
+  if (!form || !preview || !websiteType || !name || !profession || !style || !previewType || !previewBrand || !previewName || !previewProfession || !previewStyle || !previewSections || !whatsapp || !generate || !status) return;
+
+  const palettes = { neon: 'Neon Pulse', ocean: 'Ocean Glass', sunset: 'Sunset Spark', forest: 'Forest Signal' };
+  const styleClasses = { 'Glass Command Center': 'glass', 'Minimal Editorial': 'minimal', 'Bold Gradient': 'bold', 'Warm Creator': 'warm' };
+  let selectedPalette = 'neon';
+  const selectedSections = () => [...form.querySelectorAll('input[name="sections"]:checked')].map((input) => input.value);
+  const cleanText = (value, fallback) => value.trim().replace(/\s+/g, ' ') || fallback;
+
+  const update = () => {
+    const currentType = websiteType.value;
+    const currentName = cleanText(name.value, currentType === 'Personal Portfolio' ? 'Your Name' : 'Your Brand');
+    const currentProfession = cleanText(profession.value, currentType === 'Personal Portfolio' ? 'Your next big idea' : 'Your story starts here');
+    const currentSections = selectedSections();
+    const currentStyle = style.value;
+    const renderedSections = currentSections.length ? currentSections : ['Custom section'];
+
+    preview.className = `studio-preview palette-${selectedPalette} style-${styleClasses[currentStyle] || 'glass'}`;
+    previewType.textContent = currentType.toUpperCase();
+    previewBrand.textContent = currentName.toUpperCase();
+    previewName.textContent = currentName;
+    previewProfession.textContent = currentProfession;
+    previewStyle.textContent = currentStyle;
+    previewSections.replaceChildren(...renderedSections.map((section) => {
+      const chip = document.createElement('span');
+      chip.textContent = section;
+      return chip;
+    }));
+
+    const brief = [
+      'Hi Harish! I created a website concept in your Website Studio.',
+      '',
+      `Website type: ${currentType}`,
+      `Name or brand: ${currentName}`,
+      `Profession or focus: ${currentProfession}`,
+      `Colour signal: ${palettes[selectedPalette]}`,
+      `Visual style: ${currentStyle}`,
+      `Sections: ${renderedSections.join(', ')}`,
+      '',
+      'I would like to discuss this website project.'
+    ].join('\n');
+    whatsapp.href = `https://wa.me/917904329936?text=${encodeURIComponent(brief)}`;
+  };
+
+  form.addEventListener('input', update);
+  form.addEventListener('change', update);
+  form.querySelectorAll('.studio-palette').forEach((button) => {
+    button.addEventListener('click', () => {
+      selectedPalette = button.dataset.palette || 'neon';
+      form.querySelectorAll('.studio-palette').forEach((item) => {
+        const selected = item === button;
+        item.classList.toggle('is-selected', selected);
+        item.setAttribute('aria-pressed', String(selected));
+      });
+      update();
+    });
+  });
+  generate.addEventListener('click', () => {
+    websiteType.value = 'Personal Portfolio';
+    if (!profession.value.trim()) profession.value = 'Student, creator or professional';
+    update();
+    status.textContent = 'Personal website demo generated. Add your name, then send the brief when it feels right.';
+    status.className = 'studio-status success';
+  });
+  whatsapp.addEventListener('click', () => {
+    status.textContent = 'Opening WhatsApp with your complete website brief. You can review it before sending.';
+    status.className = 'studio-status success';
+  });
+  update();
+}
 
 /* ===================== RETURN TO THE SERVICES SECTION ===================== */
 function initialiseBackButton() {
