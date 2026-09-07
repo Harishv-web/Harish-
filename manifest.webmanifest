@@ -1,10 +1,11 @@
 {
   "name": "Harish V Portfolio & Free Services",
   "short_name": "Harish V",
-  "description": "Portfolio and free digital tools by Harish V.",
+  "description": "Harish V's portfolio, interactive Website Studio and free digital tools.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#020202",
   "theme_color": "#020202",
   "icons": [
@@ -13,6 +14,22 @@
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Website Studio",
+      "short_name": "Website Studio",
+      "description": "Create a live website concept and send the design brief.",
+      "url": "./free-services.html#website-studio",
+      "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+    },
+    {
+      "name": "Free Services",
+      "short_name": "Free Services",
+      "description": "Open Harish V's free browser tools.",
+      "url": "./free-services.html",
+      "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
     }
   ]
 }

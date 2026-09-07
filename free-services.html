@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#020202">
-  <meta name="description" content="Free online tools offered by Harish V: speed test, QR generator, typing test, stopwatch, timer and calendar.">
+  <meta name="description" content="Free online tools and an interactive website studio offered by Harish V: create a live website concept, speed test, QR generator, typing test, timer and more.">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,6 +40,8 @@
         <option value="hi">हिन्दी</option>
       </select>
       <p class="offline-chip" id="connectionChip">● <span data-i18n="onlineReady">Online — ready to test and generate</span></p>
+      <button class="tool-button pwa-install-button" id="pwaInstallButton" type="button"><span aria-hidden="true">⬇️</span> Install Harish V App</button>
+      <p class="pwa-install-status" id="pwaInstallStatus" role="status" aria-live="polite"></p>
     </section>
 
     <!-- ========================= TOOL SHORTCUTS ==================== -->
@@ -60,6 +62,90 @@
         <p>Take a break with two polished browser games: neon Snake and Maze Chaser. Play instantly on desktop or mobile—no download needed.</p>
       </div>
       <a class="tool-button games-offered-link" href="games.html"><span class="action-emoji" aria-hidden="true">🎮</span>Play the games <span aria-hidden="true">→</span></a>
+    </section>
+
+    <!-- ========================= WEBSITE STUDIO ===================== -->
+    <section class="website-studio" id="website-studio" aria-labelledby="websiteStudioTitle">
+      <div class="website-studio-header">
+        <div>
+          <span class="games-kicker">INTERACTIVE DESIGN SERVICE</span>
+          <h2 id="websiteStudioTitle">Build Your Website Studio</h2>
+          <p>Create a live concept for your next website. Choose the look, add the important sections, then send Harish the complete brief on WhatsApp.</p>
+        </div>
+        <div class="studio-live-chip"><span aria-hidden="true"></span>LIVE PREVIEW</div>
+      </div>
+
+      <div class="studio-layout">
+        <form class="studio-controls" id="websiteStudioForm">
+          <div class="studio-control-group">
+            <label class="tool-label" for="studioWebsiteType">Website type</label>
+            <select class="tool-select" id="studioWebsiteType" name="websiteType">
+              <option value="Personal Portfolio" selected>Personal Portfolio</option>
+              <option value="Small Business">Small Business</option>
+              <option value="College Project">College Project</option>
+              <option value="Event Landing Page">Event Landing Page</option>
+              <option value="Digital Service">Digital Service</option>
+            </select>
+          </div>
+          <div class="studio-two-columns">
+            <div><label class="tool-label" for="studioName">Name or brand</label><input class="tool-input" id="studioName" name="name" maxlength="60" placeholder="Your name or brand"></div>
+            <div><label class="tool-label" for="studioProfession">Profession or focus</label><input class="tool-input" id="studioProfession" name="profession" maxlength="70" placeholder="Web developer, café, student…"></div>
+          </div>
+
+          <fieldset class="studio-control-group studio-fieldset">
+            <legend class="tool-label">Colour signal</legend>
+            <div class="studio-palette-list" role="radiogroup" aria-label="Colour signal">
+              <button type="button" class="studio-palette is-selected" data-palette="neon" aria-pressed="true"><i></i>Neon Pulse</button>
+              <button type="button" class="studio-palette" data-palette="ocean" aria-pressed="false"><i></i>Ocean Glass</button>
+              <button type="button" class="studio-palette" data-palette="sunset" aria-pressed="false"><i></i>Sunset Spark</button>
+              <button type="button" class="studio-palette" data-palette="forest" aria-pressed="false"><i></i>Forest Signal</button>
+            </div>
+          </fieldset>
+
+          <div class="studio-control-group">
+            <label class="tool-label" for="studioStyle">Visual style</label>
+            <select class="tool-select" id="studioStyle" name="style">
+              <option value="Glass Command Center" selected>Glass Command Center</option>
+              <option value="Minimal Editorial">Minimal Editorial</option>
+              <option value="Bold Gradient">Bold Gradient</option>
+              <option value="Warm Creator">Warm Creator</option>
+            </select>
+          </div>
+
+          <fieldset class="studio-control-group studio-fieldset">
+            <legend class="tool-label">Include these sections</legend>
+            <div class="studio-section-list">
+              <label><input type="checkbox" name="sections" value="Home" checked> Home</label>
+              <label><input type="checkbox" name="sections" value="About" checked> About</label>
+              <label><input type="checkbox" name="sections" value="Services" checked> Services</label>
+              <label><input type="checkbox" name="sections" value="Projects"> Projects</label>
+              <label><input type="checkbox" name="sections" value="Contact" checked> Contact</label>
+              <label><input type="checkbox" name="sections" value="Testimonials"> Testimonials</label>
+            </div>
+          </fieldset>
+
+          <div class="studio-actions">
+            <button class="tool-button" id="generatePersonalDemo" type="button"><span aria-hidden="true">✨</span> Generate Personal Demo</button>
+            <a class="tool-button button-secondary" id="studioWhatsApp" href="https://wa.me/917904329936" target="_blank" rel="noopener"><span aria-hidden="true">💬</span> Send Design to WhatsApp</a>
+          </div>
+          <p class="studio-status" id="studioStatus" role="status" aria-live="polite">Your choices stay in this browser. Nothing is saved until you choose WhatsApp.</p>
+        </form>
+
+        <div class="studio-preview-shell">
+          <div class="studio-preview-label"><span>YOUR LIVE CONCEPT</span><small id="studioPreviewStyle">Glass Command Center</small></div>
+          <div class="studio-preview palette-neon style-glass" id="studioPreview">
+            <div class="studio-preview-window">
+              <div class="studio-preview-topbar"><span></span><span></span><span></span><b id="studioPreviewType">PERSONAL PORTFOLIO</b></div>
+              <div class="studio-preview-nav"><strong id="studioPreviewBrand">YOUR NAME</strong><i></i><i></i><i></i></div>
+              <div class="studio-preview-hero">
+                <p>HELLO, I AM</p><h3 id="studioPreviewName">Your Name</h3><strong id="studioPreviewProfession">Your next big idea</strong><em></em>
+              </div>
+              <div class="studio-preview-sections" id="studioPreviewSections" aria-label="Selected website sections"></div>
+            </div>
+          </div>
+          <p class="studio-preview-note">This is a visual direction preview, not a final website. Harish can tailor the finished design to your real content.</p>
+        </div>
+      </div>
     </section>
 
     <!-- ========================= TOOL PANELS ======================= -->
