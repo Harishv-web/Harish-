@@ -82,14 +82,22 @@ function setDashboardStatus(message, state = '') {
 }
 
 async function requestDashboardData() {
-  const response = await fetch(DASHBOARD_ENDPOINT, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'text/plain;charset=UTF-8'
-    },
-    body: JSON.stringify({ accessKey: dashboardAccessKey }),
-    cache: 'no-store'
-  });
+  let response;
+  try {
+    response = await fetch(DASHBOARD_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'text/plain;charset=UTF-8'
+      },
+      body: JSON.stringify({ accessKey: dashboardAccessKey }),
+      cache: 'no-store'
+    });
+  } catch (error) {
+    if (error instanceof TypeError) {
+      throw new Error('The dashboard service could not be reached. Check the worker endpoint and its CORS configuration.');
+    }
+    throw error;
+  }
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) throw new Error(payload.error || 'Dashboard data could not be loaded.');
   return payload;
