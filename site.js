@@ -173,29 +173,54 @@ function initialiseRevealEffects() {
 function initialiseBackground() {
   const canvas = document.getElementById('matrix');
   if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   const context = canvas.getContext('2d');
-  const fontSize = 14, letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890{}[]<>#$%&', drops = [];
+  const fontSize = 14;
+  const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890{}[]<>#$%&';
+  const drops = [];
+  let animationFrameId = 0;
+
   const resize = () => {
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     drops.length = Math.ceil(canvas.width / fontSize);
     drops.fill(1);
   };
+
   const draw = () => {
-    context.fillStyle = 'rgba(2,2,2,.08)'; context.fillRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = '#8b5cf6'; context.font = `${fontSize}px monospace`;
+    context.fillStyle = 'rgba(2,2,2,.08)';
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    context.fillStyle = '#8b5cf6';
+    context.font = `${fontSize}px monospace`;
+
     drops.forEach((drop, index) => {
-      context.fillText(letters[Math.floor(Math.random() * letters.length)], index * fontSize, drop * fontSize);
+      const text = letters[Math.floor(Math.random() * letters.length)];
+      context.fillText(text, index * fontSize, drop * fontSize);
       drops[index] = drop * fontSize > canvas.height && Math.random() > .975 ? 0 : drop + 1;
     });
+
+    animationFrameId = window.requestAnimationFrame(draw);
   };
-  resize(); window.addEventListener('resize', resize); setInterval(draw, 38);
+
+  resize();
+  window.addEventListener('resize', resize, { passive: true });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      if (animationFrameId) window.cancelAnimationFrame(animationFrameId);
+    } else {
+      animationFrameId = window.requestAnimationFrame(draw);
+    }
+  }, { passive: true });
+  animationFrameId = window.requestAnimationFrame(draw);
 }
 
 function initialiseBackToTop() {
   const button = document.getElementById('backToTop');
   if (!button) return;
-  window.addEventListener('scroll', () => button.classList.toggle('visible', window.scrollY > 500), { passive: true });
+  const toggle = () => button.classList.toggle('visible', window.scrollY > 500);
+  window.addEventListener('scroll', toggle, { passive: true });
   button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  toggle();
 }
 
 function initialiseCommandCenter() {
@@ -541,6 +566,16 @@ function initialiseAssistant() {
     const question = input.value.trim();
     if (!question) return;
 
+    const CHAT_BACKEND_ENABLED = false;
+    const CHAT_BACKEND_UNAVAILABLE_MESSAGE = 'Ultron chat is currently unavailable because the private worker backend is not configured or verified in this deployment.';
+
+    if (!CHAT_BACKEND_ENABLED) {
+      addMessage(question, 'user');
+      input.value = '';
+      addMessage(CHAT_BACKEND_UNAVAILABLE_MESSAGE, 'bot');
+      return;
+    }
+
     addMessage(question, 'user');
     input.value = '';
     const loadingMessage = document.createElement('div');
@@ -586,11 +621,22 @@ function initialisePwaExperience() {
   const banner = document.createElement('aside');
   banner.className = 'pwa-banner';
   banner.setAttribute('role', 'status');
-  banner.innerHTML = '<span class="pwa-banner-copy"></span><button class="pwa-banner-action button" type="button"></button><button class="pwa-banner-close icon-button" type="button" aria-label="Dismiss">×</button>';
+
+  const copy = document.createElement('span');
+  copy.className = 'pwa-banner-copy';
+
+  const action = document.createElement('button');
+  action.className = 'pwa-banner-action button';
+  action.type = 'button';
+
+  const close = document.createElement('button');
+  close.className = 'pwa-banner-close icon-button';
+  close.type = 'button';
+  close.setAttribute('aria-label', 'Dismiss');
+  close.textContent = '×';
+
+  banner.append(copy, action, close);
   document.body.append(banner);
-  const copy = banner.querySelector('.pwa-banner-copy');
-  const action = banner.querySelector('.pwa-banner-action');
-  const close = banner.querySelector('.pwa-banner-close');
   let installPrompt = null;
   const show = (message, label, handler) => {
     copy.textContent = message; action.textContent = label; action.onclick = handler; banner.classList.add('is-visible');
@@ -637,6 +683,9 @@ function registerPwa() {
   collected. Visitors who enable a privacy preference are not tracked.
 */
 function initialiseVisitorAnalytics() {
+  const ANALYTICS_BACKEND_ENABLED = false;
+  if (!ANALYTICS_BACKEND_ENABLED) return;
+
   const isPortfolioHost = /(^|\.)harishv\.co\.in$/i.test(location.hostname);
   const privacyControlEnabled = navigator.globalPrivacyControl === true || navigator.doNotTrack === '1' || window.doNotTrack === '1';
   if (location.protocol !== 'https:' || !isPortfolioHost || privacyControlEnabled) return;
@@ -695,7 +744,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initialiseLanguagePicker(); initialiseMenu(); initialiseTyping(); initialiseRevealEffects();
   initialiseCommandCenter(); initialiseCommandStatus(); initialiseBackground(); initialiseBackToTop(); initialiseCaseStudies(); initialiseSkillsLab(); initialiseAssistant(); initialiseVisitorAnalytics(); initialiseContactForm(); registerPwa();
   const glow = document.querySelector('.cursor-glow');
-  if (glow && matchMedia('(pointer:fine)').matches) document.addEventListener('pointermove', (event) => { glow.style.left = `${event.clientX}px`; glow.style.top = `${event.clientY}px`; });
+  if (glow && matchMedia('(pointer:fine)').matches) document.addEventListener('pointermove', (event) => { glow.style.left = `${event.clientX}px`; glow.style.top = `${event.clientY}px`; }, { passive: true });
 });
 
 /* Used by tools.js without exposing the full translation object. */
