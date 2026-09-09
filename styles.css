@@ -30,6 +30,8 @@ button, input, select, textarea { font: inherit; }
 button { color: inherit; }
 a { color: inherit; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; top: 10px; left: 10px; z-index: 3000; padding: 10px 14px; border-radius: 9px; background: #fff; color: #050509; font-weight: 700; transform: translateY(-150%); transition: transform .2s; }
+.skip-link:focus-visible { transform: translateY(0); }
 
 /* Animated background canvas stays behind all page content. */
 #matrix { position: fixed; inset: 0; z-index: -2; width: 100%; height: 100%; opacity: .13; }
@@ -63,6 +65,7 @@ a { color: inherit; }
   min-width: 116px; padding: 9px 10px; border: 1px solid var(--line); border-radius: 9px; outline: none;
   background: #101016; color: white; cursor: pointer;
 }
+.language-picker:focus-visible { outline: 3px solid rgba(6, 182, 212, .7); outline-offset: 3px; }
 .menu-button { display: none; border: 0; background: transparent; color: white; font-size: 1.7rem; cursor: pointer; }
 .nav-backdrop { display: none; }
 
@@ -472,7 +475,7 @@ html.command-loader-active .command-loader { opacity: 1; visibility: visible; po
   background: rgba(15, 23, 42, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.05);
   font-size: 0.88rem;
-  transition: all 0.2s ease;
+  transition: background-color .2s ease, transform .2s ease;
 }
 
 .skill-badge:hover {
@@ -596,7 +599,7 @@ html.command-loader-active .command-loader { opacity: 1; visibility: visible; po
 .contact-form-status { margin: 10px 2px 0; text-align: center; }
 .contact-form button:disabled { cursor: wait; opacity: .72; transform: none; }
 .form-field { width: 100%; margin: 8px 0; padding: 14px; border: 1px solid var(--line); border-radius: 11px; outline: none; background: #09090d; color: white; }
-.form-field:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(139, 92, 246, .14); }
+.form-field:focus-visible { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(139, 92, 246, .14); }
 .form-field textarea { resize: vertical; }
 .assistant { max-width: 900px; margin: 0 auto; overflow: hidden; }
 .assistant-header { display: flex; align-items: center; gap: 13px; padding: 19px 22px; border-bottom: 1px solid var(--line); }
@@ -716,7 +719,7 @@ html.command-loader-active .command-loader { opacity: 1; visibility: visible; po
 #speedometer { width: min(100%, 320px); height: auto; }
 .tool-label { display: block; margin: 13px 0 7px; color: #d8d5ff; font-weight: 700; }
 .tool-input, .tool-select { width: 100%; padding: 13px; border: 1px solid var(--line); border-radius: 10px; outline: none; background: #09090d; color: white; }
-.tool-input:focus, .tool-select:focus { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(139, 92, 246, .14); }
+.tool-input:focus-visible, .tool-select:focus-visible { border-color: var(--purple); box-shadow: 0 0 0 3px rgba(139, 92, 246, .14); }
 .qr-canvas-wrap { display: grid; min-height: 0; place-items: center; margin: 25px 0 13px; }
 #qrCanvas { display: none; width: min(100%, 320px); height: auto; padding: 10px; border-radius: 12px; background: white; image-rendering: pixelated; }
 .typing-sample { min-height: 98px; padding: 18px; border: 1px dashed rgba(6, 182, 212, .65); border-radius: 12px; background: rgba(6, 182, 212, .06); color: #e4e6eb; line-height: 1.8; }

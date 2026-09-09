@@ -12,7 +12,8 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="dashboard-page">
-  <main class="dashboard-shell">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <main class="dashboard-shell" id="main-content">
     <header class="dashboard-header">
       <div>
         <a class="dashboard-back" href="index.html">← Back to portfolio</a>
@@ -24,7 +25,7 @@
 
     <form class="dashboard-access" id="dashboardAccessForm">
       <label class="sr-only" for="dashboardAccessKey">Dashboard access key</label>
-      <input class="form-field" id="dashboardAccessKey" type="password" autocomplete="off" required placeholder="Enter dashboard access key">
+      <input class="form-field" id="dashboardAccessKey" name="accessKey" type="password" autocomplete="current-password" required placeholder="Enter dashboard access key">
       <button class="button" id="dashboardUnlockButton" type="submit">Unlock dashboard</button>
     </form>
     <p class="status-note dashboard-status" id="dashboardStatus" role="status" aria-live="polite">Enter your access key to load the last seven days.</p>
