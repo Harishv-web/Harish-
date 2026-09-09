@@ -63,7 +63,7 @@ function addWarning(filePath, message) {
 function isExternalReference(value) {
   if (!value) return true;
   if (value.startsWith('#')) return true;
-  if (value.startsWith('mailto:') || value.startsWith('tel:') || value.startsWith('javascript:')) return true;
+  if (value.startsWith('mailto:') || value.startsWith('tel:') || value.startsWith('javascript:') || value.startsWith('vbscript:')) return true;
   if (value.startsWith('data:') || value.startsWith('blob:')) return true;
   return /^[a-z][a-z0-9+.-]*:/i.test(value) || value.startsWith('//');
 }
@@ -183,7 +183,7 @@ function detectSecrets(text, filePath) {
     /github_pat_[A-Za-z0-9_]{20,}/g,
     /AIza[0-9A-Za-z\-_]{35}/g,
     /xox[baprs]-[A-Za-z0-9-]{10,}/g,
-    /(?:sk_live|sk_test)_[A-Za-z0-9A-Za-z\-_]{10,}/g,
+    /(?:sk_live|sk_test)_[A-Za-z0-9\-_]{10,}/g,
     /-----BEGIN (?:RSA |EC |DSA |OPENSSH |PGP )?PRIVATE KEY-----/g,
     /(?:api[_-]?key|access[_-]?token|secret|password)[\s:=]+["']?[A-Za-z0-9._\-+/=]{16,}/gi,
   ];
