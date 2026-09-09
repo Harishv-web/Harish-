@@ -84,6 +84,7 @@
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   <div class="command-loader" id="commandLoader" aria-hidden="true">
     <div class="command-loader-panel">
       <p class="command-loader-kicker">// HARISH V / COMMAND CENTER</p>
@@ -103,7 +104,7 @@
   <nav class="site-nav" aria-label="Main navigation">
     <!-- The name was restored after the logo image here. -->
     <a class="brand" href="#home" aria-label="Harish V home">
-      <img class="nav-logo-img" src="profile.jpg" alt="Harish V profile picture" onerror="this.onerror=null;this.src='icon.svg';">
+      <img class="nav-logo-img" src="profile.jpg" alt="Harish V profile picture" width="512" height="512" onerror="this.onerror=null;this.src='icon.svg';">
       <span class="brand-name">Harish V</span>
     </a>
     <button class="menu-button" id="menuButton" type="button" aria-controls="navLinks" aria-expanded="false" aria-label="Open menu">☰</button>
@@ -127,7 +128,7 @@
     </ul>
   </nav>
 
-  <main>
+  <main id="main-content">
     <!-- =========================== HERO =========================== -->
     <section class="hero" id="home">
       <div class="hero-inner">
@@ -154,7 +155,7 @@
         <!-- profile.jpg uses contain instead of crop, especially on mobile. -->
         <div class="hero-photo-frame">
           <div class="hero-photo-glow"></div>
-          <img class="hero-profile-img" src="profile.jpg" alt="Harish V portrait" onerror="this.onerror=null;this.src='icon.svg';">
+          <img class="hero-profile-img" src="profile.jpg" alt="Harish V portrait" width="512" height="512" fetchpriority="high" onerror="this.onerror=null;this.src='icon.svg';">
           <span class="hero-photo-tag">&lt; Harish V /&gt;</span>
         </div>
       </div>
@@ -166,7 +167,7 @@
       <div class="about-layout">
         <div class="card">
           <div class="about-flex">
-            <div class="about-photo-wrap"><img class="about-profile-img" src="profile.jpg" alt="Harish V" onerror="this.onerror=null;this.src='icon.svg';"></div>
+            <div class="about-photo-wrap"><img class="about-profile-img" src="profile.jpg" alt="Harish V" width="512" height="512" loading="lazy" onerror="this.onerror=null;this.src='icon.svg';"></div>
             <p class="about-text" data-i18n="aboutCopy">I am pursuing B.Com Computer Applications at SASTRA University, Thanjavur. My interests include web development, technology, automation, digital systems and software solutions. I enjoy building modern websites and improving my skills through hands-on projects.</p>
           </div>
         </div>
@@ -629,8 +630,8 @@
         <a class="card contact-card" href="https://www.linkedin.com/in/harish-v-253011362" target="_blank" rel="noopener"><h3>LinkedIn👨🏻‍🎓</h3><p data-i18n="viewProfile">View my profile</p></a>
       </div>
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/mbdwjopd" method="POST">
-        <input class="form-field" name="name" required data-i18n-placeholder="yourName" placeholder="Your name">
-        <input class="form-field" name="email" type="email" required data-i18n-placeholder="yourEmail" placeholder="Your email">
+        <input class="form-field" name="name" autocomplete="name" required data-i18n-placeholder="yourName" placeholder="Your name">
+        <input class="form-field" name="email" type="email" autocomplete="email" required data-i18n-placeholder="yourEmail" placeholder="Your email">
         <textarea class="form-field" name="message" rows="5" required data-i18n-placeholder="yourMessage" placeholder="Your message"></textarea>
         <button class="button" type="submit" style="width:100%;margin-top:8px" data-i18n="sendMessage">Send Message👉🏻</button>
         <p class="status-note contact-form-status" id="contactFormStatus" role="status" aria-live="polite"></p>
