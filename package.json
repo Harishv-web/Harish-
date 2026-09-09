@@ -4,7 +4,6 @@
   "private": true,
   "description": "Static portfolio and utility site for Harish V.",
   "scripts": {
-    "build": "node scripts/check.mjs",
     "check": "node scripts/check.mjs",
     "validate:html": "node scripts/check.mjs --html",
     "validate:css": "node scripts/check.mjs --css",
