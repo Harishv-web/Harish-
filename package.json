@@ -1,0 +1,14 @@
+{
+  "name": "harishv-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static portfolio and utility site for Harish V.",
+  "scripts": {
+    "check": "node scripts/check.mjs",
+    "validate:html": "node scripts/check.mjs --html",
+    "validate:css": "node scripts/check.mjs --css",
+    "validate:js": "node scripts/check.mjs --js",
+    "validate:links": "node scripts/check.mjs --links",
+    "security": "node scripts/check.mjs --security"
+  }
+}

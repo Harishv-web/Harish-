@@ -5,8 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#020202">
   <meta name="color-scheme" content="dark">
+  <meta name="description" content="Private analytics dashboard for Harish V's portfolio website.">
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://ultron.v90300560.workers.dev; form-action 'self'; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=(), usb=(), bluetooth=(), interest-cohort=()">
   <title>Private Analytics Dashboard | Harish V</title>
   <link rel="icon" href="icon-192.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
@@ -18,17 +21,17 @@
       <div>
         <a class="dashboard-back" href="index.html">← Back to portfolio</a>
         <h1 class="gradient-text">Analytics Command Center</h1>
-        <p>Private, privacy-conscious visitor trends from the portfolio. Your access key stays only in this browser tab and is never saved.</p>
+        <p>Private analytics are available only when the backend worker is configured and its access controls are verified. Until then, this dashboard remains disabled and no private analytics are collected or displayed.</p>
       </div>
       <span class="dashboard-lock" aria-label="Private dashboard">🔒 PRIVATE</span>
     </header>
 
     <form class="dashboard-access" id="dashboardAccessForm">
       <label class="sr-only" for="dashboardAccessKey">Dashboard access key</label>
-      <input class="form-field" id="dashboardAccessKey" name="accessKey" type="password" autocomplete="current-password" required placeholder="Enter dashboard access key">
-      <button class="button" id="dashboardUnlockButton" type="submit">Unlock dashboard</button>
+      <input class="form-field" id="dashboardAccessKey" name="accessKey" type="password" autocomplete="current-password" required placeholder="Dashboard unavailable until backend is configured" disabled>
+      <button class="button" id="dashboardUnlockButton" type="submit" disabled>Unlock dashboard</button>
     </form>
-    <p class="status-note dashboard-status" id="dashboardStatus" role="status" aria-live="polite">Enter your access key to load the last seven days.</p>
+    <p class="status-note dashboard-status" id="dashboardStatus" role="status" aria-live="polite">Analytics remain unavailable because the private worker backend has not been configured or verified in this deployment.</p>
 
     <section class="dashboard-panel" id="dashboardPanel" hidden aria-live="polite">
       <div class="dashboard-toolbar">

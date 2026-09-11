@@ -1,4 +1,6 @@
 const DASHBOARD_ENDPOINT = 'https://ultron.v90300560.workers.dev/dashboard';
+const DASHBOARD_BACKEND_ENABLED = false;
+const DASHBOARD_UNAVAILABLE_MESSAGE = 'The private dashboard backend is not configured or verified in this deployment. Analytics remain unavailable until the worker service is deployed and its access controls are reviewed.';
 const DASHBOARD_REFRESH_MS = 60_000;
 const PAGE_NAMES = {
   '/': 'Portfolio home',
@@ -82,6 +84,10 @@ function setDashboardStatus(message, state = '') {
 }
 
 async function requestDashboardData() {
+  if (!DASHBOARD_BACKEND_ENABLED) {
+    throw new Error(DASHBOARD_UNAVAILABLE_MESSAGE);
+  }
+
   let response;
   try {
     response = await fetch(DASHBOARD_ENDPOINT, {
@@ -130,6 +136,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const unlockButton = document.getElementById('dashboardUnlockButton');
   const lockButton = document.getElementById('dashboardLockButton');
   if (!form || !keyInput || !unlockButton || !lockButton) return;
+
+  if (!DASHBOARD_BACKEND_ENABLED) {
+    keyInput.disabled = true;
+    unlockButton.disabled = true;
+    setDashboardStatus(DASHBOARD_UNAVAILABLE_MESSAGE, 'error');
+    return;
+  }
 
   form.addEventListener('submit', async (event) => {
     event.preventDefault();

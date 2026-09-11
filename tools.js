@@ -167,7 +167,13 @@ function initialiseConnectionStatus() {
   const update = () => {
     const online = navigator.onLine;
     chip.classList.toggle('is-offline', !online);
-    chip.innerHTML = `● <span>${window.getSiteText(online ? 'onlineReady' : 'offlineMode')}</span>`;
+    chip.replaceChildren();
+
+    const dot = document.createElement('span');
+    dot.textContent = '●';
+    const label = document.createElement('span');
+    label.textContent = window.getSiteText(online ? 'onlineReady' : 'offlineMode');
+    chip.append(dot, ' ', label);
   };
   window.addEventListener('online', update);
   window.addEventListener('offline', update);
