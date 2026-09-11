@@ -613,7 +613,7 @@ function initialiseAssistant() {
 }
 
 /* PWA checks bypass the browser HTTP cache so deployed updates are discovered promptly. */
-const PWA_VERSION = '2026.09.07.2';
+const PWA_VERSION = '2026.09.11.1';
 
 function initialisePwaExperience() {
   if (!('serviceWorker' in navigator) || location.protocol === 'file:') return;
@@ -669,8 +669,10 @@ function initialisePwaExperience() {
 function registerPwa() {
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     window.addEventListener('load', () => {
+      const workerPath = location.pathname.includes('/identity/') ? '../sw.js' : './sw.js';
+      const workerUrl = new URL(`${workerPath}?v=${PWA_VERSION}`, document.baseURI);
       navigator.serviceWorker
-        .register(`./sw.js?v=${PWA_VERSION}`, { updateViaCache: 'none' })
+        .register(workerUrl, { updateViaCache: 'none' })
         .then((registration) => { initialisePwaExperience(); return registration.update().catch(() => { /* The next visit will retry. */ }); })
         .catch(() => { /* Site works normally if registration fails. */ });
     }, { once: true });

@@ -5,7 +5,7 @@
    require an internet connection by their nature.
    ================================================================ */
 
-const CACHE_NAME = 'harish-v-portfolio-v12';
+const CACHE_NAME = 'harish-v-portfolio-v13';
 const EXTERNAL_ASSETS = [
   'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'
 ];
@@ -30,6 +30,7 @@ self.addEventListener('install', (event) => {
         await cache.put(asset, response);
       } catch { /* The tool can still load when the visitor is online. */ }
     }));
+    await self.skipWaiting();
   })());
 });
 
