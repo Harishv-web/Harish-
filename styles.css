@@ -1225,11 +1225,183 @@ html.command-loader-active .command-loader { opacity: 1; visibility: visible; po
 .identity-links li a { text-align: right; }
 .identity-page .footer { margin-top: 0; }
 
+/* ====================== EDUCATION & JOURNEY ====================== */
+.section-eyebrow {
+  width: fit-content;
+  margin: 0 auto 12px;
+  color: #67e8f9;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-align: center;
+}
+.education-section, .journey-section { position: relative; }
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.education-card {
+  position: relative;
+  display: flex;
+  min-height: 280px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 100% 0, rgba(6, 182, 212, .13), transparent 35%),
+    rgba(255, 255, 255, .045);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .045);
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+.education-card::after {
+  position: absolute;
+  right: -32px;
+  bottom: -38px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(139, 92, 246, .2);
+  border-radius: 50%;
+  content: "";
+  box-shadow: 0 0 0 12px rgba(139, 92, 246, .025), 0 0 0 24px rgba(139, 92, 246, .02);
+}
+.education-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(6, 182, 212, .62);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, .24), 0 0 26px rgba(6, 182, 212, .08);
+}
+.education-card-primary {
+  border-color: rgba(139, 92, 246, .55);
+  background:
+    radial-gradient(circle at 90% 0, rgba(139, 92, 246, .24), transparent 39%),
+    linear-gradient(145deg, rgba(139, 92, 246, .12), rgba(255, 255, 255, .04));
+}
+.education-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.education-index {
+  color: #c4b5fd;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: .76rem;
+  font-weight: 800;
+}
+.education-status {
+  color: #67e8f9;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: .63rem;
+  font-weight: 800;
+  letter-spacing: .11em;
+}
+.education-card-primary .education-status { color: #f0abfc; }
+.education-icon {
+  display: grid;
+  width: 56px;
+  height: 56px;
+  margin: 28px 0 22px;
+  place-items: center;
+  border: 1px solid rgba(6, 182, 212, .38);
+  border-radius: 16px;
+  background: rgba(6, 182, 212, .1);
+  color: #a5f3fc;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.education-card-primary .education-icon {
+  border-color: rgba(196, 181, 253, .5);
+  background: rgba(139, 92, 246, .16);
+  color: #ddd6fe;
+}
+.education-card h3 { position: relative; z-index: 1; margin-bottom: 10px; color: #f1efff; font-size: clamp(1.15rem, 2vw, 1.42rem); }
+.education-card p { position: relative; z-index: 1; color: #b8c0cd; line-height: 1.7; }
+.education-line {
+  width: 76px;
+  height: 3px;
+  margin-top: auto;
+  border-radius: 99px;
+  background: var(--gradient);
+  box-shadow: 0 0 14px rgba(6, 182, 212, .38);
+}
+.journey-timeline {
+  position: relative;
+  display: grid;
+  max-width: 960px;
+  gap: 18px;
+  margin: 0 auto;
+}
+.journey-timeline::before {
+  position: absolute;
+  top: 21px;
+  bottom: 21px;
+  left: 20px;
+  width: 1px;
+  background: linear-gradient(var(--purple), var(--cyan), rgba(6, 182, 212, .08));
+  content: "";
+}
+.journey-timeline .timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: start;
+  gap: 17px;
+}
+.journey-marker {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(6, 182, 212, .55);
+  border-radius: 13px;
+  background: #080811;
+  color: #a5f3fc;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: .7rem;
+  font-weight: 800;
+  box-shadow: 0 0 0 6px rgba(2, 2, 2, .8);
+}
+.journey-card {
+  min-height: 0;
+  padding: 22px 25px;
+  border-radius: 16px;
+  transition: transform .25s, border-color .25s, background .25s;
+}
+.journey-card:hover {
+  transform: translateX(5px);
+  border-color: rgba(139, 92, 246, .7);
+  background: rgba(139, 92, 246, .08);
+}
+.journey-year {
+  display: inline-block;
+  margin-bottom: 9px;
+  color: #67e8f9;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+.journey-card h3 { margin-bottom: 8px; color: #e9e6ff; font-size: 1.2rem; }
+.journey-card p { color: #bdc5d1; line-height: 1.7; }
+.journey-current .journey-marker {
+  border-color: #34d399;
+  color: #6ee7b7;
+  box-shadow: 0 0 0 6px rgba(2, 2, 2, .8), 0 0 18px rgba(52, 211, 153, .25);
+}
+.journey-current .journey-card { border-color: rgba(52, 211, 153, .34); }
+.journey-future .journey-marker { border-style: dashed; color: #c4b5fd; }
+
 @media (max-width: 980px) {
   .games-grid { grid-template-columns: 1fr; max-width: 690px; }
   .studio-layout { grid-template-columns: 1fr; }
   .studio-preview-window { min-height: 320px; }
   .identity-project-list { grid-template-columns: 1fr; }
+  .education-grid { grid-template-columns: 1fr; max-width: 720px; margin: 0 auto; }
+  .education-card { min-height: 235px; }
 }
 @media (max-width: 620px) {
   .games-offered { align-items: stretch; flex-direction: column; width: min(100% - 28px, 1140px); margin-bottom: 42px; }
@@ -1254,6 +1426,13 @@ html.command-loader-active .command-loader { opacity: 1; visibility: visible; po
   .identity-page .brand-name { font-size: 1rem; }
   .identity-page .nav-logo-img { width: 40px; height: 40px; }
   .identity-home-link { padding: 8px 10px; font-size: .82rem; }
+  .section-eyebrow { font-size: .62rem; }
+  .education-card { min-height: 0; padding: 21px; }
+  .education-icon { margin-top: 22px; }
+  .journey-timeline::before { left: 17px; }
+  .journey-timeline .timeline-item { grid-template-columns: 36px minmax(0, 1fr); gap: 12px; }
+  .journey-marker { width: 36px; height: 36px; border-radius: 11px; font-size: .64rem; }
+  .journey-card { padding: 19px; }
 }
 @media (max-width: 390px) {
   .game-card-heading { flex-direction: column-reverse; }
