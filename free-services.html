@@ -53,6 +53,38 @@
       <p class="pwa-install-status" id="pwaInstallStatus" role="status" aria-live="polite"></p>
     </section>
 
+    <!-- ========================= SEE MY WORLD ====================== -->
+    <section class="world-panel" id="see-my-world" aria-labelledby="seeMyWorldTitle">
+      <div class="world-heading">
+        <div>
+          <span class="games-kicker">SERVICES · LOCAL-FIRST VIEW</span>
+          <h2 id="seeMyWorldTitle">See My World</h2>
+          <p>Explore the signals behind the work: what I focus on, the routines that keep me moving, and the people and places connected to my services.</p>
+        </div>
+        <div class="world-orb" aria-hidden="true"><span></span><i></i><b></b></div>
+      </div>
+
+      <div class="world-filters" role="group" aria-label="Filter See My World">
+        <button class="world-filter is-selected" type="button" data-world-filter="all" aria-pressed="true">All signals</button>
+        <button class="world-filter" type="button" data-world-filter="focus" aria-pressed="false">Focus</button>
+        <button class="world-filter" type="button" data-world-filter="routines" aria-pressed="false">Routines</button>
+        <button class="world-filter" type="button" data-world-filter="connections" aria-pressed="false">Connections</button>
+      </div>
+
+      <div class="world-layout">
+        <div class="world-signals" id="worldSignals"></div>
+        <div class="world-timeline">
+          <div class="world-subheading"><span>NOW &amp; NEXT</span><small id="worldClock">Local time</small></div>
+          <div class="world-timeline-list" id="worldTimeline"></div>
+        </div>
+      </div>
+
+      <div class="world-footer">
+        <span class="world-live-dot" aria-hidden="true"></span>
+        <p id="worldStatus" role="status" aria-live="polite">This view runs locally in your browser. No activity is collected.</p>
+      </div>
+    </section>
+
     <!-- ========================= TOOL SHORTCUTS ==================== -->
     <section class="tool-shortcuts" aria-label="Free services">
       <button class="tool-shortcut active" type="button" data-tool="speedPanel"><span class="tool-shortcut-icon" aria-hidden="true">◌</span><span data-i18n="networkTool">Network Speed Tester</span></button>
