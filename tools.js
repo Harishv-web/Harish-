@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initialiseBackButton();
   initialiseConnectionStatus();
   initialisePwaInstall();
-  initialiseSeeMyWorld();
   initialiseWebsiteStudio();
   initialiseToolShortcuts();
   initialiseSpeedTester();
@@ -18,91 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initialiseTimer();
   initialiseCalendar();
 });
-
-/* =========================== SEE MY WORLD ================================ */
-function initialiseSeeMyWorld() {
-  const panel = document.getElementById('see-my-world');
-  const signalsOutput = document.getElementById('worldSignals');
-  const timelineOutput = document.getElementById('worldTimeline');
-  const clockOutput = document.getElementById('worldClock');
-  const statusOutput = document.getElementById('worldStatus');
-  if (!panel || !signalsOutput || !timelineOutput || !clockOutput || !statusOutput) return;
-
-  const signals = [
-    { type: 'focus', icon: '⌁', title: 'Build useful websites', copy: 'Responsive portfolio, college project, business and landing-page experiences.', tags: ['Web', 'Design', 'Delivery'] },
-    { type: 'focus', icon: '◈', title: 'Learn by shipping', copy: 'I turn hands-on experiments into cleaner systems, interfaces and digital services.', tags: ['Practice', 'Automation', 'Growth'] },
-    { type: 'routines', icon: '◷', title: 'Study, build, improve', copy: 'B.Com Computer Applications at SASTRA University alongside focused project time.', tags: ['SASTRA', 'Study', 'Projects'] },
-    { type: 'routines', icon: '▣', title: 'Keep tools accessible', copy: 'Browser-first utilities and PWA patterns make useful work available offline too.', tags: ['PWA', 'Offline', 'Utility'] },
-    { type: 'connections', icon: '◎', title: 'Collaborate directly', copy: 'Students, creators and small businesses can share an idea and get a practical next step.', tags: ['Students', 'Creators', 'Business'] },
-    { type: 'connections', icon: '↗', title: 'Start a service brief', copy: 'Use Website Studio or WhatsApp to turn a rough idea into a clear project conversation.', tags: ['Brief', 'WhatsApp', 'Support'] }
-  ];
-  const timeline = [
-    { type: 'focus', marker: 'FOCUS', title: 'Modern digital experiences', copy: 'Web development, automation and software solutions remain at the centre of the work.' },
-    { type: 'routines', marker: 'ROUTINE', title: 'Present · learning in public', copy: 'Studying, experimenting and improving through real portfolio and service projects.' },
-    { type: 'connections', marker: 'OPEN', title: 'A new project can start here', copy: 'Choose a service, describe the outcome and connect with Harish when you are ready.' }
-  ];
-  let activeFilter = 'all';
-
-  const renderTags = (tags) => tags.map((tag) => {
-    const element = document.createElement('span');
-    element.textContent = tag;
-    return element;
-  });
-  const render = () => {
-    const visibleSignals = signals.filter((signal) => activeFilter === 'all' || signal.type === activeFilter);
-    signalsOutput.replaceChildren(...visibleSignals.map((signal) => {
-      const card = document.createElement('article');
-      card.className = `world-signal world-signal-${signal.type}`;
-      const icon = document.createElement('span');
-      icon.className = 'world-signal-icon';
-      icon.setAttribute('aria-hidden', 'true');
-      icon.textContent = signal.icon;
-      const content = document.createElement('div');
-      const title = document.createElement('h3');
-      title.textContent = signal.title;
-      const copy = document.createElement('p');
-      copy.textContent = signal.copy;
-      const tags = document.createElement('div');
-      tags.className = 'world-tags';
-      tags.append(...renderTags(signal.tags));
-      content.append(title, copy, tags);
-      card.append(icon, content);
-      return card;
-    }));
-    const visibleTimeline = timeline.filter((item) => activeFilter === 'all' || item.type === activeFilter);
-    timelineOutput.replaceChildren(...visibleTimeline.map((item) => {
-      const entry = document.createElement('article');
-      entry.className = 'world-timeline-entry';
-      entry.innerHTML = `<span class="world-timeline-marker">${item.marker}</span><div><h3></h3><p></p></div>`;
-      entry.querySelector('h3').textContent = item.title;
-      entry.querySelector('p').textContent = item.copy;
-      return entry;
-    }));
-  };
-  const updateClock = () => {
-    const now = new Date();
-    clockOutput.textContent = `Local time · ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
-    statusOutput.textContent = navigator.onLine
-      ? 'Live locally in your browser. No activity is collected.'
-      : 'Offline mode · this view still works locally in your browser.';
-  };
-  panel.querySelectorAll('[data-world-filter]').forEach((button) => {
-    button.addEventListener('click', () => {
-      activeFilter = button.dataset.worldFilter || 'all';
-      panel.querySelectorAll('[data-world-filter]').forEach((item) => {
-        const selected = item === button;
-        item.classList.toggle('is-selected', selected);
-        item.setAttribute('aria-pressed', String(selected));
-      });
-      render();
-    });
-  });
-  window.addEventListener('online', updateClock);
-  window.addEventListener('offline', updateClock);
-  render();
-  updateClock();
-  window.setInterval(updateClock, 30000);
-}
 
 /* ============================= PWA INSTALL ================================ */
 function initialisePwaInstall() {
