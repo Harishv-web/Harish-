@@ -5,13 +5,13 @@
    require an internet connection by their nature.
    ================================================================ */
 
-const CACHE_NAME = 'harish-v-portfolio-v15';
+const CACHE_NAME = 'harish-v-portfolio-v16';
 const EXTERNAL_ASSETS = [
   'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'
 ];
 const CORE_FILES = [
   './', './index.html', './free-services.html', './identity/', './identity/index.html', './styles.css', './site.js',
-  './tools.js', './world-explorer.js', './games.html', './games.js', './manifest.webmanifest', './icon.svg', './icon-180.png', './icon-192.png', './icon-512.png', './icon.jpeg', './profile.jpg', './og-image.jpg'
+  './tools.js', './world-explorer.js', './vendor/maplibre-gl.js', './vendor/maplibre-gl.css', './games.html', './games.js', './manifest.webmanifest', './icon.svg', './icon-180.png', './icon-192.png', './icon-512.png', './icon.jpeg', './profile.jpg', './og-image.jpg'
 ];
 
 self.addEventListener('install', (event) => {

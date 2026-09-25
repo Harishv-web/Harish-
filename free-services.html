@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#020202">
   <meta name="mobile-web-app-capable" content="yes">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; script-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://tiles.openfreemap.org; connect-src 'self' https://speed.cloudflare.com https://api.github.com https://ultron.v90300560.workers.dev https://unpkg.com https://tiles.openfreemap.org; worker-src 'self' blob: https://unpkg.com; form-action 'self' https://wa.me; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; script-src 'self' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://tiles.openfreemap.org; connect-src 'self' https://speed.cloudflare.com https://api.github.com https://ultron.v90300560.workers.dev https://tiles.openfreemap.org; worker-src 'self' blob:; child-src blob:; form-action 'self' https://wa.me; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(self), payment=(), usb=(), bluetooth=(), interest-cohort=()">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="vendor/maplibre-gl.css">
+  <link rel="stylesheet" href="styles.css?v=2026.09.25.2">
   <title>Free Services | Harish V</title>
 </head>
 <body class="tools-page">
@@ -327,10 +327,10 @@
   <footer class="footer"><strong>HARISH V</strong><br><span data-i18n="footerRole">B.Com Computer Applications · SASTRA University</span><br>© 2026 <span data-i18n="rights">All Rights Reserved</span></footer>
 
   <!-- qrcode.js is cached by the PWA after first online use. -->
-  <script src="site.js" defer></script>
+  <script src="site.js?v=2026.09.25.2" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
-  <script src="https://unpkg.com/maplibre-gl@5.24.0/dist/maplibre-gl.js" defer></script>
-  <script src="tools.js" defer></script>
-  <script src="world-explorer.js" defer></script>
+  <script src="vendor/maplibre-gl.js" defer></script>
+  <script src="tools.js?v=2026.09.25.2" defer></script>
+  <script src="world-explorer.js?v=2026.09.25.2" defer></script>
 </body>
 </html>
