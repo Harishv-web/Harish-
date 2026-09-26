@@ -613,7 +613,7 @@ function initialiseAssistant() {
 }
 
 /* PWA checks bypass the browser HTTP cache so deployed updates are discovered promptly. */
-const PWA_VERSION = '2026.09.25.1';
+const PWA_VERSION = '2026.09.25.2';
 
 function initialisePwaExperience() {
   if (!('serviceWorker' in navigator) || location.protocol === 'file:') return;
