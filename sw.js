@@ -5,7 +5,7 @@
    require an internet connection by their nature.
    ================================================================ */
 
-const CACHE_NAME = 'harish-v-portfolio-v17';
+const CACHE_NAME = 'harish-v-portfolio-v18';
 const EXTERNAL_ASSETS = [
   'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js'
 ];
