@@ -83,7 +83,7 @@
       "name": "World Explorer",
       "short_name": "World",
       "description": "Explore the Solar System and an interactive global map.",
-      "url": "./free-services.html#world-explorer",
+      "url": "./world-explorer.html",
       "icons": [
         {
           "src": "icon-192.png",

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#020202">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="See My World by Harish V — an interactive Solar System and open-data 3D Earth explorer.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; script-src 'self' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://tiles.openfreemap.org; connect-src 'self' https://api.github.com https://tiles.openfreemap.org; worker-src 'self' blob:; child-src blob:; upgrade-insecure-requests">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(self), payment=(), usb=(), bluetooth=(), interest-cohort=()">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&family=Noto+Sans+Tamil:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/maplibre-gl.css">
+  <link rel="stylesheet" href="styles.css?v=2026.10.03.1">
+  <title>See My World | Harish V</title>
+  <style>
+    .world-page { min-height: 100vh; background: radial-gradient(circle at 7% 8%, rgba(139, 92, 246, .2), transparent 24%), radial-gradient(circle at 92% 18%, rgba(6, 182, 212, .17), transparent 28%), #020202; }
+    .world-page .top-back { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+    .world-main { width: min(1280px, calc(100% - 40px)); margin: 0 auto; padding: 132px 0 84px; }
+    .world-command-hero { position: relative; overflow: hidden; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(250px, .75fr); gap: 32px; align-items: end; margin-bottom: 22px; padding: clamp(26px, 5vw, 54px); border: 1px solid rgba(103, 232, 249, .28); border-radius: 28px; background: linear-gradient(135deg, rgba(14, 18, 43, .92), rgba(3, 14, 24, .9)); box-shadow: inset 0 1px rgba(255, 255, 255, .07), 0 30px 80px rgba(0, 0, 0, .35); }
+    .world-command-hero::before, .world-command-hero::after { position: absolute; content: ""; pointer-events: none; border: 1px solid rgba(103, 232, 249, .18); border-radius: 50%; }
+    .world-command-hero::before { width: 450px; height: 450px; right: -165px; top: -260px; box-shadow: 0 0 0 34px rgba(6, 182, 212, .025), 0 0 0 70px rgba(139, 92, 246, .018); }
+    .world-command-hero::after { width: 180px; height: 180px; left: -80px; bottom: -118px; border-color: rgba(196, 181, 253, .24); }
+    .world-command-copy, .world-command-stats { position: relative; z-index: 1; }
+    .world-command-kicker { margin: 0; color: #67e8f9; font-size: .72rem; font-weight: 800; letter-spacing: .15em; }
+    .world-command-copy h1 { max-width: 740px; margin: 12px 0; color: #fff; font-size: clamp(2.3rem, 6vw, 5.3rem); line-height: .94; letter-spacing: -.06em; }
+    .world-command-copy p:last-child { max-width: 690px; margin: 0; color: #b9c4d2; line-height: 1.8; }
+    .world-command-stats { display: grid; gap: 10px; }
+    .world-stat { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 14px; border: 1px solid rgba(255, 255, 255, .1); border-radius: 13px; background: rgba(2, 6, 23, .55); }
+    .world-stat span { color: #94a3b8; font-size: .7rem; font-weight: 800; letter-spacing: .1em; }
+    .world-stat strong { color: #cffafe; font-size: .82rem; }
+    .world-stat i { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 16px rgba(52, 211, 153, .9); }
+    .world-command-card { margin: 0; }
+    .world-page .world-explorer-card { padding: clamp(20px, 3.4vw, 38px); border-radius: 26px; }
+    .world-page .solar-system-canvas, .world-page .earth-map, .world-page .world-map-shell { height: clamp(390px, 62vw, 650px); min-height: clamp(390px, 62vw, 650px); }
+    .world-protocol-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+    .world-protocol { padding: 19px; border: 1px solid rgba(255, 255, 255, .1); border-radius: 16px; background: rgba(7, 10, 20, .7); }
+    .world-protocol span { display: block; margin-bottom: 8px; color: #67e8f9; font-size: .67rem; font-weight: 800; letter-spacing: .13em; }
+    .world-protocol h2 { margin: 0 0 7px; color: #f5f3ff; font-size: 1rem; }
+    .world-protocol p { margin: 0; color: #9eabbc; font-size: .82rem; line-height: 1.65; }
+    @media (max-width: 800px) { .world-main { width: min(100% - 28px, 1280px); padding-top: 105px; } .world-command-hero { grid-template-columns: 1fr; gap: 22px; border-radius: 21px; } .world-protocol-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 520px) { .world-main { padding-bottom: 58px; } .world-command-hero { padding: 23px; } .world-page .solar-system-canvas, .world-page .earth-map, .world-page .world-map-shell { height: 390px; min-height: 390px; } .world-command-copy h1 { font-size: 2.6rem; } }
+  </style>
+</head>
+<body class="world-page">
+  <a class="skip-link" href="#world-explorer">Skip to World Explorer</a>
+  <canvas id="matrix" aria-hidden="true"></canvas>
+  <div class="cursor-glow" aria-hidden="true"></div>
+
+  <a class="top-back" href="free-services.html"><span class="action-emoji" aria-hidden="true">🧰</span><span>Back to Free Services</span></a>
+  <nav class="site-nav" aria-label="World Explorer header">
+    <a class="brand" href="index.html" aria-label="Harish V portfolio home">
+      <img class="nav-logo-img" src="profile.jpg" alt="Harish V profile picture" width="512" height="512" onerror="this.onerror=null;this.src='icon.svg';">
+      <span class="brand-name">Harish V</span>
+    </a>
+  </nav>
+
+  <main class="world-main" id="main-content">
+    <header class="world-command-hero">
+      <div class="world-command-copy">
+        <p class="world-command-kicker">HARISH V / WORLD EXPLORER / OPEN DATA</p>
+        <h1>See My World<span class="gradient-text">.</span></h1>
+        <p>Enter a cinematic 3D solar-system command deck, then descend to a live interactive Earth globe. Every planet can be selected; Earth opens a zoomable map with real place labels and open map data.</p>
+      </div>
+      <div class="world-command-stats" aria-label="World Explorer capabilities">
+        <div class="world-stat"><span>SOLAR BODIES</span><strong>11 signals</strong></div>
+        <div class="world-stat"><span>EARTH MODE</span><strong>Globe + map</strong></div>
+        <div class="world-stat"><span>MISSION LINK</span><strong><i aria-hidden="true"></i> Online ready</strong></div>
+      </div>
+    </header>
+
+    <article class="world-command-card" id="worldPanel" aria-labelledby="worldExplorerTitle">
+      <div class="card world-explorer-card">
+        <header class="world-explorer-heading">
+          <div>
+            <span class="world-eyebrow">INTERACTIVE SPACE + EARTH COMMAND DECK</span>
+            <h2 id="worldExplorerTitle">Choose your trajectory</h2>
+            <p class="tool-help">Drag the Solar System to rotate its depth, scroll to zoom, or select any body. Switch to Earth for a live, open-data globe with pan, zoom and location controls.</p>
+          </div>
+          <span class="world-live-chip"><i aria-hidden="true"></i>LIVE SYSTEM</span>
+        </header>
+
+        <div class="world-mode-controls" role="tablist" aria-label="World Explorer mode">
+          <button class="world-mode-button is-active" id="solarModeButton" type="button" role="tab" aria-selected="true" aria-controls="solarSystemStage">☀️ Solar System</button>
+          <button class="world-mode-button" id="earthModeButton" type="button" role="tab" aria-selected="false" aria-controls="earthMapStage">🌍 Earth Globe</button>
+        </div>
+
+        <section class="world-stage" id="solarSystemStage" role="tabpanel" aria-labelledby="solarModeButton">
+          <div class="solar-system-shell">
+            <canvas id="solarSystemCanvas" class="solar-system-canvas" tabindex="0" aria-label="Interactive three-dimensional solar system. Drag to rotate, use the mouse wheel to zoom, and select a planet.">Your browser does not support the Solar System canvas.</canvas>
+            <div class="solar-canvas-hud" aria-hidden="true"><span>DRAG TO ROTATE</span><span>SCROLL TO ZOOM</span><span>SELECT A BODY</span></div>
+            <div class="solar-canvas-controls" aria-label="Solar System view controls">
+              <button class="world-icon-button" id="worldZoomIn" type="button" aria-label="Zoom into Solar System">+</button>
+              <button class="world-icon-button" id="worldZoomOut" type="button" aria-label="Zoom out of Solar System">−</button>
+              <button class="world-icon-button world-reset-button" id="worldResetView" type="button" aria-label="Reset Solar System view">↻</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="world-stage world-map-stage" id="earthMapStage" role="tabpanel" aria-labelledby="earthModeButton" hidden>
+          <div class="world-map-shell">
+            <div id="earthMap" class="earth-map" aria-label="Interactive world map built with open map data"></div>
+            <p class="world-map-status" id="worldMapStatus" role="status" aria-live="polite">Choose Earth Globe while online to load the interactive map.</p>
+          </div>
+          <div class="world-quick-locations" aria-label="Quick world locations">
+            <button type="button" data-world-location="world">World</button>
+            <button type="button" data-world-location="india">India</button>
+            <button type="button" data-world-location="chennai">Chennai</button>
+            <button type="button" data-world-location="tokyo">Tokyo</button>
+            <button type="button" data-world-location="paris">Paris</button>
+            <button type="button" data-world-location="newyork">New York</button>
+            <button type="button" data-world-location="sydney">Sydney</button>
+          </div>
+          <p class="world-attribution">Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> · rendered with <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre</a> and <a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a>.</p>
+        </section>
+
+        <div class="world-explorer-bottom">
+          <section class="world-detail-card" aria-live="polite" aria-labelledby="worldSelectionTitle">
+            <span class="world-detail-label">CURRENT SELECTION</span>
+            <h3 id="worldSelectionTitle">Earth</h3>
+            <p id="worldSelectionMeta">PLANET · THIRD FROM THE SUN</p>
+            <p id="worldSelectionCopy">Our blue home world, with one natural satellite: the Moon.</p>
+            <button class="tool-button button-secondary world-earth-button" id="worldEnterEarth" type="button">Explore Earth Globe <span aria-hidden="true">→</span></button>
+          </section>
+          <section class="world-planet-navigation" aria-label="Select a solar-system body">
+            <span class="world-detail-label">SELECT A BODY</span>
+            <div class="world-planet-buttons" id="worldPlanetButtons"></div>
+          </section>
+        </div>
+        <p class="world-explorer-note">Solar-system distances and speeds are adjusted for a clear on-screen model. Earth data needs an online connection; Solar System exploration remains local to your device.</p>
+      </div>
+    </article>
+
+    <section class="world-protocol-grid" aria-label="Explorer guide">
+      <article class="world-protocol"><span>01 / ORBIT</span><h2>Navigate the system</h2><p>Drag across the visual model to change its viewpoint. Zoom controls and keyboard arrows make every body reachable.</p></article>
+      <article class="world-protocol"><span>02 / DESCEND</span><h2>Enter Earth mode</h2><p>Select Earth or choose Earth Globe to reveal a real, interactive map with globe and flat-map controls.</p></article>
+      <article class="world-protocol"><span>03 / EXPLORE</span><h2>Travel by signal</h2><p>Jump directly to India, Chennai, Tokyo, Paris, New York or Sydney, then zoom and pan freely from there.</p></article>
+    </section>
+  </main>
+
+  <footer class="footer"><strong>HARISH V</strong><br><span>B.Com Computer Applications · SASTRA University</span><br>© 2026 All Rights Reserved</footer>
+  <script src="site.js?v=2026.10.03.1" defer></script>
+  <script src="vendor/maplibre-gl.js" defer></script>
+  <script src="world-explorer.js?v=2026.10.03.1" defer></script>
+</body>
+</html>

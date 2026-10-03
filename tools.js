@@ -183,7 +183,7 @@ function initialiseConnectionStatus() {
 
 /* ============================ PANEL SWITCHING ============================== */
 function initialiseToolShortcuts() {
-  const shortcuts = [...document.querySelectorAll('.tool-shortcut')];
+  const shortcuts = [...document.querySelectorAll('.tool-shortcut[data-tool]')];
   const panels = [...document.querySelectorAll('.tool-panel')];
   shortcuts.forEach((shortcut) => shortcut.addEventListener('click', () => {
     const panelId = shortcut.dataset.tool;
